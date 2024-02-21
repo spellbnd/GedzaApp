@@ -1,5 +1,5 @@
-import * as React from "react"
-import Svg, { Path } from "react-native-svg"
+import * as React from 'react';
+import Svg, { Path } from 'react-native-svg';
 
 function MenuIcon(props) {
   return (
@@ -8,7 +8,7 @@ function MenuIcon(props) {
       height={24}
       viewBox="0 0 21 24"
       xmlns="http://www.w3.org/2000/svg"
-     xmlnsXlink="http://www.w3.org/1999/xlink"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
       <Path
@@ -24,7 +24,7 @@ function MenuIcon(props) {
         fill="#000"
       />
     </Svg>
-  )
+  );
 }
 
-export default MenuIcon
+export default MenuIcon;

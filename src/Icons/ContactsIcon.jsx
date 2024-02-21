@@ -1,5 +1,5 @@
-import * as React from "react"
-import Svg, { Path } from "react-native-svg"
+import * as React from 'react';
+import Svg, { Path } from 'react-native-svg';
 
 function ContactsIcon(props) {
   return (
@@ -16,7 +16,7 @@ function ContactsIcon(props) {
         fill="#000"
       />
     </Svg>
-  )
+  );
 }
 
-export default ContactsIcon
+export default ContactsIcon;
