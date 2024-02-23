@@ -8,7 +8,7 @@ import { addToCart, setModalCartVisible } from '../Redux/CartReducer';
 import AddItemModal from './AddItemModal';
 
 const WIDTH = Dimensions.get('window').width;
-function ProductPreview(props) {
+function ProductPreview({ visible, changeState, productInfo }) {
   const dispatch = useDispatch();
   const addItemToCart = (item) => {
     dispatch(addToCart(item));
@@ -17,7 +17,7 @@ function ProductPreview(props) {
     dispatch(setModalCartVisible(status));
   };
   return (
-    <Modal visible={props.visible} animationType="slide" transparent>
+    <Modal visible={visible} animationType="slide" transparent>
       <AddItemModal />
       <View
         style={{
@@ -34,19 +34,19 @@ function ProductPreview(props) {
             borderRadius: 10,
           }}
         >
-          <Pressable style={styles.product_close} onPress={() => props.changeState(false)}>
+          <Pressable style={styles.product_close} onPress={() => changeState(false)}>
             <SVGComponent />
           </Pressable>
           <Image
             style={styles.img}
             source={{
-              uri: props.productInfo.imageLink,
+              uri: productInfo.imageLink,
             }}
           />
           <View style={styles.product_order}>
-            <Text style={{ fontWeight: 700, fontSize: 22.4, marginBottom: 8 }}>{props.productInfo.name}</Text>
+            <Text style={{ fontWeight: 700, fontSize: 22.4, marginBottom: 8 }}>{productInfo.name}</Text>
             <View>
-              <Text style={styles.product_desc}>{props.productInfo.sostav}</Text>
+              <Text style={styles.product_desc}>{productInfo.sostav}</Text>
             </View>
             <Text style={{
               fontWeight: '700', marginBottom: 5, textAlign: 'center', fontSize: 14,
@@ -55,7 +55,7 @@ function ProductPreview(props) {
               Годен в течении 3 часов при t 20°C, 12 часов при t 4±2°C
             </Text>
             <Text style={{
-              marginBottom: 5, textAlign: 'center', fontSize: 14, color: '#AEAEAE', fontSize: 16,
+              marginBottom: 5, textAlign: 'center', fontSize: 14, color: '#AEAEAE',
             }}
             >
               Изображение в приложении и внешний вид продукта могут отличаться
@@ -64,7 +64,7 @@ function ProductPreview(props) {
             <View style={styles.energy_amount}>
               <Text>Энерг. ценность</Text>
               <Text>
-                {props.productInfo.productValue.energy_amount}
+                {productInfo.productValue.energy_amount}
                 {' '}
                 ккал.
               </Text>
@@ -72,7 +72,7 @@ function ProductPreview(props) {
             <View style={styles.fiber_amount}>
               <Text>Белки</Text>
               <Text>
-                {props.productInfo.productValue.fiber_amount}
+                {productInfo.productValue.fiber_amount}
                 {' '}
                 г
               </Text>
@@ -80,7 +80,7 @@ function ProductPreview(props) {
             <View style={styles.fat_amount}>
               <Text>Жиры</Text>
               <Text>
-                {props.productInfo.productValue.fat_amount}
+                {productInfo.productValue.fat_amount}
                 {' '}
                 г
               </Text>
@@ -88,7 +88,7 @@ function ProductPreview(props) {
             <View style={styles.fat_amount}>
               <Text>Углеводы</Text>
               <Text>
-                {props.productInfo.productValue.carbohydrate_amount}
+                {productInfo.productValue.carbohydrate_amount}
                 {' '}
                 г
               </Text>
@@ -96,7 +96,7 @@ function ProductPreview(props) {
             <View style={styles.fat_amount}>
               <Text>Вес</Text>
               <Text>
-                {props.productInfo.productValue.weight_amount}
+                {productInfo.productValue.weight_amount}
                 {' '}
                 г.
               </Text>
@@ -105,7 +105,7 @@ function ProductPreview(props) {
               <Pressable
                 style={styles.btn}
                 onPress={() => {
-                  addItemToCart(props.productInfo);
+                  addItemToCart(productInfo);
                   setModalStatus(true);
                   setTimeout(() => {
                     setModalStatus(false);
@@ -115,7 +115,7 @@ function ProductPreview(props) {
                 <Text style={styles.btn_text}>В корзину</Text>
               </Pressable>
               <Text style={{ fontWeight: 600, fontSize: 20 }}>
-                {props.productInfo.price}
+                {productInfo.price}
                 {'\u20BD'}
               </Text>
             </View>
