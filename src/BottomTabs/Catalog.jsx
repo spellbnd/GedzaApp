@@ -1,7 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import {
-  StyleSheet, Text, View, Image, Platform, ScrollView, Dimensions,
-  NativeModules, SafeAreaView,
+  StyleSheet, Text, View, Image, ScrollView, Dimensions,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 
@@ -11,10 +10,7 @@ import products from '../data/catalog.json';
 import ProductList from '../components/ProductList';
 import CategoryItem from '../components/CategoryItem';
 
-const { StatusBarManager } = NativeModules;
-
 const WIDTH = Dimensions.get('window').width;
-const HEIGHT = Dimensions.get('window').height;
 function Catalog() {
   const navigateData = useSelector((state) => state.navigateHeaders.navigateHeaders);
 
@@ -26,53 +22,43 @@ function Catalog() {
     'https://gedzagroup.ru/assets/img/karasava-new.webp',
   ];
 
-  const [imgActive, setimgActive] = useState(0);
-  onchange = (nativeEvent) => {
-    if (nativeEvent) {
-      const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
-      if (slide !== imgActive) {
-        setimgActive(slide);
-      }
-    }
-  };
   const scrollViewRef = useRef(null);
   return (
-    <SafeAreaView style={{
-      paddingTop: Platform.OS === 'android' ? StatusBarManager.HEIGHT : 0,
-    }}
-    >
-      <View style={styles.carousel}>
-        <Swiper style={styles.wrapper} paginationStyle={{ bottom: 5 }} showsButtons autoplay activeDotColor="red" nextButton={<Text style={{ color: '#e5e4e2', fontSize: 70 }}>›</Text>} prevButton={<Text style={{ color: '#e5e4e2', fontSize: 70 }}>‹</Text>}>
-          <Image
-            source={{ uri: images[0] }}
-            resizeMode="contain"
-            style={styles.wrap}
-          />
-          <Image
-            source={{ uri: images[1] }}
-            resizeMode="contain"
-            style={styles.wrap}
-          />
-          <Image
-            source={{ uri: images[2] }}
-            resizeMode="contain"
-            style={styles.wrap}
-          />
-          <Image
-            source={{ uri: images[3] }}
-            resizeMode="contain"
-            style={styles.wrap}
-          />
-          <Image
-            source={{ uri: images[4] }}
-            resizeMode="contain"
-            style={styles.wrap}
-          />
-        </Swiper>
-      </View>
-      <View style={styles.categories}>
-        <ScrollView horizontal style={styles.horizontalList} showsHorizontalScrollIndicator={false}>
-          {
+    <View>
+      <View>
+        <ScrollView ref={scrollViewRef} contentContainerStyle={{ flexGrow: 1 }} stickyHeaderIndices={[1]}>
+          <View style={styles.carousel}>
+            <Swiper style={styles.wrapper} paginationStyle={{ bottom: 5 }} showsButtons autoplay activeDotColor="red" nextButton={<Text style={{ color: '#e5e4e2', fontSize: 70 }}>›</Text>} prevButton={<Text style={{ color: '#e5e4e2', fontSize: 70 }}>‹</Text>}>
+              <Image
+                source={{ uri: images[0] }}
+                resizeMode="contain"
+                style={styles.wrap}
+              />
+              <Image
+                source={{ uri: images[1] }}
+                resizeMode="contain"
+                style={styles.wrap}
+              />
+              <Image
+                source={{ uri: images[2] }}
+                resizeMode="contain"
+                style={styles.wrap}
+              />
+              <Image
+                source={{ uri: images[3] }}
+                resizeMode="contain"
+                style={styles.wrap}
+              />
+              <Image
+                source={{ uri: images[4] }}
+                resizeMode="contain"
+                style={styles.wrap}
+              />
+            </Swiper>
+          </View>
+          <View style={styles.categories}>
+            <ScrollView horizontal style={styles.horizontalList} showsHorizontalScrollIndicator={false}>
+              {
           navigateData.map((itemCategory) => (
             <CategoryItem
               itemCategory={itemCategory}
@@ -80,10 +66,8 @@ function Catalog() {
             />
           ))
         }
-        </ScrollView>
-      </View>
-      <View>
-        <ScrollView ref={scrollViewRef} contentContainerStyle={{ flexGrow: 1, paddingBottom: 0.476 * HEIGHT }}>
+            </ScrollView>
+          </View>
           <ProductList products={products} title="Премиум Роллы" />
           <ProductList products={products} title="Запеченные Роллы" />
           <ProductList products={products} title="Холодные Роллы" />
@@ -92,7 +76,7 @@ function Catalog() {
           <ProductList products={products} title="Холодные ХРоллы" />
         </ScrollView>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -106,6 +90,7 @@ const styles = StyleSheet.create({
     height: 52,
     paddingTop: 5,
     paddingBottom: 5,
+    backgroundColor: '#fff',
   },
   categories_first_item: {
     paddingTop: 5,
