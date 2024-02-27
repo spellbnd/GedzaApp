@@ -14,6 +14,8 @@ import ShoppingCartScreen from '../BottomTabs/ShoppingCart';
 import { getTotalAmount } from '../Redux/CartReducer';
 import GedzaWhite from '../Icons/GedzaWhite';
 import SideNavIcon from '../Icons/SideNavIcon';
+import Bonuses from '../BottomTabs/Bonuses';
+import Vacancy from '../BottomTabs/Vacancy';
 
 const WIDTH = Dimensions.get('window').width;
 const { StatusBarManager } = NativeModules;
@@ -132,6 +134,50 @@ export default function BottomTabNavigator(props) {
         component={SettingsScreenX}
         options={{
           tabBarlabel: 'Тест',
+          tabBarIcon: () => <ContactsIcon />,
+          header: () => (
+            <View style={{
+              width: '100%', height: 45, flexDirection: 'row', backgroundColor: '#252525', marginTop: StatusBarManager.HEIGHT, paddingLeft: 15, paddingRight: 15, alignItems: 'center',
+            }}
+            >
+              <Pressable style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }} onPress={() => navigation.openDrawer()}>
+                <SideNavIcon />
+              </Pressable>
+              <View style={{ marginLeft: WIDTH / 2 - 110 }}>
+                <GedzaWhite width={140} height={29} />
+              </View>
+            </View>
+          ),
+          tabBarButton: () => undefined,
+        }}
+      />
+      <Tab.Screen
+        name="Бонусы"
+        component={Bonuses}
+        options={{
+          tabBarlabel: 'Бонусы',
+          tabBarIcon: () => <ContactsIcon />,
+          header: () => (
+            <View style={{
+              width: '100%', height: 45, flexDirection: 'row', backgroundColor: '#252525', marginTop: StatusBarManager.HEIGHT, paddingLeft: 15, paddingRight: 15, alignItems: 'center',
+            }}
+            >
+              <Pressable style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }} onPress={() => navigation.openDrawer()}>
+                <SideNavIcon />
+              </Pressable>
+              <View style={{ marginLeft: WIDTH / 2 - 110 }}>
+                <GedzaWhite width={140} height={29} />
+              </View>
+            </View>
+          ),
+          tabBarButton: () => undefined,
+        }}
+      />
+      <Tab.Screen
+        name="Вакансии"
+        component={Vacancy}
+        options={{
+          tabBarlabel: 'Вакансии',
           tabBarIcon: () => <ContactsIcon />,
           header: () => (
             <View style={{

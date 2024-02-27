@@ -108,18 +108,34 @@ export default function DrawerNavigation() {
       />
       <Drawer.Screen
         name="Cart"
-        initialParams={{ params: 'Корзина' }}
+        initialParams={{ params: 'Отзывы' }}
         component={BottomTabNavigator}
         options={{
-          title: 'Корзина',
+          title: 'Отзывы',
         }}
       />
       <Drawer.Screen
         name="Test"
-        initialParams={{ params: 'Тест' }}
+        initialParams={{ params: 'Доставка' }}
         component={BottomTabNavigator}
         options={{
-          title: 'Тест',
+          title: 'Доставка',
+        }}
+      />
+      <Drawer.Screen
+        name="Bonuses"
+        initialParams={{ params: 'Бонусы' }}
+        component={BottomTabNavigator}
+        options={{
+          title: 'Бонусы',
+        }}
+      />
+      <Drawer.Screen
+        name="Vacancy"
+        initialParams={{ params: 'Вакансии' }}
+        component={BottomTabNavigator}
+        options={{
+          title: 'Вакансии',
         }}
       />
     </Drawer.Navigator>

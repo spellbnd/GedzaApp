@@ -31,10 +31,7 @@ function ShoppingCartScreen({ navigation }) {
     dispatch(decrementQuantity(item));
   };
   return (
-    <SafeAreaView style={{
-      paddingTop: Platform.OS === 'android' ? StatusBarManager.HEIGHT : 0,
-    }}
-    >
+    <View>
       {
                 cart.length === 0 && (
                 <View style={styles.empty_cart}>
@@ -145,7 +142,7 @@ function ShoppingCartScreen({ navigation }) {
                 </View>
                 )
             }
-    </SafeAreaView>
+    </View>
   );
 }
 
