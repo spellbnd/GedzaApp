@@ -4,16 +4,13 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-import { useSelector } from 'react-redux';
 import products from '../data/catalog.json';
 
 import ProductList from '../components/ProductList';
-import CategoryItem from '../components/CategoryItem';
+import CategoryList from '../components/CategoryList';
 
 const WIDTH = Dimensions.get('window').width;
 function Catalog() {
-  const navigateData = useSelector((state) => state.navigateHeaders.navigateHeaders);
-
   const images = [
     'https://gedzagroup.ru/assets/img/yami-n.jpg',
     'https://gedzagroup.ru/assets/img/new_hitori.jpg',
@@ -57,16 +54,7 @@ function Catalog() {
             </Swiper>
           </View>
           <View style={styles.categories}>
-            <ScrollView horizontal style={styles.horizontalList} showsHorizontalScrollIndicator={false}>
-              {
-          navigateData.map((itemCategory) => (
-            <CategoryItem
-              itemCategory={itemCategory}
-              scrollViewRef={scrollViewRef}
-            />
-          ))
-        }
-            </ScrollView>
+            <CategoryList scrollViewRef={scrollViewRef} />
           </View>
           <ProductList products={products} title="Премиум Роллы" />
           <ProductList products={products} title="Запеченные Роллы" />
