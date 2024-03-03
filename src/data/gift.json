@@ -1,0 +1,24 @@
+[
+    {
+        "id": 999,
+        "price": 0,
+        "name": "Запеченный ролл с лососем",
+        "sostav": "Японский рис, водоросли \"нори\", творожный сыр, слабосоленый лосось, фирменный соус для запекания, кунжут, соус унаги.",
+        "imageLink": "https://gedzagroup.ru/media/catalog/d7e7b8c0e818ddd0b2a0ab132d4403b3.JPEG",
+        "gift": true
+    },
+    {
+        "id": 998,
+        "price": 0,
+        "name": "Чизкейк (Акция)",
+        "imageLink": "https://gedzagroup.ru/media/catalog/0756d3d8c39a9038366ef7a19808a1ae.JPEG",
+        "gift": true
+    },
+    {
+        "id": 997,
+        "price": 0,
+        "name": "Кола \"Добрый\" 1л (Акция)",
+        "imageLink": "https://gedzagroup.ru/media/catalog/e7c281e88817e2a216bb0f16b2eed355.JPEG",
+        "gift": true
+    }
+]

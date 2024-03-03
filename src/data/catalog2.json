@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Нагасаки",
+        "price": "249",
+        "sostav": "Японский рис, водросли нори, творожный сыр, томат, салат айсберг, лосось жаренный, соус для запекания, соус унги, кунжут.",
+        "imageLink": "https://gedzagroup.ru/media/catalog/a9fbac82395c03439a4d41d9a3d7ef0e.PNG",
+        "oldprice":"499",
+        "productValue": {
+            "energy_amount": 187.55,
+            "fiber_amount": 7.88,
+            "fat_amount": 11.8,
+            "carbohydrate_amount": 12.46,
+            "weight_amount": 320
+        },
+        "id": "11"
+    },
+    {
+        "name": "Ямагата",
+        "price": "399",
+        "sostav": "Японский рис, водоросли \"нори\", сливочный сыр, лосось на пару, соус унаги, томат, фирменный соус для запекания, кунжут. ",
+        "imageLink": "https://gedzagroup.ru/media/catalog/e8bd9ee4e085162993bebcf409ea3d3d.JPEG",
+        "productValue": {
+            "energy_amount": 187.55,
+            "fiber_amount": 7.88,
+            "fat_amount": 11.8,
+            "carbohydrate_amount": 12.46,
+            "weight_amount": 320
+        },
+        "id": "12"
+    },
+    {
+        "name": "Бусидо",
+        "price": "459",
+        "sostav": "Японский рис, водоросли \"нори\", тунец, креветка темпура, огурец, икра масаго, стружка тунца, фирменный соус для запекания, унаги соус, кунжут.",
+        "imageLink": "https://gedzagroup.ru/media/catalog/7b4e2f8cead18afdb81650841c4a2df1.JPEG",
+        "productValue": {
+            "energy_amount": 187.55,
+            "fiber_amount": 7.88,
+            "fat_amount": 11.8,
+            "carbohydrate_amount": 12.46,
+            "weight_amount": 320
+        },
+        "id": "13"
+    },
+    {
+        "name": "Запеченная Калифорния",
+        "price": "359",
+        "sostav": "Японский рис, водоросли \"нори\", фирменный соус для запекания, сурими, соус унаги, огурец, кунжут.",
+        "imageLink": "https://gedzagroup.ru/media/catalog/7b4e2f8cead18afdb81650841c4a2df1.JPEG",
+        "productValue": {
+            "energy_amount": 187.55,
+            "fiber_amount": 7.88,
+            "fat_amount": 11.8,
+            "carbohydrate_amount": 12.46,
+            "weight_amount": 320
+        },
+        "id": "14"
+    }
+
+]

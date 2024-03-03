@@ -16,7 +16,7 @@ function ProductList({ products, title }) {
     <View
       style={ProductListStyle.container}
       onLayout={(event) => {
-        addToNavigateList(title, event.nativeEvent.layout.y);
+        addToNavigateList(title, event.nativeEvent.layout.y - 30);
       }}
     >
       <Text style={ProductListStyle.title}>{title}</Text>

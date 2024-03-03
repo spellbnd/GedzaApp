@@ -49,6 +49,7 @@ export const ProductStyle = StyleSheet.create({
     color: '#aeaeae',
     marginBottom: 5,
     overflow: 'hidden',
+    lineHeight: 21,
   },
   img: {
     width: '50%',

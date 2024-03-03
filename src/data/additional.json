@@ -1,0 +1,31 @@
+[
+    {
+        "id": 300,
+        "name": "Васаби, 6г.",
+        "price": 30,
+        "imageLink": "https://gedzagroup.ru/media/catalog/dd088ab762ff2e45b24d678e435469e4.JPEG",
+        "quantity": 0
+    },
+    {
+        "id": 301,
+        "name": "Имбирь, 30г.",
+        "price": 30,
+        "imageLink": "https://gedzagroup.ru/media/catalog/87429ebb7aa0fa2b183f7d2f8b7790d7.JPEG",
+        "quantity": 0
+    },
+    {
+        "id": 302,
+        "name": "Палочки",
+        "price": 30,
+        "imageLink": "https://gedzagroup.ru/media/catalog/7dcfb01ec093eafdc1927b733f4023f7.JPEG",
+        "quantity": 0
+    },
+    {
+        "id": 303,
+        "name": "Cоевой соус 40г.",
+        "price": 30,
+        "imageLink": "https://gedzagroup.ru/media/catalog/c7a671d71c34155e80eef22abe3b6e96.JPEG",
+        "quantity": 0
+    }
+    
+]

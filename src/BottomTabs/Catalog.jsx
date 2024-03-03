@@ -8,6 +8,7 @@ import products from '../data/catalog.json';
 
 import ProductList from '../components/ProductList';
 import CategoryList from '../components/CategoryList';
+import catalog2 from '../data/catalog2.json';
 
 const WIDTH = Dimensions.get('window').width;
 function Catalog() {
@@ -57,7 +58,7 @@ function Catalog() {
             <CategoryList scrollViewRef={scrollViewRef} />
           </View>
           <ProductList products={products} title="Премиум Роллы" />
-          <ProductList products={products} title="Запеченные Роллы" />
+          <ProductList products={catalog2} title="Запеченные Роллы" />
           <ProductList products={products} title="Холодные Роллы" />
           <ProductList products={products} title="Темпурные Роллы" />
           <ProductList products={products} title="Мини Роллы" />
