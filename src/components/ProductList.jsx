@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import { View, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -20,9 +21,9 @@ function ProductList({ products, title }) {
       }}
     >
       <Text style={ProductListStyle.title}>{title}</Text>
-      {
-                 products.map((product) => <ProductItem product={product} key={product.id} />)
-            }
+      {products.map((product) => (
+        <ProductItem product={product} key={product.id} />
+      ))}
     </View>
   );
 }

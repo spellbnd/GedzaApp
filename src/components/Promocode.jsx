@@ -9,8 +9,6 @@ function Promocode() {
   const [text, setText] = useState('');
   const dispatch = useDispatch();
   const promocode = useSelector((state) => state.cart);
-  console.log(promocode.activatedPromocode);
-  console.log(text);
   return (
     <View style={styles.promocode_block}>
       <Text style={{ fontSize: 18, marginBottom: 10 }}>Промокод</Text>
@@ -34,10 +32,7 @@ function Promocode() {
             borderLeftWidth: 0,
             borderColor: 'rgba(0, 66, 105, 0.2784313725)',
           }}
-          onPress={() => {
-            console.log('TEST');
-            dispatch(activatePromocode(text));
-          }}
+          onPress={() => dispatch(activatePromocode(text))}
         >
           <Text style={{ color: '#cf1c1d' }}>Применить</Text>
         </Pressable>

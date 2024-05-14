@@ -1,10 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
-import additional from '../data/additional.json';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createSlice } from "@reduxjs/toolkit";
+import additional from "../data/additional.json";
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState: {
     cart: [],
+    history: [],
     isModalCartVisible: false,
     isGiftVisible: false,
     additionalList: additional,
@@ -22,25 +24,43 @@ export const cartSlice = createSlice({
     setModalCartVisible: (state, action) => {
       state.isModalCartVisible = action.payload;
     },
+    setCart: (state, action) => {
+      const cartItems = action.payload;
+      state.cart = cartItems;
+      AsyncStorage.setItem("cartItems", JSON.stringify(cartItems));
+    },
+    setCartHistory: (state, action) => {
+      const ordersHistory = action.payload;
+      state.history = ordersHistory;
+      AsyncStorage.setItem("ordersHistory", JSON.stringify(ordersHistory));
+    },
     addToCart: (state, action) => {
-      const itemInCart = state.cart.find((item) => item.id === action.payload.id);
+      const { id } = action.payload;
+      const itemInCart = state.cart.find((item) => item.id === id);
       if (itemInCart) {
         itemInCart.quantity += 1;
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
+      AsyncStorage.setItem("cartItems", JSON.stringify(state.cart));
     },
     removeFromCart: (state, action) => {
-      const removeFromCart = state.cart.filter((item) => item.id !== action.payload.id);
-      state.cart = removeFromCart;
+      const { id } = action.payload;
+      state.cart = state.cart.filter((item) => item.id !== id);
+      AsyncStorage.setItem("cartItems", JSON.stringify(state.cart));
     },
     incrementQuantity: (state, action) => {
-      const itemInCart = state.cart.find((item) => item.id === action.payload.id);
+      console.log(state);
+      console.log(action);
+      const { id } = action.payload;
+      const itemInCart = state.cart.find((item) => item.id === id);
       if (itemInCart) {
         itemInCart.quantity += 1;
-      } else {
+      }
+      else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
+      AsyncStorage.setItem("cartItems", JSON.stringify(state.cart));
     },
     decrementQuantity: (state, action) => {
       const itemInCart = state.cart.find((item) => item.id === action.payload.id);
@@ -58,6 +78,7 @@ export const cartSlice = createSlice({
         const noGiftItems = state.cart.filter((item) => !item.hasOwnProperty('gift'));
         state.cart = noGiftItems;
       }
+      AsyncStorage.setItem("cartItems", JSON.stringify(state.cart));
     },
     getTotalAmount: (state) => {
       let total = 0;
@@ -65,26 +86,37 @@ export const cartSlice = createSlice({
       state.cart.forEach((item) => {
         count += item.quantity;
       });
-      state.cart.filter((item) => !item.hasOwnProperty('gift')).forEach((item) => {
-        total += item.quantity * item.price;
-      });
+      state.cart
+        .filter((item) => !Object.prototype.hasOwnProperty.call(item, "gift"))
+        .forEach((item) => {
+          total += item.quantity * item.price;
+        });
       state.total = total;
       state.count = count;
     },
     activatePromocode: (state, action) => {
-      console.log(action);
-      if (action.payload === 'GEDZA2024') {
+      if (action.payload === "GEDZA2024") {
         state.activatedPromocode = true;
         state.discountSize = 20;
       } else {
-        state.activatedPromocode = 'error';
+        state.activatedPromocode = "error";
       }
     },
   },
 });
 
 export const {
-  setModalCartVisible, addToCart, removeFromCart, incrementQuantity, decrementQuantity, getTotalAmount, setGiftVisible, activatePromocode, setYaModalVisible,
+  setModalCartVisible,
+  addToCart,
+  setCart,
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+  getTotalAmount,
+  setGiftVisible,
+  activatePromocode,
+  setYaModalVisible,
+  setCartHistory,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

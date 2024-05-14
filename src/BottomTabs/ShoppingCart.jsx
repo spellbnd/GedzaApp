@@ -1,30 +1,38 @@
 /* eslint-disable no-trailing-spaces */
 import React, { useEffect } from 'react';
 import {
-  View, Text, StyleSheet, Pressable, Image, ScrollView,
-  NativeModules, TextInput,
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Image,
+  ScrollView,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
 import IncreaseCount from '../Icons/IncreaseCount';
 import DecreaseCount from '../Icons/DecreaseCount';
 import GiftChoose from '../components/GiftChoose';
-import additional from '../data/additional.json';
 
-import { incrementQuantity, decrementQuantity, setGiftVisible } from '../Redux/CartReducer';
+import {
+  incrementQuantity,
+  decrementQuantity,
+  setGiftVisible,
+} from '../Redux/CartReducer';
 import GiftIcon from '../Icons/GiftIcon';
 
 import { setCartFocus } from '../Redux/FocusReducer';
 import Promocode from '../components/Promocode';
 
-const { StatusBarManager } = NativeModules;
-
 function ShoppingCartScreen({ navigation }) {
   const isFocused = useIsFocused();
   const cart = useSelector((state) => state.cart.cart);
   const additionalList = useSelector((state) => state.cart.additionalList);
-  const noAddCart = cart.filter((thisitem) => !additionalList.find((item) => item.name === thisitem.name));
-  console.log(additionalList);
+  console.log(cart);
+
+  const noAddCart = cart.filter(
+    (thisitem) => !additionalList.find((item) => item.name === thisitem.name),
+  );
   const fullcart = useSelector((state) => state.cart);
   useEffect(() => {
     dispatch(setCartFocus(isFocused));
@@ -38,173 +46,219 @@ function ShoppingCartScreen({ navigation }) {
   };
   return (
     <View>
-      {
-                cart.length === 0 && (
-                <View style={styles.empty_cart}>
-                  <Text style={{ fontWeight: 700, fontSize: 27.2, marginBottom: 8 }}>Корзина пустая</Text>
-                  <Pressable style={styles.emptyCart_btn} onPress={() => navigation.jumpTo('Меню')}>
-                    <Text style={{ color: '#cf1c1d', fontSize: 16 }}>Вернуться к покупкам</Text>
-                  </Pressable>
-                </View>
-                )
-            }
-      {
-                cart.length !== 0 && (
-                <View>
-                  <GiftChoose />
-                  <ScrollView style={styles.container}>
-                    <View style={styles.cart_table}>
-                      <View style={styles.title_row}>
-                        <Pressable onPress={() => navigation.jumpTo('Меню')}>
-                          <Image
-                            source={require('../../assets/Button.png')}
-                            style={{ width: 24, height: 24 }}
-                          />
-                        </Pressable>
-                        <Text style={{ fontWeight: 700, fontSize: 24, flex: 0.7 }}>Корзина</Text>
+      {cart.length === 0 && (
+        <View style={styles.empty_cart}>
+          <Text style={{ fontWeight: 700, fontSize: 27.2, marginBottom: 8 }}>
+            Корзина пустая
+          </Text>
+          <Pressable
+            style={styles.emptyCart_btn}
+            onPress={() => navigation.jumpTo('Меню')}
+          >
+            <Text style={{ color: '#cf1c1d', fontSize: 16 }}>
+              Вернуться к покупкам
+            </Text>
+          </Pressable>
+        </View>
+      )}
+      {cart.length !== 0 && (
+        <View>
+          <GiftChoose />
+          <ScrollView style={styles.container}>
+            <View style={styles.cart_table}>
+              <View style={styles.title_row}>
+                <Pressable onPress={() => navigation.jumpTo('Меню')}>
+                  <Image
+                    source={require('../../assets/Button.png')}
+                    style={{ width: 24, height: 24 }}
+                  />
+                </Pressable>
+                <Text style={{ fontWeight: 700, fontSize: 24, flex: 0.7 }}>
+                  Корзина
+                </Text>
+              </View>
+              <View>
+                {noAddCart?.map((cartitem) => (
+                  <View style={styles.cartItem} key={cartitem.id}>
+                    <Image
+                      source={{ uri: cartitem.imageLink }}
+                      style={styles.cartPhoto}
+                    />
+                    <View style={styles.cart_desc}>
+                      <View style={styles.product_name}>
+                        <Text style={{ fontSize: 18, fontWeight: 700 }}>
+                          {cartitem.name}
+                        </Text>
                       </View>
-                      <View>
-                        {
-                       noAddCart.map((cartitem) => (
-                         <View style={styles.cartItem} key={cartitem.id}>
-                           <Image
-                             source={{ uri: cartitem.imageLink }}
-                             style={styles.cartPhoto}
-                           />
-                           <View style={styles.cart_desc}>
-                             <View style={styles.product_name}>
-                               <Text style={{ fontSize: 18, fontWeight: 700 }}>{cartitem.name}</Text>
-                             </View>
-                             {
-                                !cartitem.hasOwnProperty('gift') && (
-                                  <View style={styles.cartProduct}>
-                                    <View style={styles.icon_items}>
-                                      <Pressable
-                                        style={{
-                                          height: 25, width: 25, backgroundColor: '#EEEEEE', borderRadius: 12.5, padding: 7,
-                                        }}
-                                        onPress={() => DecreaseQuantity(cartitem)}
-                                      >
-                                        <DecreaseCount />
-                                      </Pressable>
-                                      <Text>{cartitem.quantity}</Text>
-                                      <Pressable
-                                        style={{
-                                          height: 25, width: 25, backgroundColor: '#EEEEEE', borderRadius: 12.5, padding: 7,
-                                        }}
-                                        onPress={() => IncreaseQuantity(cartitem)}
-                                      >
-                                        <IncreaseCount />
-                                      </Pressable>
-                                    </View>
-                                    <Text style={styles.price}>
-                                      {cartitem.price}
-                                      {'\u20BD'}
-                                    </Text>
-                                  </View>
-                                )
-                              }
-                             {
-                                cartitem.hasOwnProperty('gift') && (
-                                  <View style={styles.cartProduct}>
-                                    <View style={styles.icon_items}>
-                                      <Text>{cartitem.quantity}</Text>
-                                    </View>
-                                    <Text style={styles.price}>
-                                      {cartitem.price}
-                                      {'\u20BD'}
-                                    </Text>
-                                  </View>
-                                )
-                              }
-                           </View>
-                         </View>
-                       ))
-                    }
-                      </View>
+                      {!Object.prototype.hasOwnProperty.call(
+                        cartitem,
+                        'gift',
+                      ) && (
+                        <View style={styles.cartProduct}>
+                          <View style={styles.icon_items}>
+                            <Pressable
+                              style={{
+                                height: 32,
+                                width: 32,
+                                backgroundColor: '#EEEEEE',
+                                borderRadius: 16,
+                                padding: 10,
+                              }}
+                              onPress={() => DecreaseQuantity(cartitem)}
+                            >
+                              <DecreaseCount />
+                            </Pressable>
+                            <Text>{cartitem.quantity}</Text>
+                            <Pressable
+                              style={{
+                                height: 32,
+                                width: 32,
+                                backgroundColor: '#EEEEEE',
+                                borderRadius: 16,
+                                padding: 10,
+                              }}
+                              onPress={() => IncreaseQuantity(cartitem)}
+                            >
+                              <IncreaseCount />
+                            </Pressable>
+                          </View>
+                          <Text style={styles.price}>
+                            {cartitem.price}
+                            {'\u20BD'}
+                          </Text>
+                        </View>
+                      )}
+                      {Object.prototype.hasOwnProperty.call(
+                        cartitem,
+                        'gift',
+                      ) && (
+                        <View style={styles.cartProduct}>
+                          <View style={styles.icon_items}>
+                            <Text>{cartitem.quantity}</Text>
+                          </View>
+                          <Text style={styles.price}>
+                            {cartitem.price}
+                            {'\u20BD'}
+                          </Text>
+                        </View>
+                      )}
                     </View>
-                    <View>
-                      <View style={styles.cart_total}>
-                        <View style={styles.total_amount}>
-                          <Text style={{ fontSize: 18, fontWeight: 'bold', lineHeight: 27 }}>
-                            В корзине:
-                            {fullcart.count}
-                            {' '}
-                            товаров на
-                            {' '}
-                            {fullcart.total}
-                            {' '}
-                            {'\u20BD'}
-                          </Text>
-                          {
-                            fullcart.activatedPromocode === true && <Text style={{ fontSize: 18, fontWeight: 'bold', lineHeight: 27 }}>Скидка: 20%</Text>
-                          }
-                          <Text style={{ fontSize: 18, fontWeight: 'bold', lineHeight: 27 }}>
-                            Итого:
-                            {' '}
-                            {
-                              fullcart.activatedPromocode === true && Math.trunc(fullcart.total * 0.8)
-                            }
-                            {
-                              fullcart.activatedPromocode !== true && fullcart.total
-                            }
-                            {'\u20BD'}
-                          </Text>
-                        </View>
-                      </View>
-                      <Promocode />
-                      <View style={styles.presentLine}>
-                        <View style={styles.gift_line}>
-                          <GiftIcon />
-                        </View>
-                        {
-                            fullcart.total < 2000 && (
-                            <Text style={{ textAlign: 'justify', fontWeight: 'bold', fontSize: 21 }}>
-                              Добавьте товаров еще на
-                              {' '}
-                              <Text style={{ color: '#CF191C' }}>
-                                {2000 - fullcart.total}
-                                {'\u20BD'}
-                              </Text>
-                              {' '}
-                              - и получите подарок!
-                            </Text>
-                            )
-                        }
-                        {
-                            fullcart.total >= 2000 && (
-                            <View>
-                              {
-                                  (cart.find((item) => item.hasOwnProperty('gift')) === undefined) && <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 21 }}>Выберите подарок</Text>
-                              }
-                              {
-                                  (cart.find((item) => item.hasOwnProperty('gift')) !== undefined) && <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 21 }}>Подарок в корзине</Text>
-                              }
-                              <Pressable
-                                style={styles.choose_gift_btn}
-                                onPress={() => {
-                                  dispatch(setGiftVisible(true));
-                                }}
-                              >
-                                {
-                                  (cart.find((item) => item.hasOwnProperty('gift')) === undefined) && <Text style={{ color: '#cf1c1d' }}>Выбрать подарок</Text>
-                                }
-                                {
-                                  (cart.find((item) => item.hasOwnProperty('gift')) !== undefined) && <Text style={{ color: '#cf1c1d' }}>Выбрать другой</Text>
-                                }
-                              </Pressable>
-                            </View>
-                            )
-                        }
-                      </View>
-                      <Text style={{
-                        fontWeight: 700, fontSize: 24, textAlign: 'center', marginBottom: 10, 
+                  </View>
+                ))}
+              </View>
+            </View>
+            <View>
+              <View style={styles.cart_total}>
+                <View style={styles.total_amount}>
+                  <Text
+                    style={{ fontSize: 18, fontWeight: 'bold', lineHeight: 27 }}
+                  >
+                    В корзине:
+                    {fullcart.count}
+                    {' '}
+                    товаров на
+                    {fullcart.total} 
+                    {' '}
+                    {'\u20BD'}
+                  </Text>
+                  {fullcart.activatedPromocode === true && (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: 'bold',
+                        lineHeight: 27,
                       }}
+                    >
+                      Скидка: 20%
+                    </Text>
+                  )}
+                  <Text
+                    style={{ fontSize: 18, fontWeight: 'bold', lineHeight: 27 }}
+                  >
+                    Итого:
+                    {' '}
+                    {fullcart.activatedPromocode === true
+                      && Math.trunc(fullcart.total * 0.8)}
+                    {fullcart.activatedPromocode !== true && fullcart.total}
+                    {'\u20BD'}
+                  </Text>
+                </View>
+              </View>
+              <Promocode />
+              <View style={styles.presentLine}>
+                <View style={styles.gift_line}>
+                  <GiftIcon />
+                </View>
+                {fullcart.total < 2000 && (
+                  <Text
+                    style={{
+                      textAlign: 'justify',
+                      fontWeight: 'bold',
+                      fontSize: 21,
+                    }}
+                  >
+                    Добавьте товаров еще на
+                    {' '}
+                    <Text style={{ color: '#CF191C' }}>
+                      {2000 - fullcart.total}
+                      {'\u20BD'}
+                    </Text>
+                    {' '}
+                    - и получите подарок!
+                  </Text>
+                )}
+                {fullcart.total >= 2000 && (
+                  <View>
+                    {cart.find((item) => Object.prototype.hasOwnProperty.call(item, 'gift')) === undefined && (
+                      <Text
+                        style={{
+                          textAlign: 'center',
+                          fontWeight: 'bold',
+                          fontSize: 21,
+                        }}
                       >
-                        Добавить к заказу
+                        Выберите подарок
                       </Text>
-                      <View>
-                        {
+                    )}
+                    {cart.find((item) => Object.prototype.hasOwnProperty.call(item, 'gift')) !== undefined && (
+                      <Text
+                        style={{
+                          textAlign: 'center',
+                          fontWeight: 'bold',
+                          fontSize: 21,
+                        }}
+                      >
+                        Подарок в корзине
+                      </Text>
+                    )}
+                    <Pressable
+                      style={styles.choose_gift_btn}
+                      onPress={() => dispatch(setGiftVisible(true))}
+                    >
+                      {cart.find((item) => Object.prototype.hasOwnProperty.call(item, 'gift')) === undefined && (
+                        <Text style={{ color: '#cf1c1d' }}>
+                          Выбрать подарок
+                        </Text>
+                      )}
+                      {cart.find((item) => Object.prototype.hasOwnProperty.call(item, 'gift')) !== undefined && (
+                        <Text style={{ color: '#cf1c1d' }}>Выбрать другой</Text>
+                      )}
+                    </Pressable>
+                  </View>
+                )}
+              </View>
+              <Text
+                style={{
+                  fontWeight: 700,
+                  fontSize: 24,
+                  textAlign: 'center',
+                  marginBottom: 10,
+                }}
+              >
+                Добавить к заказу
+              </Text>
+              <View>
+                {
                         additionalList.map((additionalItem) => (
                           <View style={styles.cartItem} key={additionalItem.id}>
                             <Image
@@ -255,15 +309,17 @@ function ShoppingCartScreen({ navigation }) {
                           </View>
                         ))
                     }
-                      </View>
-                      <Pressable style={styles.proceed_next} onPress={() => navigation.navigate('Продолжение оформления')}>
-                        <Text style={styles.proceed_next_text}>Оформить заказ</Text>
-                      </Pressable>
-                    </View>
-                  </ScrollView>
-                </View>
-                )
-            }
+              </View>
+              <Pressable
+                style={styles.proceed_next}
+                onPress={() => navigation.navigate('Продолжение оформления')}
+              >
+                <Text style={styles.proceed_next_text}>Оформить заказ</Text>
+              </Pressable>
+            </View>
+          </ScrollView>
+        </View>
+      )}
     </View>
   );
 }
@@ -275,11 +331,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     height: '100%',
     backgroundColor: '#fff',
-  },
-  title_row: {
-    fontWeight: '700',
-    margin: 10,
-    fontSize: 25,
   },
   btn: {
     borderColor: 'red',
@@ -335,7 +386,7 @@ const styles = StyleSheet.create({
   icon_items: {
     alignItems: 'center',
     flexDirection: 'row',
-    width: 80,
+    width: 100,
     justifyContent: 'space-between',
   },
   price: {
@@ -380,6 +431,8 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     lineHeight: 32,
     height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   choose_gift_btn: {
     borderWidth: 2,

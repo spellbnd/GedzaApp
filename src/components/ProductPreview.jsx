@@ -1,14 +1,26 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import {
-  Modal, Text, View, StyleSheet, Image, Pressable, Dimensions,
+  Modal,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Pressable,
+  Dimensions,
+  Alert,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import Constants from 'expo-constants';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 import SVGComponent from '../Icons/TestComponent';
 import { addToCart, setModalCartVisible } from '../Redux/CartReducer';
 import AddItemModal from './AddItemModal';
 
 const WIDTH = Dimensions.get('window').width;
 function ProductPreview({ visible, changeState, productInfo }) {
+  const navigation = useNavigation();
+  const user = useSelector((s) => s.user);
   const dispatch = useDispatch();
   const addItemToCart = (item) => {
     dispatch(addToCart(item));
@@ -30,12 +42,16 @@ function ProductPreview({ visible, changeState, productInfo }) {
           style={{
             backgroundColor: 'white',
             width: '100%',
-            height: '90%',
+            flex: 1,
             borderRadius: 10,
+            marginTop: Constants.statusBarHeight,
           }}
         >
-          <Pressable style={styles.product_close} onPress={() => changeState(false)}>
-            <SVGComponent />
+          <Pressable
+            style={styles.product_close}
+            onPress={() => changeState(false)}
+          >
+            <SVGComponent width={40} height={40} />
           </Pressable>
           <Image
             style={styles.img}
@@ -44,19 +60,29 @@ function ProductPreview({ visible, changeState, productInfo }) {
             }}
           />
           <View style={styles.product_order}>
-            <Text style={{ fontWeight: 700, fontSize: 22.4, marginBottom: 8 }}>{productInfo.name}</Text>
+            <Text style={{ fontWeight: 700, fontSize: 22.4, marginBottom: 8 }}>
+              {productInfo.name}
+            </Text>
             <View>
               <Text style={styles.product_desc}>{productInfo.sostav}</Text>
             </View>
-            <Text style={{
-              fontWeight: '700', marginBottom: 5, textAlign: 'center', fontSize: 14,
-            }}
+            <Text
+              style={{
+                fontWeight: '700',
+                marginBottom: 5,
+                textAlign: 'center',
+                fontSize: 14,
+              }}
             >
               Годен в течении 3 часов при t 20°C, 12 часов при t 4±2°C
             </Text>
-            <Text style={{
-              marginBottom: 5, textAlign: 'center', fontSize: 14, color: '#AEAEAE',
-            }}
+            <Text
+              style={{
+                marginBottom: 5,
+                textAlign: 'center',
+                fontSize: 14,
+                color: '#AEAEAE',
+              }}
             >
               Изображение в приложении и внешний вид продукта могут отличаться
             </Text>
@@ -119,7 +145,6 @@ function ProductPreview({ visible, changeState, productInfo }) {
                 {'\u20BD'}
               </Text>
             </View>
-
           </View>
         </View>
       </View>
@@ -223,7 +248,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 2,
     right: 0,
-    top: 0,
+    top: 20,
     width: 60,
     height: 60,
     margin: 0,
@@ -258,7 +283,6 @@ const styles = StyleSheet.create({
   btn_text: {
     color: '#fff',
   },
-
 });
 
 export default ProductPreview;

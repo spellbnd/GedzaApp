@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Text, View, Image, Pressable,
-} from 'react-native';
-import { useDispatch } from 'react-redux';
-import { ProductStyle } from '../styles/ProductItem';
-import ProductPreview from './ProductPreview';
-import { addToCart, setModalCartVisible } from '../Redux/CartReducer';
+} from "react-native";
+import { useDispatch } from "react-redux";
+import { ProductStyle } from "../styles/ProductItem";
+import ProductPreview from "./ProductPreview";
+import { addToCart, setModalCartVisible } from "../Redux/CartReducer";
 
 function ProductItem({ product }) {
   const dispatch = useDispatch();
@@ -18,7 +18,11 @@ function ProductItem({ product }) {
   const [openPreview, setOpenPreview] = useState(false);
   return (
     <View style={ProductStyle.product_item}>
-      <ProductPreview visible={openPreview} productInfo={product} changeState={setOpenPreview} />
+      <ProductPreview
+        visible={openPreview}
+        productInfo={product}
+        changeState={setOpenPreview}
+      />
       <View style={ProductStyle.product_desc}>
         <View>
           <Text style={ProductStyle.product_name}>{product.name}</Text>
@@ -26,14 +30,12 @@ function ProductItem({ product }) {
         <Text onPress={() => setOpenPreview(true)} style={ProductStyle.sostav}>
           {product.sostav}
         </Text>
-        {
-            Object.prototype.hasOwnProperty.call(product, 'oldprice') && (
-            <Text style={ProductStyle.oldprice}>
-              {product.oldprice}
-              ₽
-            </Text>
-            )
-          }
+        {Object.prototype.hasOwnProperty.call(product, "oldprice") && (
+          <Text style={ProductStyle.oldprice}>
+            {product.oldprice}
+            ₽
+          </Text>
+        )}
         <Pressable
           style={ProductStyle.product_addButton}
           onPress={() => {
@@ -46,7 +48,7 @@ function ProductItem({ product }) {
         >
           <Text style={ProductStyle.product_addButton_text}>
             {product.price}
-            {'\u20BD'}
+            {"\u20BD"}
           </Text>
         </Pressable>
       </View>

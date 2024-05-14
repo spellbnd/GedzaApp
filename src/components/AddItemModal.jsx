@@ -5,23 +5,22 @@ import {
 import { useSelector } from 'react-redux';
 
 const WIDTH = Dimensions.get('window').width;
-const HEIGHT = Dimensions.get('window').height;
-console.log(`YES!: ${HEIGHT}`);
+// const HEIGHT = Dimensions.get('window').height;
+// console.log(`YES!: ${HEIGHT}`);
 
 function AddItemModal() {
   const isVisible = useSelector((state) => state.cart.isModalCartVisible);
-  return (isVisible
-          && (
-          <View style={styles.modalView} visible={isVisible}>
-            <Text style={styles.modalText}>Товар добавлен</Text>
-          </View>
-          )
+  return (
+    isVisible && (
+      <View style={styles.modalView} visible={isVisible}>
+        <Text style={styles.modalText}>Товар добавлен</Text>
+      </View>
+    )
   );
 }
 
 const styles = StyleSheet.create({
-  modalBackground: {
-  },
+  modalBackground: {},
   centeredView: {
     flex: 1,
     justifyContent: 'flex-end',

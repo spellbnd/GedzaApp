@@ -1,15 +1,18 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import * as React from 'react';
+import Constants from 'expo-constants';
 import { DrawerItemList, createDrawerNavigator } from '@react-navigation/drawer';
 import {
-  View, Text, Dimensions, Pressable, StyleSheet, NativeModules, Image, Linking,
+  View, Text, Dimensions, Pressable, StyleSheet, Image, Linking,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomTabNavigator from './BottomTabNavigator';
 import CloseDrawer from '../Icons/CloseDrawer';
 import GedzaBlack from '../Icons/GedzaBlack';
 import VKIcon from '../Icons/VKIcon';
-
-const { StatusBarManager } = NativeModules;
+import Vacancy from '../BottomTabs/Vacancy';
+import Reviews from '../BottomTabs/Reviews';
+import Bonuses from '../BottomTabs/Bonuses';
 
 const WIDTH = Dimensions.get('window').width;
 const Drawer = createDrawerNavigator();
@@ -24,10 +27,7 @@ export default function DrawerNavigation() {
         },
       }}
       drawerContent={(props) => (
-        <SafeAreaView style={{
-          marginTop: StatusBarManager.HEIGHT,
-        }}
-        >
+        <SafeAreaView>
           <View style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -35,6 +35,7 @@ export default function DrawerNavigation() {
             paddingBottom: 15,
             paddingLeft: 20,
             paddingRight: 20,
+            paddingTop: Constants.statusBarHeight,
           }}
           >
             <View style={styles.header_logo}>
@@ -109,7 +110,7 @@ export default function DrawerNavigation() {
       <Drawer.Screen
         name="Reviews"
         initialParams={{ params: 'Отзывы' }}
-        component={BottomTabNavigator}
+        component={Reviews}
         options={{
           title: 'Отзывы',
         }}
@@ -117,7 +118,7 @@ export default function DrawerNavigation() {
       <Drawer.Screen
         name="Bonuses"
         initialParams={{ params: 'Бонусы' }}
-        component={BottomTabNavigator}
+        component={Bonuses}
         options={{
           title: 'Бонусы',
         }}
@@ -125,7 +126,7 @@ export default function DrawerNavigation() {
       <Drawer.Screen
         name="Vacancy"
         initialParams={{ params: 'Вакансии' }}
-        component={BottomTabNavigator}
+        component={Vacancy}
         options={{
           title: 'Вакансии',
         }}
