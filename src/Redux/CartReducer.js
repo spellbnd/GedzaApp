@@ -1,9 +1,9 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createSlice } from "@reduxjs/toolkit";
-import additional from "../data/additional.json";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createSlice } from '@reduxjs/toolkit';
+import additional from '../data/additional.json';
 
 export const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState: {
     cart: [],
     history: [],
@@ -13,6 +13,7 @@ export const cartSlice = createSlice({
     activatedPromocode: false,
     discountSize: 0,
     yandexModalVisible: false,
+    spendBonuses: 0,
   },
   reducers: {
     setYaModalVisible: (state, action) => {
@@ -27,12 +28,11 @@ export const cartSlice = createSlice({
     setCart: (state, action) => {
       const cartItems = action.payload;
       state.cart = cartItems;
-      AsyncStorage.setItem("cartItems", JSON.stringify(cartItems));
     },
     setCartHistory: (state, action) => {
       const ordersHistory = action.payload;
+      console.log(ordersHistory);
       state.history = ordersHistory;
-      AsyncStorage.setItem("ordersHistory", JSON.stringify(ordersHistory));
     },
     addToCart: (state, action) => {
       const { id } = action.payload;
@@ -42,25 +42,22 @@ export const cartSlice = createSlice({
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
-      AsyncStorage.setItem("cartItems", JSON.stringify(state.cart));
+      AsyncStorage.setItem('cartItems', JSON.stringify(state.cart));
     },
     removeFromCart: (state, action) => {
       const { id } = action.payload;
       state.cart = state.cart.filter((item) => item.id !== id);
-      AsyncStorage.setItem("cartItems", JSON.stringify(state.cart));
+      AsyncStorage.setItem('cartItems', JSON.stringify(state.cart));
     },
     incrementQuantity: (state, action) => {
-      console.log(state);
-      console.log(action);
       const { id } = action.payload;
       const itemInCart = state.cart.find((item) => item.id === id);
       if (itemInCart) {
         itemInCart.quantity += 1;
-      }
-      else {
+      } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
-      AsyncStorage.setItem("cartItems", JSON.stringify(state.cart));
+      AsyncStorage.setItem('cartItems', JSON.stringify(state.cart));
     },
     decrementQuantity: (state, action) => {
       const itemInCart = state.cart.find((item) => item.id === action.payload.id);
@@ -78,7 +75,7 @@ export const cartSlice = createSlice({
         const noGiftItems = state.cart.filter((item) => !item.hasOwnProperty('gift'));
         state.cart = noGiftItems;
       }
-      AsyncStorage.setItem("cartItems", JSON.stringify(state.cart));
+      AsyncStorage.setItem('cartItems', JSON.stringify(state.cart));
     },
     getTotalAmount: (state) => {
       let total = 0;
@@ -87,7 +84,7 @@ export const cartSlice = createSlice({
         count += item.quantity;
       });
       state.cart
-        .filter((item) => !Object.prototype.hasOwnProperty.call(item, "gift"))
+        .filter((item) => !Object.prototype.hasOwnProperty.call(item, 'gift'))
         .forEach((item) => {
           total += item.quantity * item.price;
         });
@@ -95,12 +92,15 @@ export const cartSlice = createSlice({
       state.count = count;
     },
     activatePromocode: (state, action) => {
-      if (action.payload === "GEDZA2024") {
+      if (action.payload === 'GEDZA2024') {
         state.activatedPromocode = true;
         state.discountSize = 20;
       } else {
-        state.activatedPromocode = "error";
+        state.activatedPromocode = 'error';
       }
+    },
+    spendBonuses: (state, action) => {
+      state.spendBonuses = action.payload;
     },
   },
 });
@@ -117,6 +117,7 @@ export const {
   activatePromocode,
   setYaModalVisible,
   setCartHistory,
+  spendBonuses,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

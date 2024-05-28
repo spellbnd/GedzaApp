@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Text, View, Image, Pressable,
-} from "react-native";
-import { useDispatch } from "react-redux";
-import { ProductStyle } from "../styles/ProductItem";
-import ProductPreview from "./ProductPreview";
-import { addToCart, setModalCartVisible } from "../Redux/CartReducer";
+} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { ProductStyle } from '../styles/ProductItem';
+import ProductPreview from './ProductPreview';
+import { addToCart, setModalCartVisible } from '../Redux/CartReducer';
 
 function ProductItem({ product }) {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function ProductItem({ product }) {
         <Text onPress={() => setOpenPreview(true)} style={ProductStyle.sostav}>
           {product.sostav}
         </Text>
-        {Object.prototype.hasOwnProperty.call(product, "oldprice") && (
+        {Object.prototype.hasOwnProperty.call(product, 'oldprice') && (
           <Text style={ProductStyle.oldprice}>
             {product.oldprice}
             ₽
@@ -48,7 +48,7 @@ function ProductItem({ product }) {
         >
           <Text style={ProductStyle.product_addButton_text}>
             {product.price}
-            {"\u20BD"}
+            {'\u20BD'}
           </Text>
         </Pressable>
       </View>

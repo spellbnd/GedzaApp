@@ -3,7 +3,7 @@ import * as React from 'react';
 import Constants from 'expo-constants';
 import { DrawerItemList, createDrawerNavigator } from '@react-navigation/drawer';
 import {
-  View, Text, Dimensions, Pressable, StyleSheet, Image, Linking,
+  View, Text, Dimensions, Pressable, StyleSheet, Image, Linking, NativeModules,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomTabNavigator from './BottomTabNavigator';
@@ -13,6 +13,8 @@ import VKIcon from '../Icons/VKIcon';
 import Vacancy from '../BottomTabs/Vacancy';
 import Reviews from '../BottomTabs/Reviews';
 import Bonuses from '../BottomTabs/Bonuses';
+
+const { StatusBarManager } = NativeModules;
 
 const WIDTH = Dimensions.get('window').width;
 const Drawer = createDrawerNavigator();
@@ -26,6 +28,7 @@ export default function DrawerNavigation() {
           width: WIDTH,
         },
       }}
+      sceneContainerStyle={{ backgroundColor: '#fff', paddingTop: StatusBarManager.HEIGHT }}
       drawerContent={(props) => (
         <SafeAreaView>
           <View style={{
@@ -35,7 +38,7 @@ export default function DrawerNavigation() {
             paddingBottom: 15,
             paddingLeft: 20,
             paddingRight: 20,
-            paddingTop: Constants.statusBarHeight,
+            paddingTop: StatusBarManager.HEIGHT,
           }}
           >
             <View style={styles.header_logo}>

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FoodDelivery",
-    "slug": "FoodDelivery",
+    "name": "GedzaApp",
+    "slug": "GedzaApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.chintai.GedzaApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e94f78ad-ca9f-4225-a750-aef3696586bd"
+      }
     }
   }
 }

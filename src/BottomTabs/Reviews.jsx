@@ -16,8 +16,8 @@ function Reviews() {
   return (
     <ScrollView>
       <ReviewLinkModal />
-      <View style={{ width: '100%', paddingRight: 15, paddingLeft: 15 }}>
-        <Text style={{ fontSize: 35, marginBottom: 35 }}>Отзывы</Text>
+      <View style={{ width: '100%', paddingRight: 15, paddingLeft: 15, paddingTop: 20 }}>
+        <Text style={{ fontSize: 35, marginBottom: 35, }}>Отзывы</Text>
       </View>
       <View style={{ width: '100%', paddingRight: 15, paddingLeft: 15 }}>
         <Text style={{ fontSize: 16, marginBottom: 5 }}>

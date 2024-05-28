@@ -24,7 +24,17 @@ import GiftIcon from '../Icons/GiftIcon';
 import { setCartFocus } from '../Redux/FocusReducer';
 import Promocode from '../components/Promocode';
 
+const normalize_count_form = (number, wordsArr) => {
+  number = Math.abs(number);
+  if (Number.isInteger(number)) {
+    const options = [2, 0, 1, 1, 1, 2];
+    return wordsArr[(number % 100 > 4 && number % 100 < 20) ? 2 : options[(number % 10 < 5) ? number % 10 : 5]];
+  }
+  return wordsArr[1];
+};
+
 function ShoppingCartScreen({ navigation }) {
+  const user = useSelector((state) => state?.user.currentUser);
   const isFocused = useIsFocused();
   const cart = useSelector((state) => state.cart.cart);
   const additionalList = useSelector((state) => state.cart.additionalList);
@@ -154,9 +164,13 @@ function ShoppingCartScreen({ navigation }) {
                     style={{ fontSize: 18, fontWeight: 'bold', lineHeight: 27 }}
                   >
                     В корзине:
+                    {' '}
                     {fullcart.count}
                     {' '}
-                    товаров на
+                    {normalize_count_form(fullcart.count, ['товар', 'товара', 'товаров'])}
+                    {' '}
+                    на
+                    {' '}
                     {fullcart.total} 
                     {' '}
                     {'\u20BD'}
@@ -310,12 +324,24 @@ function ShoppingCartScreen({ navigation }) {
                         ))
                     }
               </View>
+              {user.logged === 'true'
+              && (
               <Pressable
                 style={styles.proceed_next}
                 onPress={() => navigation.navigate('Продолжение оформления')}
               >
-                <Text style={styles.proceed_next_text}>Оформить заказ</Text>
+                <Text style={styles.proceed_next_text}>К доставке и оплате</Text>
               </Pressable>
+              )}
+              {user.logged !== 'true'
+              && (
+              <Pressable
+                style={styles.proceed_next}
+                onPress={() => navigation.jumpTo('Личный кабинет')}
+              >
+                <Text style={styles.proceed_next_text}>К доставке и оплате</Text>
+              </Pressable>
+              )}
             </View>
           </ScrollView>
         </View>

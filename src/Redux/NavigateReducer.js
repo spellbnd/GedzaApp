@@ -5,6 +5,8 @@ const navigateSlice = createSlice({
   initialState: {
     navigateHeaders: [],
     pressed: {},
+    scrollTop: 0,
+    activeItem: {},
   },
   reducers: {
     navigateListAdd: (state, action) => {
@@ -16,9 +18,17 @@ const navigateSlice = createSlice({
     setPressedCategory: (state, action) => {
       state.pressed = action.payload;
     },
+    setScrollTop: (state, action) => {
+      state.scrollTop = action.payload;
+    },
+    setActiveItem: (state, action) => {
+      state.activeItem = action.payload;
+    },
   },
 });
 
-export const { navigateListAdd, setPressedCategory } = navigateSlice.actions;
+export const {
+  navigateListAdd, setPressedCategory, setScrollTop, setActiveItem,
+} = navigateSlice.actions;
 
 export default navigateSlice.reducer;

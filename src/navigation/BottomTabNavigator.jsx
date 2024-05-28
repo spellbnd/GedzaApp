@@ -21,7 +21,6 @@ import {
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import Constants from 'expo-constants';
 import { useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector, useDispatch } from 'react-redux';
@@ -31,8 +30,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useForm, Controller } from 'react-hook-form';
 import Checkbox from 'expo-checkbox';
 import moment from 'moment';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import AddressInput from '../apiComponents/addressInput';
+import BonusSlider from '../components/BonusSlider';
 import Catalog from '../BottomTabs/Catalog';
 import MenuIcon from '../Icons/MenuIcon';
 import ContactsIcon from '../Icons/ContactsIcon';
@@ -43,14 +43,16 @@ import {
   getTotalAmount,
   incrementQuantity,
   setCart,
-  setCartHistory,
   setGiftVisible,
+  spendBonuses,
 } from '../Redux/CartReducer';
 import GedzaWhite from '../Icons/GedzaWhite';
 import SideNavIcon from '../Icons/SideNavIcon';
 import AccountIcon from '../Icons/AccountIcon';
 import OrderListIcon from '../Icons/OrderListIcon';
-import { setUser } from '../Redux/UserReducer';
+import {
+  exitUser, setUser, setUserOrderHistory, addtoUserList, login,
+} from '../Redux/UserReducer';
 import GiftChoose from '../components/GiftChoose';
 import DecreaseCount from '../Icons/DecreaseCount';
 import IncreaseCount from '../Icons/IncreaseCount';
@@ -63,6 +65,14 @@ const WIDTH = Dimensions.get('window').width;
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const normalize_count_form = (number, wordsArr) => {
+  number = Math.abs(number);
+  if (Number.isInteger(number)) {
+    const options = [2, 0, 1, 1, 1, 2];
+    return wordsArr[(number % 100 > 4 && number % 100 < 20) ? 2 : options[(number % 10 < 5) ? number % 10 : 5]];
+  }
+  return wordsArr[1];
+};
 
 function MyStack() {
   return (
@@ -173,9 +183,9 @@ const inputs = {
 function MakingOrder() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state?.user);
+  const user = useSelector((state) => state?.user.currentUser);
+  console.log(`Вызов! ${user}`);
   const fullcart = useSelector((state) => state?.cart);
-  const additionalList = useSelector((state) => state.cart.additionalList);
   const noAddCart = fullcart.cart;
   console.log(noAddCart);
   const [tab, setTab] = React.useState(0);
@@ -215,8 +225,6 @@ function MakingOrder() {
         setUser({
           ...user,
           ...values,
-          id: Math.random() * 60,
-          password: '12345',
         }),
       );
     }
@@ -510,7 +518,7 @@ function MakingOrder() {
         </View>
         {tab2 === 0 ? (
           <View>
-            <Text style={styles.label}>Сколько нужно приготовить сдачу?</Text>
+            <Text style={styles.label}>Со скольки приготовить сдачу?</Text>
             <TextInput
               style={styles.input}
               placeholder={'\u20BD'}
@@ -570,6 +578,25 @@ function MakingOrder() {
             Сохранить данные
           </Text>
         </Pressable>
+        {
+          user.bonuses !== 0 && (
+          <View>
+            <Text style={{ padding: 20, borderWidth: 2 }}>
+              Доступно бонусов для списания:
+              {' '}
+              {user.bonuses}
+            </Text>
+            <BonusSlider user={user} />
+          </View>
+          )
+        }
+        {
+          user.bonuses === 0 && (
+            <Text style={{ padding: 20, borderWidth: 2 }}>
+              У вас нет бонусов для списания
+            </Text>
+          )
+        }
       </View>
       <GiftChoose />
       <View
@@ -673,14 +700,25 @@ function MakingOrder() {
               В корзине:
               {fullcart.count}
               {' '}
-              товаров
-              {'\n'}
-              На
-              {' '}
-              {fullcart.total}
-              {' '}
-              {'\u20BD'}
+              {normalize_count_form(fullcart.count, ['товар', 'товара', 'товаров'])}
             </Text>
+            {
+              fullcart.spendBonuses || fullcart.spendBonuses !== 0 ? (
+                <Text
+                  style={{
+                    fontSize: 18,
+                    fontWeight: 'bold',
+                    lineHeight: 27,
+                    textAlign: 'center',
+                  }}
+                >
+                  Скидка: -
+                  {fullcart.activatedPromocode === true ? Math.trunc(fullcart.total * 0.2) + fullcart.spendBonuses : fullcart.spendBonuses}
+                  {'\u20BD'}
+                </Text>
+              ) : (null)
+            }
+
             {fullcart.activatedPromocode === true && (
               <Text
                 style={{
@@ -703,8 +741,8 @@ function MakingOrder() {
               Итого:
               {' '}
               {fullcart.activatedPromocode === true
-                ? Math.trunc(fullcart.total * 0.8)
-                : fullcart.total}
+                ? Math.trunc(fullcart.total * 0.8) - fullcart.spendBonuses
+                : fullcart.total - fullcart.spendBonuses}
               {'\u20BD'}
             </Text>
           </View>
@@ -724,20 +762,25 @@ function MakingOrder() {
             ]}
             onPress={() => {
               dispatch(
-                setCartHistory([
-                  ...fullcart.history,
+                setUserOrderHistory(
                   {
-                    time: moment().format('DD-MM-YYYY HH:MM:SS'),
+                    time: moment().format('DD-MM-YYYY HH:mm:ss'),
                     cart: fullcart.cart,
                     total_amount:
                       fullcart.activatedPromocode === true
-                        ? Math.trunc(fullcart.total * 0.8)
-                        : fullcart.total,
+                        ? Math.trunc(fullcart.total * 0.8) - fullcart.spendBonuses
+                        : fullcart.total - fullcart.spendBonuses,
                     promocode: fullcart.activatedPromocode,
+                    bonucesCount: fullcart.activatedPromocode === true ? Math.trunc((Math.trunc(fullcart.total * 0.8) - fullcart.spendBonuses) * 0.03)
+                      : Math.trunc((fullcart.total - fullcart.spendBonuses) * 0.03),
+                    spendBonus: fullcart.spendBonuses,
                   },
-                ]),
+                ),
               );
+              dispatch(setUser({}));
+              dispatch(spendBonuses(0));
               dispatch(setCart([]));
+              navigation.goBack();
               navigation.navigate('Личный кабинет');
             }}
           >
@@ -797,10 +840,13 @@ function MakingOrder() {
 const { height } = Dimensions.get('window');
 
 function PersonalAccount() {
+  console.log('RENDER OF PersonalAccount..');
   const dispatch = useDispatch();
-  const user = useSelector((state) => state?.user);
-  const fullcart = useSelector((state) => state?.cart);
-  const [open, setOpen] = React.useState(false);
+  const user = useSelector((state) => state?.user.currentUser);
+  console.log('Вызов!');
+  console.log(user);
+  const [open, setOpen] = React.useState(true);
+  console.log(open);
   const [loading, setLoading] = React.useState(false);
   const [orderOpen, setOrderOpen] = React.useState(false);
   const [orderOpenIndex, setOrderOpenIndex] = React.useState(0);
@@ -815,6 +861,11 @@ function PersonalAccount() {
       setUser({ ...user, birthday: moment(currentDate).format('DD.MM.YYYY') }),
     );
   };
+  useEffect(() => {
+    if (user.logged === 'true') {
+      setOpen(false);
+    }
+  }, [user.logged]);
 
   return (
     <View
@@ -874,32 +925,6 @@ function PersonalAccount() {
                 >
                   {open === 'edit' ? 'Обновление данных' : 'Авторизация'}
                 </Text>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: '#000',
-                    fontWeight: '400',
-                  }}
-                >
-                  Имя
-                </Text>
-                <TextInput
-                  style={{
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    borderColor: '#dedede',
-                    marginVertical: 10,
-                    paddingHorizontal: 8,
-                    fontSize: 18,
-                    color: '#000',
-                    height: 40,
-                  }}
-                  placeholder="Имя"
-                  returnKeyType="next"
-                  placeholderTextColor="#dedede"
-                  onChangeText={(text) => dispatch(setUser({ ...user, fullname: text }))}
-                  value={user?.fullname}
-                />
                 {open === 'edit' ? (
                   <>
                     <Text
@@ -925,7 +950,9 @@ function PersonalAccount() {
                       placeholder="Email"
                       returnKeyType="next"
                       placeholderTextColor="#dedede"
-                      onChangeText={(text) => dispatch(setUser({ ...user, email: text }))}
+                      onChangeText={(text) => {
+                        dispatch(setUser({ email: text }));
+                      }}
                       value={user?.email}
                     />
                     <Text
@@ -964,7 +991,6 @@ function PersonalAccount() {
                         placeholderTextColor="#dedede"
                         onChangeText={(text) => dispatch(
                           setUser({
-                            ...user,
                             birthday: moment(date).format('DD.MM.YYYY'),
                           }),
                         )}
@@ -973,34 +999,41 @@ function PersonalAccount() {
                     </Pressable>
                   </>
                 ) : null}
-
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: '#000',
-                    fontWeight: '400',
-                  }}
-                >
-                  Телефон
-                </Text>
-                <TextInput
-                  style={{
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    borderColor: '#dedede',
-                    marginVertical: 10,
-                    paddingHorizontal: 8,
-                    fontSize: 18,
-                    color: '#000',
-                    height: 40,
-                  }}
-                  placeholder="Телефон"
-                  returnKeyType="next"
-                  placeholderTextColor="#dedede"
-                  onChangeText={(text) => dispatch(setUser({ ...user, phone: text }))}
-                  value={user?.phone}
-                  keyboardType="phone-pad"
-                />
+                {open !== 'edit' && (
+                <View>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      color: '#000',
+                      fontWeight: '400',
+                    }}
+                  >
+                    Телефон
+                  </Text>
+                  <TextInput
+                    style={{
+                      borderWidth: 1,
+                      borderRadius: 4,
+                      borderColor: '#dedede',
+                      marginVertical: 10,
+                      paddingHorizontal: 8,
+                      fontSize: 18,
+                      color: '#000',
+                      height: 40,
+                    }}
+                    placeholder="Телефон"
+                    returnKeyType="next"
+                    placeholderTextColor="#dedede"
+                    onChangeText={(text) => {
+                      console.log(`Вывод объекта: ${user}`);
+                      console.log(user);
+                      dispatch(setUser({ phone: text }));
+                    }}
+                    value={user?.phone}
+                    keyboardType="phone-pad"
+                  />
+                </View>
+                )}
                 <Text
                   style={{
                     fontSize: 16,
@@ -1024,7 +1057,7 @@ function PersonalAccount() {
                   placeholder="Пароль"
                   placeholderTextColor="#dedede"
                   returnKeyType="go"
-                  onChangeText={(text) => dispatch(setUser({ ...user, password: text }))}
+                  onChangeText={(text) => dispatch(setUser({ password: text }))}
                   value={user?.password}
                   secureTextEntry
                 />
@@ -1034,23 +1067,24 @@ function PersonalAccount() {
                   <Button
                     title={open === 'edit' ? 'Сохранить' : 'Логин'}
                     disabled={
-                      !user?.fullname || !user?.password || !user?.phone
+                      !user?.phone || !user?.password
                     }
                     onPress={() => {
                       setLoading(true);
                       setTimeout(() => {
+                        console.log('Нажатие кнопОчки');
                         dispatch(
-                          setUser({
-                            ...user,
-                            id: Math.random() * 600,
-                          }),
+                          login({ ...user, id: Math.floor(Math.random() * 900) }),
                         );
-                        setOpen(false);
+                        if (user.logged === 'true') {
+                          setOpen(false);
+                        }
                         setLoading(false);
                       }, 1000);
                     }}
                   />
                 )}
+                {user.logged === 'error' && <Text>Введен неверный номер телефона или пароль!</Text>}
               </View>
             </View>
           </ScrollView>
@@ -1097,7 +1131,7 @@ function PersonalAccount() {
                 nestedScrollEnabled
                 scrollEventThrottle={16}
               >
-                {fullcart?.history?.map((item, index) => (
+                {user?.history?.map((item, index) => (
                   <View key={item?.time}>
                     <Pressable
                       onPress={() => setOrderOpenIndex(
@@ -1123,13 +1157,15 @@ function PersonalAccount() {
                           {`Общая сумма: ${item?.total_amount} \u20BD`}
                         </Text>
                         <Text style={styles.accord_header}>
-                          {`Бонус: ${((item?.total_amount || 1) * 0.03).toFixed(
-                            2,
-                          )} \u20BD`}
+                          {`Начислено бонусов: ${item?.bonucesCount} \u20BD`}
                         </Text>
-                        <Text style={styles.accord_header}>
-                          {`Промокод: ${item?.promocode ? 'Да' : 'Нет'}`}
-                        </Text>
+                        {
+                          item.spendBonuses !== 0 && (
+                          <Text style={styles.accord_header}>
+                            {`Списано бонусов: ${item?.spendBonus} \u20BD`}
+                          </Text>
+                          )
+                        }
                       </View>
                       <View
                         style={{
@@ -1187,6 +1223,16 @@ function PersonalAccount() {
                             >
                               {`Цена: ${product?.price} \u20BD`}
                             </Text>
+                            <Text
+                              style={{
+                                fontSize: 14,
+                                color: '#000',
+                                fontWeight: '500',
+                                marginBottom: 5,
+                              }}
+                            >
+                              {`Количество: ${product?.quantity} шт.`}
+                            </Text>
                           </View>
                         ))}
                       </View>
@@ -1201,182 +1247,147 @@ function PersonalAccount() {
                   fontWeight: '500',
                 }}
               >
-                {`Всего заказов: ${fullcart.history?.length}`}
+                {`Всего заказов: ${user.history?.length}`}
               </Text>
             </SafeAreaView>
           </Modal>
-          {user?.id ? (
-            <>
-              <View
-                style={{
-                  borderWidth: 1,
-                  width: '100%',
-                  borderRadius: 20,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  padding: 30,
-                  borderColor: 'rgba(0,0,0, 0.25)',
-                  alignItems: 'center',
-                }}
-              >
-                <View>
-                  <Text style={{ fontWeight: 'bold', fontSize: 15 }}>
-                    {user?.fullname}
-                  </Text>
-                  <Text>{user?.phone}</Text>
-                </View>
-                {(fullcart.history?.reduce(
-                  (acc, obj) => acc + obj.total_amount,
-                  0,
-                ) || 0) * 0.03 ? (
-                  <View style={{ alignItems: 'center' }}>
-                    <Text
-                      style={{
-                        color: '#cf1c1d',
-                        fontSize: 20,
-                        fontWeight: 'bold',
-                      }}
-                    >
-                      {(
-                        (fullcart.history?.reduce(
-                          (acc, obj) => acc + obj.total_amount,
-                          0,
-                        ) || 0) * 0.03
-                      ).toFixed(2)}
-                    </Text>
-                    <Text style={{ color: '#cf1c1d', fontWeight: 'bold' }}>
-                      баллов
-                    </Text>
-                  </View>
-                  ) : null}
+          <>
+            <View
+              style={{
+                borderWidth: 1,
+                width: '100%',
+                borderRadius: 20,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                padding: 30,
+                borderColor: 'rgba(0,0,0, 0.25)',
+                alignItems: 'center',
+              }}
+            >
+              <View>
+                <Text style={{ fontWeight: 'bold', fontSize: 15 }}>
+                  {user?.fullname}
+                </Text>
+                <Text>{user?.phone}</Text>
               </View>
-              <Pressable
-                onPress={() => setOrderOpen(true)}
-                style={{
-                  flexDirection: 'row',
-                  width: '100%',
-                  borderBottomWidth: 1,
-                  borderBottomColor: 'rgba(0,0,0,0.15)',
-                  alignItems: 'center',
-                  padding: 15,
-                }}
-              >
-                <View
+              <View style={{ alignItems: 'center' }}>
+                <Text
                   style={{
-                    borderWidth: 1,
-                    borderColor: 'rgba(0,0,0,0.28)',
-                    borderRadius: 10,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginRight: 20,
-                    width: 40,
-                    height: 40,
+                    color: '#cf1c1d',
+                    fontSize: 20,
+                    fontWeight: 'bold',
                   }}
                 >
-                  <OrderListIcon />
-                </View>
-                <View>
-                  <Text>Заказы</Text>
-                  <Text>Список заказов</Text>
-                </View>
-              </Pressable>
-              <Pressable
-                onPress={() => setOpen('edit')}
-                style={{
-                  flexDirection: 'row',
-                  width: '100%',
-                  borderBottomWidth: 1,
-                  borderBottomColor: 'rgba(0,0,0,0.15)',
-                  alignItems: 'center',
-                  padding: 15,
-                }}
-              >
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: 'rgba(0,0,0,0.28)',
-                    borderRadius: 10,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginRight: 20,
-                    width: 40,
-                    height: 40,
-                  }}
-                >
-                  <AccountIcon />
-                </View>
-                <View>
-                  <Text>Профиль</Text>
-                  <Text>Просмотр и изменение личных данных</Text>
-                </View>
-              </Pressable>
-              <Pressable
-                style={{
-                  flexDirection: 'row',
-                  width: '100%',
-                  borderBottomWidth: 1,
-                  borderBottomColor: 'rgba(0,0,0,0.15)',
-                  alignItems: 'center',
-                  padding: 15,
-                }}
-                onPress={() => Alert.alert('Хотите выйти из аккаунта ?', '', [
-                  {
-                    text: 'Выйти',
-                    onPress: () => {
-                      dispatch(setUser({}));
-                      AsyncStorage.clear();
-                      dispatch(setCartHistory([]));
-                      dispatch(setCart([]));
-                    },
-                  },
-                  {
-                    text: 'Нет',
-                  },
-                ])}
-              >
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderColor: 'rgba(0,0,0,0.28)',
-                    borderRadius: 10,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginRight: 20,
-                    width: 40,
-                    height: 40,
-                  }}
-                >
-                  <QuitIcon />
-                </View>
-                <View>
-                  <Text>Выйти</Text>
-                  <Text>Выход из личного кабинета</Text>
-                </View>
-              </Pressable>
-            </>
-          ) : (
-            <>
-              <Text
-                style={{
-                  color: '#000',
-                  fontSize: 22,
-                }}
-              >
-                Вы должны зарегистрироваться !
-              </Text>
+                  {user.bonuses ?? 0}
+                </Text>
+                <Text style={{ color: '#cf1c1d', fontWeight: 'bold' }}>
+                  баллов
+                </Text>
+              </View>
+            </View>
+            <Pressable
+              onPress={() => setOrderOpen(true)}
+              style={{
+                flexDirection: 'row',
+                width: '100%',
+                borderBottomWidth: 1,
+                borderBottomColor: 'rgba(0,0,0,0.15)',
+                alignItems: 'center',
+                padding: 15,
+              }}
+            >
               <View
                 style={{
-                  marginTop: 20,
                   borderWidth: 1,
                   borderColor: 'rgba(0,0,0,0.28)',
                   borderRadius: 10,
-                  width: '100%',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginRight: 20,
+                  width: 40,
+                  height: 40,
                 }}
               >
-                <Button title="Войти" onPress={() => setOpen(true)} />
+                <OrderListIcon />
               </View>
-            </>
-          )}
+              <View>
+                <Text>Заказы</Text>
+                <Text>Список заказов</Text>
+              </View>
+            </Pressable>
+            <Pressable
+              onPress={() => setOpen('edit')}
+              style={{
+                flexDirection: 'row',
+                width: '100%',
+                borderBottomWidth: 1,
+                borderBottomColor: 'rgba(0,0,0,0.15)',
+                alignItems: 'center',
+                padding: 15,
+              }}
+            >
+              <View
+                style={{
+                  borderWidth: 1,
+                  borderColor: 'rgba(0,0,0,0.28)',
+                  borderRadius: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginRight: 20,
+                  width: 40,
+                  height: 40,
+                }}
+              >
+                <AccountIcon />
+              </View>
+              <View>
+                <Text>Профиль</Text>
+                <Text>Просмотр и изменение личных данных</Text>
+              </View>
+            </Pressable>
+            <Pressable
+              style={{
+                flexDirection: 'row',
+                width: '100%',
+                borderBottomWidth: 1,
+                borderBottomColor: 'rgba(0,0,0,0.15)',
+                alignItems: 'center',
+                padding: 15,
+              }}
+              onPress={() => Alert.alert('Хотите выйти из аккаунта ?', '', [
+                {
+                  text: 'Выйти',
+                  onPress: () => {
+                    dispatch(addtoUserList({ ...user }));
+                    dispatch(exitUser());
+                    setOpen(true);
+                  },
+                },
+                {
+                  text: 'Нет',
+                },
+              ])}
+            >
+              <View
+                style={{
+                  borderWidth: 1,
+                  borderColor: 'rgba(0,0,0,0.28)',
+                  borderRadius: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginRight: 20,
+                  width: 40,
+                  height: 40,
+                }}
+              >
+                <QuitIcon />
+              </View>
+              <View>
+                <Text>Выйти</Text>
+                <Text>Выход из личного кабинета</Text>
+              </View>
+            </Pressable>
+          </>
         </>
       )}
     </View>
@@ -1396,7 +1407,7 @@ export default function BottomTabNavigator(props) {
   return (
     <Tab.Navigator
       initialRouteName="Меню"
-      sceneContainerStyle={{ backgroundColor: '#fff' }}
+      sceneContainerStyle={{ backgroundColor: '#fff', paddingTop: StatusBarManager.HEIGHT }}
       screenOptions={{
         headerShown: true,
         tabBarActiveTintColor: 'tomato',

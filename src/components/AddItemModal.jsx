@@ -5,8 +5,6 @@ import {
 import { useSelector } from 'react-redux';
 
 const WIDTH = Dimensions.get('window').width;
-// const HEIGHT = Dimensions.get('window').height;
-// console.log(`YES!: ${HEIGHT}`);
 
 function AddItemModal() {
   const isVisible = useSelector((state) => state.cart.isModalCartVisible);

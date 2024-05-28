@@ -1,13 +1,11 @@
-import React from "react";
-import { ScrollView, Dimensions, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
-import CategoryItem from "./CategoryItem";
+import React from 'react';
+import { ScrollView, Dimensions, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
+import CategoryItem from './CategoryItem';
 
-const WIDTH = Dimensions.get("window").width;
+const WIDTH = Dimensions.get('window').width;
 
-function CategoryList({
-  scrollViewRef, scrollTop, activeItem, setActiveItem,
-}) {
+function CategoryList({ scrollViewRef }) {
   const navigateData = useSelector(
     (state) => state.navigateHeaders.navigateHeaders,
   );
@@ -23,9 +21,6 @@ function CategoryList({
           key={itemCategory?.title}
           itemCategory={itemCategory}
           scrollViewRef={scrollViewRef}
-          scrollTop={scrollTop}
-          activeItem={activeItem}
-          setActiveItem={setActiveItem}
         />
       ))}
     </ScrollView>
@@ -37,6 +32,6 @@ export default CategoryList;
 const styles = StyleSheet.create({
   horizontalList: {
     width: WIDTH,
-    height: "auto",
+    height: 'auto',
   },
 });

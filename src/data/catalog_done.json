@@ -1,0 +1,1921 @@
+[
+    {
+        "category_name": "Премиум Роллы",
+        "items_list": [
+            {
+                "name": "Шанхай",
+                "price": "639",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, авокадо, огурец, икра масаго, слабосоленый лосось, копченый угорь, соус унаги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/d43daf6c36095f697971a6f97faa1624.JPEG",
+                "productValue": {
+                    "energy_amount": 187.55,
+                    "fiber_amount": 7.88,
+                    "fat_amount": 11.8,
+                    "carbohydrate_amount": 12.46,
+                    "weight_amount": 320
+                },
+                "oldprice": "699",
+                "id": 1
+            },
+            {
+                "name": "Унаги маки",
+                "price": "629",
+                "sostav": "Японский рис, водоросли \"нори\", копченый угорь, творожный сыр, огурец, авокадо, кунжут, соус унаги",
+                "imageLink": "https://gedzagroup.ru/media/catalog/27423f7d0e4cb02532e464b308fc0d60.JPEG",
+                "productValue": {
+                    "energy_amount": 174.77,
+                    "fiber_amount": 7.79,
+                    "fat_amount": 10.33,
+                    "carbohydrate_amount": 12.67,
+                    "weight_amount": 260
+                },
+                "oldprice": "699",
+                "id": 2
+            },
+            {
+                "name": "Акита Премиум",
+                "price": "809",
+                "sostav": "Японский рис, водоросли \"нори\", слабосолёный лосось, салат айсберг, авокадо, креветка темпура, копчёный угорь, фирменный соус, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/5fbaf4ab8ddec64556dc88731f741444.JPEG",
+                "productValue": {
+                    "energy_amount": 146.24,
+                    "fiber_amount": 6.96,
+                    "fat_amount": 6.38,
+                    "carbohydrate_amount": 15.26,
+                    "weight_amount": 360
+                },
+                "oldprice": "929",
+                "id": 3
+            },
+            {
+                "name": "Киоко",
+                "price": "709",
+                "sostav": "Японский рис, спринг тесто, творожный сыр, икра масаго, слабосоленый лосось, копченый угорь, авокадо, кляр, сухари.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/60183db951ed8d6e088bd0595bdf8f42.JPEG",
+                "productValue": {
+                    "energy_amount": 158.59,
+                    "fiber_amount": 7.82,
+                    "fat_amount": 7.4,
+                    "carbohydrate_amount": 15.17,
+                    "weight_amount": 390
+                },
+                "oldprice": "749",
+                "id": 4
+            },
+            {
+                "name": "Вулкан Премиум",
+                "price": "689",
+                "sostav": "Японский рис, водоросли \"нори\", икра масаго красная, слабосолёный лосось, тигровая креветка, лук зеленый, соус шрирача",
+                "imageLink": "https://gedzagroup.ru/media/catalog/ceaa3529a23cc9aaa0e84dbb37e6f5a9.JPEG",
+                "productValue": {
+                    "energy_amount": 63.38,
+                    "fiber_amount": 2.58,
+                    "fat_amount": 0.5,
+                    "carbohydrate_amount": 12.14,
+                    "weight_amount": 310
+                },
+                "oldprice": "719",
+                "id": 5
+            },
+            {
+                "name": "Канада Премиум",
+                "price": "769",
+                "sostav": "Японский рис, водоросли \"нори\", слабосолёный лосось, сливочный сыр, угорь копченый, огурцы, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/8a1365a3d87a1e20b652f42b5c38f6d6.JPEG",
+                "productValue": {
+                    "energy_amount": 137.67,
+                    "fiber_amount": 10.0,
+                    "fat_amount": 9.07,
+                    "carbohydrate_amount": 4.02,
+                    "weight_amount": 355
+                },
+                "oldprice": "819",
+                "id": 6
+            },
+            {
+                "name": "Красный Дракон  Премиум",
+                "price": "809",
+                "sostav": "Японский рис, водоросли \"нори\", слабосолёный лосось, огурец, авокадо, творожный сыр.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/3d38672289968f461bffe18d1fd4c8fa.JPEG",
+                "productValue": {
+                    "energy_amount": 73.03,
+                    "fiber_amount": 1.42,
+                    "fat_amount": 3.62,
+                    "carbohydrate_amount": 8.7,
+                    "weight_amount": 412
+                },
+                "oldprice": "869",
+                "id": 7
+            },
+            {
+                "name": "Осака Премиум",
+                "price": "689",
+                "sostav": "Японский рис, водоросли \"нори\", икра масаго красная, слабосолёный лосось, копченый угорь, сливочный сыр, огурцы.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/df4659797c7818322319d2ae622cd095.JPEG",
+                "productValue": {
+                    "energy_amount": 169.7,
+                    "fiber_amount": 11.02,
+                    "fat_amount": 8.71,
+                    "carbohydrate_amount": 11.8,
+                    "weight_amount": 330
+                },
+                "oldprice": "739",
+                "id": 8
+            },
+            {
+                "name": "Тануки Премиум",
+                "price": "629",
+                "sostav": "Японский рис, водоросли \"нори\", икра масаго красная, тигровая креветка, сурими, огурцы, фирменный соус для запекания, соус унаги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/01c3fd7bbd577b1f8305e9371a3d7697.JPEG",
+                "productValue": {
+                    "energy_amount": 211.07,
+                    "fiber_amount": 5.65,
+                    "fat_amount": 16.46,
+                    "carbohydrate_amount": 10.08,
+                    "weight_amount": 380
+                },
+                "oldprice": "659",
+                "id": 9
+            },
+            {
+                "name": "Филадельфия  Премиум",
+                "price": "669",
+                "sostav": "Японский рис, водоросли \"Нори\", творожный сыр, огурец, слабосолёный лосось.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/df23a84c71b5364f9ccb090cf6975f97.JPEG",
+                "productValue": {
+                    "energy_amount": 176.01,
+                    "fiber_amount": 7.95,
+                    "fat_amount": 10.51,
+                    "carbohydrate_amount": 12.41,
+                    "weight_amount": 380
+                },
+                "oldprice": "700",
+                "id": 10
+            },
+            {
+                "name": "Филадельфия Люкс Премиум",
+                "price": "679",
+                "sostav": "Японский рис, водоросли \"нори\", слабосолёный лосось, сливочный сыр, икра лосося.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/a81a1ed87bf80da3d6854a09610157d5.JPEG",
+                "productValue": {
+                    "energy_amount": 183.1,
+                    "fiber_amount": 12.04,
+                    "fat_amount": 12.41,
+                    "carbohydrate_amount": 5.81,
+                    "weight_amount": 330
+                },
+                "oldprice": "829",
+                "id": 11
+            },
+            {
+                "name": "Филадельфия с креветкой Премиум",
+                "price": "759",
+                "sostav": "Японский рис, водоросли \"нори\", тигровая креветка, авокадо, икра масаго красная, слабосолёный лосось",
+                "imageLink": "https://gedzagroup.ru/media/catalog/b610a3f8a51b31f95e18ba30e5bcfc50.JPEG",
+                "productValue": {
+                    "energy_amount": 131.99,
+                    "fiber_amount": 8.99,
+                    "fat_amount": 8.25,
+                    "carbohydrate_amount": 5.44,
+                    "weight_amount": 390
+                },
+                "oldprice": "869",
+                "id": 12
+            },
+            {
+                "name": "Хотато Премиум",
+                "price": "619",
+                "sostav": "Японский рис, водоросли \"нори\", тигровая креветка, слабосолёный лосось, сливочный сыр, томаты, фирменный соус для запекания, соус унаги, кунжут",
+                "imageLink": "https://gedzagroup.ru/media/catalog/bc9489aec1cba958b9d9276418d68fae.JPEG",
+                "productValue": {
+                    "energy_amount": 245.79,
+                    "fiber_amount": 5.27,
+                    "fat_amount": 20.72,
+                    "carbohydrate_amount": 9.55,
+                    "weight_amount": 360
+                },
+                "oldprice": "690",
+                "id": 13
+            },
+            {
+                "name": "Запеченная Канада с лососем на пару",
+                "price": "769",
+                "sostav": "Японский рис, водоросли \"нори\", лосось на пару, копченный угорь, сливочный сыр, огурцы, фирменный соус для запекания, соус унаги, кунжут",
+                "imageLink": "https://gedzagroup.ru/media/catalog/dd6c32bfaa977f70f8ab76d103cb8d7c.JPEG",
+                "productValue": {
+                    "energy_amount": 162.52,
+                    "fiber_amount": 5.18,
+                    "fat_amount": 10.44,
+                    "carbohydrate_amount": 11.97,
+                    "weight_amount": 360
+                },
+                "oldprice": "786",
+                "id": 14
+            },
+            {
+                "name": "Запеченная Канада",
+                "price": "729",
+                "sostav": "Японский рис, водоросли \"нори\", сливочный сыр, слабосолёный лосось, соус унаги, огурец, фирменный соус для запекания, копчёный угорь, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/bee0c1cd1cec37515067c45c0f94d8fc.JPEG",
+                "productValue": {
+                    "energy_amount": 128.37,
+                    "fiber_amount": 1.85,
+                    "fat_amount": 9.09,
+                    "carbohydrate_amount": 9.8,
+                    "weight_amount": 360
+                },
+                "id": 15
+            },
+            {
+                "name": "Филадельфия Хот",
+                "price": "709",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр,  слабосолёный лосось, соус унаги, сурими, фирменный соус для запекания, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/330366dc8cf3ae5e09743945c27ca6bb.JPEG",
+                "productValue": {
+                    "energy_amount": 225.29,
+                    "fiber_amount": 10.38,
+                    "fat_amount": 14.72,
+                    "carbohydrate_amount": 12.82,
+                    "weight_amount": 395
+                },
+                "id": 16
+            }
+        ],
+        "id": 1
+    },
+    {
+        "category_name": "Запеченные Роллы",
+        "items_list": [
+            {
+                "name": "Нагасаки",
+                "price": "249",
+                "sostav": "Японский рис, водросли нори, творожный сыр, томат, салат айсберг, лосось жаренный, соус для запекания, соус унги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/a9fbac82395c03439a4d41d9a3d7ef0e.PNG",
+                "productValue": {
+                    "energy_amount": 0.0,
+                    "fiber_amount": 0.0,
+                    "fat_amount": 0.0,
+                    "carbohydrate_amount": 0.0,
+                    "weight_amount": 378
+                },
+                "oldprice": "499",
+                "id": 17
+            },
+            {
+                "name": "Ямагата",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", сливочный сыр, лосось на пару, соус унаги, томат, фирменный соус для запекания, кунжут. ",
+                "imageLink": "https://gedzagroup.ru/media/catalog/e8bd9ee4e085162993bebcf409ea3d3d.JPEG",
+                "productValue": {
+                    "energy_amount": 226.82,
+                    "fiber_amount": 6.86,
+                    "fat_amount": 16.08,
+                    "carbohydrate_amount": 13.66,
+                    "weight_amount": 360
+                },
+                "id": 18
+            },
+            {
+                "name": "Бусидо",
+                "price": "469",
+                "sostav": "Японский рис, водоросли \"нори\", тунец, креветка темпура, огурец, икра масаго, стружка тунца, фирменный соус для запекания, унаги соус, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/7b4e2f8cead18afdb81650841c4a2df1.JPEG",
+                "productValue": {
+                    "energy_amount": 181.8,
+                    "fiber_amount": 7.59,
+                    "fat_amount": 10.57,
+                    "carbohydrate_amount": 14.08,
+                    "weight_amount": 343
+                },
+                "id": 19
+            },
+            {
+                "name": "Запеченная Калифорния",
+                "price": "369",
+                "sostav": "Японский рис, водоросли \"нори\", фирменный соус для запекания, сурими, соус унаги, огурец, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/0295302cd207ded94dd8755351723d9a.JPEG",
+                "productValue": {
+                    "energy_amount": 210.84,
+                    "fiber_amount": 4.71,
+                    "fat_amount": 15.45,
+                    "carbohydrate_amount": 13.24,
+                    "weight_amount": 340
+                },
+                "id": 20
+            },
+            {
+                "name": "Запечённый с угрем",
+                "price": "539",
+                "sostav": "Японский рис, водоросли \"нори\", сливочный сыр, омлет тамаго, копчёный угорь, соус унаги, фирменный соус для запекания, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/c545c994e8781a92aa65cb323be1498a.JPEG",
+                "productValue": {
+                    "energy_amount": 244.37,
+                    "fiber_amount": 7.81,
+                    "fat_amount": 19.22,
+                    "carbohydrate_amount": 10.05,
+                    "weight_amount": 350
+                },
+                "id": 21
+            },
+            {
+                "name": "Запеченная Филадельфия",
+                "price": "539",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, слабосолёный лосось, соус унаги, огурец, фирменный соус для запекания, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/de880f3e071ff8b04e7ba642b429f6bd.JPEG",
+                "productValue": {
+                    "energy_amount": 214.69,
+                    "fiber_amount": 7.23,
+                    "fat_amount": 14.0,
+                    "carbohydrate_amount": 14.95,
+                    "weight_amount": 380
+                },
+                "id": 22
+            },
+            {
+                "name": "Сяке Магуро",
+                "price": "499",
+                "sostav": "Японский рис, водоросли \"нори\", фирменный соус для запекания,  слабосолёный лосось, соус унаги, тунец, огурец, сливочный сыр, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/3766b1ee51f3549c7b3737f4298c5d31.JPEG",
+                "productValue": {
+                    "energy_amount": 218.43,
+                    "fiber_amount": 7.48,
+                    "fat_amount": 15.77,
+                    "carbohydrate_amount": 11.65,
+                    "weight_amount": 380
+                },
+                "id": 23
+            },
+            {
+                "name": "Урамаки с креветкой",
+                "price": "369",
+                "sostav": "Японский рис, водоросли \"нори\", сурими,  креветка темпура, соус унаги, омлет тамаго, фирменный соус для запекания, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/2999cb5bdc5be36203d4d3357e1aa321.JPEG",
+                "productValue": {
+                    "energy_amount": 212.4,
+                    "fiber_amount": 4.8,
+                    "fat_amount": 15.67,
+                    "carbohydrate_amount": 13.05,
+                    "weight_amount": 350
+                },
+                "id": 24
+            },
+            {
+                "name": "Хотто",
+                "price": "529",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, лосось на пару, соус унаги, тунец, фирменный соус для запекания, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/53c2fdea068d987f6cbcbc3543d4c375.JPEG",
+                "productValue": {
+                    "energy_amount": 233.93,
+                    "fiber_amount": 8.39,
+                    "fat_amount": 16.88,
+                    "carbohydrate_amount": 12.13,
+                    "weight_amount": 350
+                },
+                "id": 25
+            },
+            {
+                "name": "Яки",
+                "price": "459",
+                "sostav": "Японский рис, водоросли \"нори\", лосось на пару, соус унаги, сурими, огурец, фирменный соус для запекания, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/3595d8878fce8dfe360159e54d614a43.JPEG",
+                "productValue": {
+                    "energy_amount": 211.28,
+                    "fiber_amount": 6.45,
+                    "fat_amount": 14.53,
+                    "carbohydrate_amount": 13.69,
+                    "weight_amount": 360
+                },
+                "id": 26
+            },
+            {
+                "name": "Чикен Маки",
+                "price": "329",
+                "sostav": "Японский рис, водоросли \"нори\", курица холодного копчения, томат, салат айсберг, соус шрирача, фирменный соус для запекания, соус унаги, кунжут\n\n",
+                "imageLink": "https://gedzagroup.ru/media/catalog/63590f6bd15e05cc944d869f97c422fd.JPEG",
+                "productValue": {
+                    "energy_amount": 230.32,
+                    "fiber_amount": 6.72,
+                    "fat_amount": 18.2,
+                    "carbohydrate_amount": 9.91,
+                    "weight_amount": 355
+                },
+                "id": 27
+            }
+        ],
+        "id": 2
+    },
+    {
+        "category_name": "Холодные Роллы",
+        "items_list": [
+            {
+                "name": "Калифорния с лососем",
+                "price": "439",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, творожный сыр, авокадо, икра масаго.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/3c79e8ef11bf56fcc863eb10160586c4.JPEG",
+                "productValue": {
+                    "energy_amount": 169.62,
+                    "fiber_amount": 7.86,
+                    "fat_amount": 8.42,
+                    "carbohydrate_amount": 15.61,
+                    "weight_amount": 240
+                },
+                "id": 28
+            },
+            {
+                "name": "Аляска",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, лосось на пару, салат айсберг, томаты, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/7398bb228efa3950fb82e17445ec060b.JPEG",
+                "productValue": {
+                    "energy_amount": 171.17,
+                    "fiber_amount": 6.92,
+                    "fat_amount": 9.15,
+                    "carbohydrate_amount": 15.29,
+                    "weight_amount": 230
+                },
+                "id": 29
+            },
+            {
+                "name": "Канто",
+                "price": "429",
+                "sostav": "Японский рис, водоросли \"нори\", лосось на пару, творожный сыр, авокадо, салат айсберг, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/5ea0a4a2c578e8d462dbc43a041cdbd6.JPEG",
+                "productValue": {
+                    "energy_amount": 174.55,
+                    "fiber_amount": 7.28,
+                    "fat_amount": 9.22,
+                    "carbohydrate_amount": 15.61,
+                    "weight_amount": 235
+                },
+                "id": 30
+            },
+            {
+                "name": "Калифорния лайт",
+                "price": "419",
+                "sostav": "Японский рис, водоросли \"нори\", икра масаго, творожный сыр, тигровая креветка, лосось холодного копчения, томаты, салат айсберг.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/e2e863b30df8ecc6d4b48aba4b7b963b.JPEG",
+                "productValue": {
+                    "energy_amount": 115.14,
+                    "fiber_amount": 5.19,
+                    "fat_amount": 3.97,
+                    "carbohydrate_amount": 14.67,
+                    "weight_amount": 230
+                },
+                "id": 31
+            },
+            {
+                "name": "Калифорния с авокадо",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", икра масаго, сурими, авокадо.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/58feae68e242f9740382d1c5d03d6217.JPEG",
+                "productValue": {
+                    "energy_amount": 151.64,
+                    "fiber_amount": 6.45,
+                    "fat_amount": 7.48,
+                    "carbohydrate_amount": 14.64,
+                    "weight_amount": 260
+                },
+                "id": 32
+            },
+            {
+                "name": "Кунсей с копченым лососем",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", лосось холодного копчения, творожный сыр, огурец, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/623ee170040d2846d658064b3dce2648.JPEG",
+                "productValue": {
+                    "energy_amount": 178.23,
+                    "fiber_amount": 7.7,
+                    "fat_amount": 9.46,
+                    "carbohydrate_amount": 15.58,
+                    "weight_amount": 230
+                },
+                "id": 33
+            },
+            {
+                "name": "Бонсай",
+                "price": "489",
+                "sostav": "Японский рис, водоросли \"нори\", икра масаго, слабосоленый лосось, креветки, огурец.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/3d5422f3185608276a244f0ccb577a7e.JPEG",
+                "productValue": {
+                    "energy_amount": 105.82,
+                    "fiber_amount": 6.62,
+                    "fat_amount": 2.21,
+                    "carbohydrate_amount": 14.88,
+                    "weight_amount": 250
+                },
+                "id": 34
+            },
+            {
+                "name": "Нани",
+                "price": "449",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, икра масаго, творожный сыр.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/aef891ebb80dbdd11a22a643b37c3e5a.JPEG",
+                "productValue": {
+                    "energy_amount": 170.7,
+                    "fiber_amount": 8.85,
+                    "fat_amount": 7.88,
+                    "carbohydrate_amount": 16.09,
+                    "weight_amount": 230
+                },
+                "id": 35
+            },
+            {
+                "name": "Острая креветка",
+                "price": "389",
+                "sostav": "Японский рис, водоросли \"нори\", икра масаго, тигровая креветка, творожный сыр, авокадо, соус шрирача.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/767c008dddb0482af0d802db254f2f34.JPEG",
+                "productValue": {
+                    "energy_amount": 134.65,
+                    "fiber_amount": 3.5,
+                    "fat_amount": 6.9,
+                    "carbohydrate_amount": 14.65,
+                    "weight_amount": 230
+                },
+                "id": 36
+            },
+            {
+                "name": "Бекон лайт",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, томаты, салат айсберг, лосось на пару, бекон.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/9b5923f19f5dcc0f50fac54b55c72a58.JPEG",
+                "productValue": {
+                    "energy_amount": 166.57,
+                    "fiber_amount": 6.46,
+                    "fat_amount": 9.03,
+                    "carbohydrate_amount": 14.87,
+                    "weight_amount": 240
+                },
+                "id": 37
+            },
+            {
+                "name": "Сакура",
+                "price": "499",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, копченый угорь, тигровая креветка, салат айсберг, авокадо, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/aa6fda672b3a4d107668fdf5af69b9a2.JPEG",
+                "productValue": {
+                    "energy_amount": 150.05,
+                    "fiber_amount": 5.45,
+                    "fat_amount": 7.82,
+                    "carbohydrate_amount": 14.46,
+                    "weight_amount": 250
+                },
+                "id": 38
+            },
+            {
+                "name": "Фуджи",
+                "price": "339",
+                "sostav": "Японский рис, водоросли \"нори\",творожный сыр, креветка темпура, слабосоленый лосось, огурец, авокадо, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/457736403301d064fae0efdd8d3f565a.JPEG",
+                "productValue": {
+                    "energy_amount": 143.09,
+                    "fiber_amount": 4.42,
+                    "fat_amount": 6.9,
+                    "carbohydrate_amount": 15.84,
+                    "weight_amount": 230
+                },
+                "id": 39
+            },
+            {
+                "name": "Футо с лососем",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, творожный сыр, авокадо, огурец, икра масаго.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/07e68b5fbfd7894157659c5e49356b93.JPEG",
+                "productValue": {
+                    "energy_amount": 143.01,
+                    "fiber_amount": 6.84,
+                    "fat_amount": 5.86,
+                    "carbohydrate_amount": 15.74,
+                    "weight_amount": 230
+                },
+                "id": 40
+            },
+            {
+                "name": "Футо с угрем",
+                "price": "559",
+                "sostav": "Японский рис, водоросли \"нори\", копченый угорь, творожный сыр, авокадо, огурец, икра масаго.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/777dbccf7181e5179fb159b3cea3d3a0.JPEG",
+                "productValue": {
+                    "energy_amount": 148.11,
+                    "fiber_amount": 7.59,
+                    "fat_amount": 7.29,
+                    "carbohydrate_amount": 13.03,
+                    "weight_amount": 230
+                },
+                "id": 41
+            },
+            {
+                "name": "Сяке бекон",
+                "price": "449",
+                "sostav": "Японский рис, водоросли \"нори\",творожный сыр, лосось холодного копчения, лук зеленый, бекон.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/4496ff74198cacb9e1c37c40cfae2622.JPEG",
+                "productValue": {
+                    "energy_amount": 204.41,
+                    "fiber_amount": 8.31,
+                    "fat_amount": 12.63,
+                    "carbohydrate_amount": 14.38,
+                    "weight_amount": 250
+                },
+                "id": 42
+            },
+            {
+                "name": "Цунами",
+                "price": "339",
+                "sostav": "Японский рис, водоросли \"нори\", лосось холодного копчения, креветка темпура, лук зеленый, огурец, соус шрирача.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/ffb0b20405941830b714c59760230272.JPEG",
+                "productValue": {
+                    "energy_amount": 105.17,
+                    "fiber_amount": 4.96,
+                    "fat_amount": 1.6,
+                    "carbohydrate_amount": 17.74,
+                    "weight_amount": 210
+                },
+                "id": 43
+            },
+            {
+                "name": "Монтоку",
+                "price": "509",
+                "sostav": "Японский рис, водоросли \"нори\", лосось на пару, копченый угорь, икра масаго, омлет, салат айсберг, творожный сыр.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/7d103f1b9623b51c199dd7562d580a5c.JPEG",
+                "productValue": {
+                    "energy_amount": 141.52,
+                    "fiber_amount": 8.71,
+                    "fat_amount": 5.62,
+                    "carbohydrate_amount": 14.02,
+                    "weight_amount": 240
+                },
+                "id": 44
+            },
+            {
+                "name": "Кунсей с лососем",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, творожный сыр, огурец, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/21065029b15d165db76172ec76ad26f6.JPEG",
+                "productValue": {
+                    "energy_amount": 178.23,
+                    "fiber_amount": 7.7,
+                    "fat_amount": 9.46,
+                    "carbohydrate_amount": 15.58,
+                    "weight_amount": 230
+                },
+                "id": 45
+            },
+            {
+                "name": "Бонито Спайси",
+                "price": "499",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, слабосолёный лосось, омлет, стружка тунца, соус шрирача.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/65ace2ab4325bc70caf148281d9ffca7.JPEG",
+                "productValue": {
+                    "energy_amount": 141.59,
+                    "fiber_amount": 9.93,
+                    "fat_amount": 4.32,
+                    "carbohydrate_amount": 15.76,
+                    "weight_amount": 240
+                },
+                "id": 46
+            },
+            {
+                "name": "Зелёный Дракон",
+                "price": "509",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, слабосолёный лосось, соус унаги, авокадо, кунжут, огурец, копчёный угорь. ",
+                "imageLink": "https://gedzagroup.ru/media/catalog/09c142e5bfdf0c3df1cdc3bcd4bbac1b.JPEG",
+                "productValue": {
+                    "energy_amount": 139.41,
+                    "fiber_amount": 6.55,
+                    "fat_amount": 5.92,
+                    "carbohydrate_amount": 14.98,
+                    "weight_amount": 280
+                },
+                "id": 47
+            },
+            {
+                "name": "Калифорния с креветкой",
+                "price": "329",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, икра масаго, креветка темпура, огурец.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/ec5f9fcc37538992c581a51661f9fa7d.JPEG",
+                "productValue": {
+                    "energy_amount": 133.77,
+                    "fiber_amount": 4.53,
+                    "fat_amount": 5.75,
+                    "carbohydrate_amount": 15.96,
+                    "weight_amount": 230
+                },
+                "id": 48
+            },
+            {
+                "name": "Калифорния с тунцом",
+                "price": "419",
+                "sostav": "Японский рис, водоросли \"нори\", икра масаго, тунец, огурец, авокадо, фирменный соус.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/877b8162c1f64bf3c0adcc639f180402.JPEG",
+                "productValue": {
+                    "energy_amount": 130.16,
+                    "fiber_amount": 9.11,
+                    "fat_amount": 4.93,
+                    "carbohydrate_amount": 12.35,
+                    "weight_amount": 260
+                },
+                "id": 49
+            },
+            {
+                "name": "Киото",
+                "price": "549",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, кунжут, креветка, копчёный угорь, салат чука, соус ореховый, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/1f1d0fcb740f9f70beb9948236fde4eb.JPEG",
+                "productValue": {
+                    "energy_amount": 152.09,
+                    "fiber_amount": 4.31,
+                    "fat_amount": 7.43,
+                    "carbohydrate_amount": 17.01,
+                    "weight_amount": 290
+                },
+                "id": 50
+            },
+            {
+                "name": "Нантай",
+                "price": "379",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, кунжут, слабосолёный лосось, огурец, лук зелёный, соус шрирача.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/51be382759ba3c67433b29c20b756096.JPEG",
+                "productValue": {
+                    "energy_amount": 145.97,
+                    "fiber_amount": 6.69,
+                    "fat_amount": 6.75,
+                    "carbohydrate_amount": 14.61,
+                    "weight_amount": 240
+                },
+                "id": 51
+            },
+            {
+                "name": "Токио",
+                "price": "489",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, лосось на пару, лук зелёный, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/dd15471a9c7ab2c8253f2e29e1f9f7c0.JPEG",
+                "productValue": {
+                    "energy_amount": 175.93,
+                    "fiber_amount": 8.03,
+                    "fat_amount": 8.56,
+                    "carbohydrate_amount": 16.69,
+                    "weight_amount": 230
+                },
+                "id": 52
+            },
+            {
+                "name": "Филадельфия",
+                "price": "519",
+                "sostav": "Японский рис, водоросли \"Нори\", творожный сыр, огурец, слабосолёный лосось.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/cc2360dcc7b24360c9b1845b6677900b.JPEG",
+                "productValue": {
+                    "energy_amount": 176.01,
+                    "fiber_amount": 7.95,
+                    "fat_amount": 10.51,
+                    "carbohydrate_amount": 12.41,
+                    "weight_amount": 320
+                },
+                "id": 53
+            },
+            {
+                "name": "Филадельфия без огурца",
+                "price": "519",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, слабосолёный лосось.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/93c8d8ae40d71a89690b56778430d214.JPEG",
+                "productValue": {
+                    "energy_amount": 195.53,
+                    "fiber_amount": 8.54,
+                    "fat_amount": 11.26,
+                    "carbohydrate_amount": 15.02,
+                    "weight_amount": 320
+                },
+                "id": 54
+            },
+            {
+                "name": "Хаори",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, креветка темпура, салат айсберг, стружка тунца.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/83372690b28eafbee74ff5f56e6615b5.JPEG",
+                "productValue": {
+                    "energy_amount": 123.62,
+                    "fiber_amount": 4.38,
+                    "fat_amount": 4.21,
+                    "carbohydrate_amount": 17.05,
+                    "weight_amount": 225
+                },
+                "id": 55
+            },
+            {
+                "name": "Фудзи",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр,  кунжут, вареная креветка, огурец, икра масаго, салат чука, соус ореховый, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/d4e7e876bbe2c4d64eb82e0f59ad34ca.JPEG",
+                "productValue": {
+                    "energy_amount": 134.63,
+                    "fiber_amount": 3.63,
+                    "fat_amount": 5.99,
+                    "carbohydrate_amount": 16.55,
+                    "weight_amount": 310
+                },
+                "id": 56
+            },
+            {
+                "name": "Филадельфия Гриль",
+                "price": "539",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, огурец, слабосолёный лосось, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/7bb6b1eba0413fe6a0ea8b06015881e7.JPEG",
+                "productValue": {
+                    "energy_amount": 178.09,
+                    "fiber_amount": 7.79,
+                    "fat_amount": 10.18,
+                    "carbohydrate_amount": 13.83,
+                    "weight_amount": 370
+                },
+                "id": 57
+            }
+        ],
+        "id": 3
+    },
+    {
+        "category_name": "Темпурные Роллы",
+        "items_list": [
+            {
+                "name": "Аками",
+                "price": "249",
+                "sostav": "Японский рис,водросли нори, творожный сыр, томат, салат айсберг, лосось жаренный, кляр, сухари панко, соус унги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/97cecdd45cc8eb960d301b651723ec4b.PNG",
+                "productValue": {
+                    "energy_amount": 0.0,
+                    "fiber_amount": 0.0,
+                    "fat_amount": 0.0,
+                    "carbohydrate_amount": 0.0,
+                    "weight_amount": 398
+                },
+                "oldprice": "499",
+                "id": 58
+            },
+            {
+                "name": "Темпура Сяке",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, огурец, творожный сыр, кляр, сухари, унаги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/372b639e94fca1bdb3b91276a1c0d171.JPEG",
+                "productValue": {
+                    "energy_amount": 136.43,
+                    "fiber_amount": 5.71,
+                    "fat_amount": 5.8,
+                    "carbohydrate_amount": 15.36,
+                    "weight_amount": 330
+                },
+                "id": 59
+            },
+            {
+                "name": "Сливочный угорь",
+                "price": "529",
+                "sostav": "Японский рис, водоросли \"нори\", копченый угорь, творожный сыр, омлет, кляр, сухари, унаги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/b982a3b84004186da03c1f8f7ce2e09b.JPEG",
+                "productValue": {
+                    "energy_amount": 145.01,
+                    "fiber_amount": 7.09,
+                    "fat_amount": 7.03,
+                    "carbohydrate_amount": 13.34,
+                    "weight_amount": 330
+                },
+                "id": 60
+            },
+            {
+                "name": "Йоджи",
+                "price": "459",
+                "sostav": "Японский рис, водоросли \"нори\", лосось холодного копчения, икра масаго, творожный сыр, креветка темпура, кляр, сухари.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/6cdf637dfb2c9055b2dadc2724235b41.JPEG",
+                "productValue": {
+                    "energy_amount": 132.35,
+                    "fiber_amount": 6.22,
+                    "fat_amount": 5.43,
+                    "carbohydrate_amount": 14.66,
+                    "weight_amount": 330
+                },
+                "id": 61
+            },
+            {
+                "name": "Куреме",
+                "price": "429",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, слабосолёный лосось, икра масаго красная, огурец, кляр, сухари панировочные, унаги соус, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/7d3e92e7575a48b01c84080d93440423.JPEG",
+                "productValue": {
+                    "energy_amount": 134.93,
+                    "fiber_amount": 6.37,
+                    "fat_amount": 3.82,
+                    "carbohydrate_amount": 18.77,
+                    "weight_amount": 340
+                },
+                "id": 62
+            },
+            {
+                "name": "Спринг Лосось",
+                "price": "409",
+                "sostav": "Японский рис, сливочный сыр, слабосолёный лосось, спринг тесто, зелёный лук, кляр, сухари панировочные, томаты.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/7dcf71aabb891e36499a29d0fd332156.JPEG",
+                "productValue": {
+                    "energy_amount": 148.73,
+                    "fiber_amount": 5.48,
+                    "fat_amount": 5.21,
+                    "carbohydrate_amount": 19.99,
+                    "weight_amount": 330
+                },
+                "id": 63
+            },
+            {
+                "name": "Темпура Тунец",
+                "price": "369",
+                "sostav": "Японский рис, водоросли \"нори\", тунец, зелёный лук, кляр, сухари панировочные, соус шрирача.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/133a97c0189cfb24aa7908f2a6bed448.JPEG",
+                "productValue": {
+                    "energy_amount": 92.63,
+                    "fiber_amount": 6.98,
+                    "fat_amount": 0.49,
+                    "carbohydrate_amount": 15.09,
+                    "weight_amount": 285
+                },
+                "id": 64
+            },
+            {
+                "name": "Темпура Эби",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр,  соус унаги, креветка темпура, огурец, кляр, сухари панировочные, кунжут. ",
+                "imageLink": "https://gedzagroup.ru/media/catalog/141079cec3286a16fe1cf0ee1da2974b.JPEG",
+                "productValue": {
+                    "energy_amount": 138.8,
+                    "fiber_amount": 3.1,
+                    "fat_amount": 5.91,
+                    "carbohydrate_amount": 18.31,
+                    "weight_amount": 340
+                },
+                "id": 65
+            },
+            {
+                "name": "Тенри",
+                "price": "449",
+                "sostav": "Японский рис, водоросли \"нори\", слабосолёный лосось, креветка темпура, сурими, огурец, авокадо, сыр хохланд, соус шрирача, кляр, сухари панировочные.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/837c817551abc599e06a956a1613ead5.JPEG",
+                "productValue": {
+                    "energy_amount": 124.74,
+                    "fiber_amount": 5.68,
+                    "fat_amount": 4.32,
+                    "carbohydrate_amount": 15.8,
+                    "weight_amount": 380
+                },
+                "id": 66
+            },
+            {
+                "name": "Спринг креветка",
+                "price": "409",
+                "sostav": "Японский рис, спринг тесто, творожный сыр, креветка, томаты, зелёный лук, кляр, сухари панировочные. ",
+                "imageLink": "https://gedzagroup.ru/media/catalog/55c89d63d1a01ddc1bef7cc0efac52cb.JPEG",
+                "productValue": {
+                    "energy_amount": 146.83,
+                    "fiber_amount": 3.0,
+                    "fat_amount": 5.92,
+                    "carbohydrate_amount": 20.39,
+                    "weight_amount": 360
+                },
+                "id": 67
+            },
+            {
+                "name": "Темпура с курицей",
+                "price": "329",
+                "sostav": "Японский рис, водоросли \"нори\", курица холодного копчения, томаты, креветочный соус, кляр, сухари панировочные.\n\n",
+                "imageLink": "https://gedzagroup.ru/media/catalog/e972aa5943f65d8176983bb52f852cdb.JPEG",
+                "productValue": {
+                    "energy_amount": 206.7,
+                    "fiber_amount": 6.48,
+                    "fat_amount": 14.54,
+                    "carbohydrate_amount": 12.48,
+                    "weight_amount": 400
+                },
+                "id": 68
+            },
+            {
+                "name": "Хоки",
+                "price": "449",
+                "sostav": "Японский рис, водоросли \"нори\", томаты, лосось на пару, курица холодного копчения, соус шрирача, кляр, сухари панировочные.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/0e05f61b7b86006ae986fdc7f2ec9bf8.JPEG",
+                "productValue": {
+                    "energy_amount": 99.54,
+                    "fiber_amount": 7.22,
+                    "fat_amount": 2.84,
+                    "carbohydrate_amount": 11.28,
+                    "weight_amount": 340
+                },
+                "id": 69
+            }
+        ],
+        "id": 4
+    },
+    {
+        "category_name": "Мини Роллы",
+        "items_list": [
+            {
+                "name": "Такуси",
+                "price": "339",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, окунь маринованный, авокадо, творожный сыр, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/a21b874bbb7b79ae87265fbba9eccca5.JPEG",
+                "productValue": {
+                    "energy_amount": 214.35,
+                    "fiber_amount": 3.13,
+                    "fat_amount": 16.44,
+                    "carbohydrate_amount": 13.48,
+                    "weight_amount": 249
+                },
+                "id": 70
+            },
+            {
+                "name": "Иноти",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, творожный сыр, кревета темпурная, помидоры, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/1f758b9ec5082f689361d34ad8efc016.JPEG",
+                "productValue": {
+                    "energy_amount": 200.21,
+                    "fiber_amount": 3.19,
+                    "fat_amount": 14.45,
+                    "carbohydrate_amount": 14.36,
+                    "weight_amount": 264
+                },
+                "id": 71
+            },
+            {
+                "name": "Содзиро",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, тунец маринованный, творожный сыр, лук зеленый, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/2e29f36efd3dd5fe1f2f9af0387ebc1d.JPEG",
+                "productValue": {
+                    "energy_amount": 225.56,
+                    "fiber_amount": 5.79,
+                    "fat_amount": 16.38,
+                    "carbohydrate_amount": 13.75,
+                    "weight_amount": 234
+                },
+                "id": 72
+            },
+            {
+                "name": "Сайери",
+                "price": "429",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, копченный угорь, омлет, творожный сыр, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/819c8a0d038024508e241dbc9cb29a45.JPEG",
+                "productValue": {
+                    "energy_amount": 205.43,
+                    "fiber_amount": 3.71,
+                    "fat_amount": 15.27,
+                    "carbohydrate_amount": 13.29,
+                    "weight_amount": 249
+                },
+                "id": 73
+            },
+            {
+                "name": "Юри",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", креветки отварные, творожный сыр, авокадо, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/d2908825bdb363d2fd845135e4f31d6a.JPEG",
+                "productValue": {
+                    "energy_amount": 229.19,
+                    "fiber_amount": 2.87,
+                    "fat_amount": 17.78,
+                    "carbohydrate_amount": 14.42,
+                    "weight_amount": 244
+                },
+                "id": 74
+            },
+            {
+                "name": "Сигота",
+                "price": "259",
+                "sostav": "Японский рис, водоросли \"нори\", кунжут белый, творожный сыр, копченая курица, помидоры, креветочный соус.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/1343e8318296f5f096051bd8c19ecc4f.JPEG",
+                "productValue": {
+                    "energy_amount": 215.71,
+                    "fiber_amount": 5.61,
+                    "fat_amount": 15.96,
+                    "carbohydrate_amount": 12.42,
+                    "weight_amount": 247
+                },
+                "id": 75
+            },
+            {
+                "name": "Ютаки",
+                "price": "299",
+                "sostav": "Японский рис, водоросли \"нори\", окунь жареный, омлет, огурцы, айсберг, икра массаго, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/40518eba78fb713b3b948570f09ab02d.JPEG",
+                "productValue": {
+                    "energy_amount": 187.06,
+                    "fiber_amount": 5.15,
+                    "fat_amount": 12.64,
+                    "carbohydrate_amount": 13.17,
+                    "weight_amount": 254
+                },
+                "id": 76
+            },
+            {
+                "name": "Сяцу",
+                "price": "269",
+                "sostav": "Японский рис, водоросли \"нори\", окунь маринованный, творожный сыр, лук зеленый, огурец, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/8fd26a0d3d87a6c6c4f82381cf586be9.JPEG",
+                "productValue": {
+                    "energy_amount": 204.52,
+                    "fiber_amount": 2.29,
+                    "fat_amount": 15.66,
+                    "carbohydrate_amount": 13.6,
+                    "weight_amount": 239
+                },
+                "id": 77
+            },
+            {
+                "name": "Капи",
+                "price": "259",
+                "sostav": "Японский рис, водоросли \"нори\", копченая курица, помидоры, лук зеленый, творожный сыр.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/cecb2b08d691b42904109d5409e50d03.JPEG",
+                "productValue": {
+                    "energy_amount": 131.58,
+                    "fiber_amount": 5.47,
+                    "fat_amount": 5.01,
+                    "carbohydrate_amount": 16.14,
+                    "weight_amount": 185
+                },
+                "id": 78
+            },
+            {
+                "name": "Окаси",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, творожный сыр, тунец маринованный, лук зеленый, икра массаго, соус шрирача.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/7da553737ef76aba38c69b1311e31cda.JPEG",
+                "productValue": {
+                    "energy_amount": 119.02,
+                    "fiber_amount": 5.99,
+                    "fat_amount": 3.7,
+                    "carbohydrate_amount": 15.44,
+                    "weight_amount": 200
+                },
+                "id": 79
+            },
+            {
+                "name": "Сахано",
+                "price": "279",
+                "sostav": "Японский рис, водоросли \"нори\", креветки темпурные, творожный сыр, икра массаго, огурцы.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/3dfddf5703f671c3c8115f33f5bf6c91.JPEG",
+                "productValue": {
+                    "energy_amount": 109.82,
+                    "fiber_amount": 3.27,
+                    "fat_amount": 3.42,
+                    "carbohydrate_amount": 16.5,
+                    "weight_amount": 210
+                },
+                "id": 80
+            },
+            {
+                "name": "Намида",
+                "price": "359",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, креветки отварные, сурими, творожный сыр, айсберг, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/887081aa9286a4b155da477ca8ce3fd4.JPEG",
+                "productValue": {
+                    "energy_amount": 210.76,
+                    "fiber_amount": 3.85,
+                    "fat_amount": 15.72,
+                    "carbohydrate_amount": 13.46,
+                    "weight_amount": 259
+                },
+                "id": 81
+            },
+            {
+                "name": "Окиру",
+                "price": "419",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, лосось на пару, творожный сыр, авокадо, креветки темпурные, креветочный соус.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/d9115c21d55a18f1421a37d9d60409f9.JPEG",
+                "productValue": {
+                    "energy_amount": 247.54,
+                    "fiber_amount": 6.08,
+                    "fat_amount": 17.24,
+                    "carbohydrate_amount": 17.01,
+                    "weight_amount": 220
+                },
+                "id": 82
+            },
+            {
+                "name": "Кику",
+                "price": "429",
+                "sostav": "Японский рис, водоросли \"нори\", копченный угорь, творожный сыр, авокадо, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/a82d35c8b3e8cecd6d35a8e6146e636b.JPEG",
+                "productValue": {
+                    "energy_amount": 217.21,
+                    "fiber_amount": 2.34,
+                    "fat_amount": 16.87,
+                    "carbohydrate_amount": 14.0,
+                    "weight_amount": 239
+                },
+                "id": 83
+            },
+            {
+                "name": "Неко",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, сурими, креветки отварные, огурцы .",
+                "imageLink": "https://gedzagroup.ru/media/catalog/978c1814eab3088160b958f4aee06946.JPEG",
+                "productValue": {
+                    "energy_amount": 102.81,
+                    "fiber_amount": 4.02,
+                    "fat_amount": 2.48,
+                    "carbohydrate_amount": 16.11,
+                    "weight_amount": 200
+                },
+                "id": 84
+            },
+            {
+                "name": "Акай",
+                "price": "339",
+                "sostav": "Японский рис, водоросли \"нори\", креветки темпурные, творожный сыр, огурцы, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/f5a8b8591b55dfff9755b117d46a7687.JPEG",
+                "productValue": {
+                    "energy_amount": 205.64,
+                    "fiber_amount": 2.49,
+                    "fat_amount": 15.07,
+                    "carbohydrate_amount": 15.02,
+                    "weight_amount": 249
+                },
+                "id": 85
+            },
+            {
+                "name": "Асоби",
+                "price": "259",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, сурими, авокадо, огурцы.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/98829ebd34adeb70f39c3e75db846209.JPEG",
+                "productValue": {
+                    "energy_amount": 123.13,
+                    "fiber_amount": 4.53,
+                    "fat_amount": 4.27,
+                    "carbohydrate_amount": 16.66,
+                    "weight_amount": 200
+                },
+                "id": 86
+            },
+            {
+                "name": "Вакай",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, копченный угорь, сурими, авокадо.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/02f83260170ebb3a84045efc2af4f6e8.JPEG",
+                "productValue": {
+                    "energy_amount": 109.45,
+                    "fiber_amount": 3.85,
+                    "fat_amount": 3.49,
+                    "carbohydrate_amount": 15.67,
+                    "weight_amount": 205
+                },
+                "id": 87
+            },
+            {
+                "name": "Курума",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, креветки отварные, творожный сыр, авокадо, сурими.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/c92ab52eb94e7fe87bebd238d2d07f91.JPEG",
+                "productValue": {
+                    "energy_amount": 133.31,
+                    "fiber_amount": 4.18,
+                    "fat_amount": 5.85,
+                    "carbohydrate_amount": 16.0,
+                    "weight_amount": 205
+                },
+                "id": 88
+            },
+            {
+                "name": "Отоко",
+                "price": "389",
+                "sostav": "Японский рис, водоросли \"нори\", кунжут белый, копченый угорь, творожный сыр, авокадо, огурцы.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/c5373ecd80c4f8d6440d9effdb0e917c.JPEG",
+                "productValue": {
+                    "energy_amount": 125.33,
+                    "fiber_amount": 2.54,
+                    "fat_amount": 5.86,
+                    "carbohydrate_amount": 15.6,
+                    "weight_amount": 200
+                },
+                "id": 89
+            },
+            {
+                "name": "Хикари",
+                "price": "259",
+                "sostav": "Японский рис, водоросли \"нори\", курица копченая, помидоры, айсберг, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/586f68ff09c3dc2fecfec5c98bd57af9.JPEG",
+                "productValue": {
+                    "energy_amount": 208.11,
+                    "fiber_amount": 4.48,
+                    "fat_amount": 14.84,
+                    "carbohydrate_amount": 14.15,
+                    "weight_amount": 229
+                },
+                "id": 90
+            },
+            {
+                "name": "Тамаси",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, творожный сыр, лосось холодного копчения, помидоры, лук зеленый, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/f954abdda1dbdef009ec9aa9cb02ed70.JPEG",
+                "productValue": {
+                    "energy_amount": 223.14,
+                    "fiber_amount": 5.38,
+                    "fat_amount": 15.94,
+                    "carbohydrate_amount": 14.54,
+                    "weight_amount": 254
+                },
+                "id": 91
+            },
+            {
+                "name": "Ханасу",
+                "price": "339",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, лосось на пару, сурими, омлет, креветочный соус.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/fcdeb20fa145ef73abfa830dd49b089a.JPEG",
+                "productValue": {
+                    "energy_amount": 252.68,
+                    "fiber_amount": 7.75,
+                    "fat_amount": 16.54,
+                    "carbohydrate_amount": 18.21,
+                    "weight_amount": 195
+                },
+                "id": 92
+            },
+            {
+                "name": "Хира",
+                "price": "359",
+                "sostav": "Японский рис, водоросли \"нори\", копченый угорь, творожный сыр, ореховый соус, унаги соус, кунжут, авокадо.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/b375faec49a4cce1d86db68ea5a38519.PNG",
+                "productValue": {
+                    "energy_amount": 133.53,
+                    "fiber_amount": 2.67,
+                    "fat_amount": 6.3,
+                    "carbohydrate_amount": 16.55,
+                    "weight_amount": 186
+                },
+                "id": 93
+            },
+            {
+                "name": "Хавои",
+                "price": "339",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, лосось на пару творожный сыр, авокадо, омлет.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/e9502ad06382a39dac8c969de3f72a5d.JPEG",
+                "productValue": {
+                    "energy_amount": 144.34,
+                    "fiber_amount": 6.66,
+                    "fat_amount": 5.59,
+                    "carbohydrate_amount": 16.86,
+                    "weight_amount": 210
+                },
+                "id": 94
+            },
+            {
+                "name": "Еку",
+                "price": "379",
+                "sostav": "Японский рис, водоросли \"нори\", лосось на пару, сурими, авокадо, унаги крем.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/162b8f7caa94662ca417821f04be9d88.JPEG",
+                "productValue": {
+                    "energy_amount": 135.3,
+                    "fiber_amount": 5.72,
+                    "fat_amount": 4.09,
+                    "carbohydrate_amount": 18.9,
+                    "weight_amount": 186
+                },
+                "id": 95
+            },
+            {
+                "name": "Цуки",
+                "price": "439",
+                "sostav": "Японский рис, водоросли \"нори\", копченый угорь, креветки темпурные, творожный сыр, икра массаго, унаги крем.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/796e082080e55641f1e3e644bd9f3ad6.JPEG",
+                "productValue": {
+                    "energy_amount": 106.2,
+                    "fiber_amount": 3.13,
+                    "fat_amount": 3.33,
+                    "carbohydrate_amount": 15.92,
+                    "weight_amount": 215
+                },
+                "id": 96
+            },
+            {
+                "name": "Ицу",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", бекон, творожный сыр, лосось холодного копчения, лук зеленый, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/871a95af6748cec8d45c01d4ff139c79.JPEG",
+                "productValue": {
+                    "energy_amount": 269.41,
+                    "fiber_amount": 5.35,
+                    "fat_amount": 20.95,
+                    "carbohydrate_amount": 14.87,
+                    "weight_amount": 239
+                },
+                "id": 97
+            },
+            {
+                "name": "Тацу",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, сурими, огурцы, креветочный соус.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/bdc2eda71a069b638a6558a54449a08e.JPEG",
+                "productValue": {
+                    "energy_amount": 213.85,
+                    "fiber_amount": 2.74,
+                    "fat_amount": 15.36,
+                    "carbohydrate_amount": 16.17,
+                    "weight_amount": 190
+                },
+                "id": 98
+            },
+            {
+                "name": "Ринго",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, лосось на пару, творожный сыр, айсберг, авокадо.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/a83a3bfa13e638151a9b1648ee8fa2f9.JPEG",
+                "productValue": {
+                    "energy_amount": 147.55,
+                    "fiber_amount": 6.18,
+                    "fat_amount": 5.9,
+                    "carbohydrate_amount": 17.42,
+                    "weight_amount": 198
+                },
+                "id": 99
+            },
+            {
+                "name": "Кикуми",
+                "price": "389",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, творожный сыр, огурцы, авокадо, копченый угорь.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/e6fd0c4be39967d2001d1050aafccfac.JPEG",
+                "productValue": {
+                    "energy_amount": 105.7,
+                    "fiber_amount": 1.98,
+                    "fat_amount": 4.23,
+                    "carbohydrate_amount": 14.93,
+                    "weight_amount": 205
+                },
+                "id": 100
+            },
+            {
+                "name": "Умэ",
+                "price": "269",
+                "sostav": "Японский рис, водоросли \"нори\", окунь маринованный, творожный сыр, лук зеленый, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/4d7dc812e7179ad63109cc4707a03271.JPEG",
+                "productValue": {
+                    "energy_amount": 227.28,
+                    "fiber_amount": 2.78,
+                    "fat_amount": 17.68,
+                    "carbohydrate_amount": 14.27,
+                    "weight_amount": 229
+                },
+                "id": 101
+            },
+            {
+                "name": "Гендзи",
+                "price": "299",
+                "sostav": "Японский рис, водоросли \"нори\",сурими, авокадо, творожный сыр, айсберг, фирменный соус для запекания, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/f5e113680634a1f3b0d4891c1db714c1.JPEG",
+                "productValue": {
+                    "energy_amount": 241.56,
+                    "fiber_amount": 3.88,
+                    "fat_amount": 18.7,
+                    "carbohydrate_amount": 14.44,
+                    "weight_amount": 254
+                },
+                "id": 102
+            },
+            {
+                "name": "Мизу",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", слабосоленый лосось, творожный сыр, огурцы, икра массаго .",
+                "imageLink": "https://gedzagroup.ru/media/catalog/d73b173596e9dbe53b453afe9eabfd03.JPEG",
+                "productValue": {
+                    "energy_amount": 105.2,
+                    "fiber_amount": 3.06,
+                    "fat_amount": 3.62,
+                    "carbohydrate_amount": 15.1,
+                    "weight_amount": 195
+                },
+                "id": 103
+            },
+            {
+                "name": "Асахи",
+                "price": "299",
+                "sostav": "Японский рис, водоросли \"нори\", икра массаго, омлет, авокадо, фирменный соус для запекания, сурими, кунжут, соус унаги. ",
+                "imageLink": "https://gedzagroup.ru/media/catalog/9bace594fd21442a9b6b892c6249050a.JPEG",
+                "productValue": {
+                    "energy_amount": 214.54,
+                    "fiber_amount": 4.66,
+                    "fat_amount": 15.31,
+                    "carbohydrate_amount": 14.53,
+                    "weight_amount": 254
+                },
+                "id": 104
+            },
+            {
+                "name": "Запеченный с лососем",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, огурец, слабосоленый лосось, икра масаго, фирменный соус для запекания, соус унаги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/a1572c68acc71ecf9637c96caedd3472.JPEG",
+                "productValue": {
+                    "energy_amount": 226.67,
+                    "fiber_amount": 5.52,
+                    "fat_amount": 16.05,
+                    "carbohydrate_amount": 15.05,
+                    "weight_amount": 250
+                },
+                "id": 105
+            },
+            {
+                "name": "Запеченный с лососем холодного копчения",
+                "price": "319",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, огурец, лосось холодного копчения, икра масаго, фирменный соус для запекания, соус унаги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/a14401911d42904be7e0f03e1359a1de.JPEG",
+                "productValue": {
+                    "energy_amount": 226.67,
+                    "fiber_amount": 5.52,
+                    "fat_amount": 16.05,
+                    "carbohydrate_amount": 15.05,
+                    "weight_amount": 250
+                },
+                "id": 106
+            },
+            {
+                "name": "Калифорния микс",
+                "price": "339",
+                "sostav": "Японский рис, водоросли \"нори\", сурими, огурец, икра масаго, слабосолёный лосось.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/b310a60a522bcf68f1b25f8b9336f84f.JPEG",
+                "productValue": {
+                    "energy_amount": 106.93,
+                    "fiber_amount": 8.08,
+                    "fat_amount": 1.71,
+                    "carbohydrate_amount": 14.8,
+                    "weight_amount": 190
+                },
+                "id": 107
+            },
+            {
+                "name": "Сливочная креветка",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, вареная креветка, соус унаги, огурец, кляр, сухари панировочные, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/ebd1688d3e1a3d20ea712cd592117f58.JPEG",
+                "productValue": {
+                    "energy_amount": 111.5,
+                    "fiber_amount": 2.43,
+                    "fat_amount": 1.9,
+                    "carbohydrate_amount": 21.17,
+                    "weight_amount": 229
+                },
+                "id": 108
+            },
+            {
+                "name": "Сливочный Лосось",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр,  слабосолёный лосось, огурец, соус унаги, кляр, сухари панировочные, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/5f047e665635839f92bc9a83c180352f.JPEG",
+                "productValue": {
+                    "energy_amount": 127.79,
+                    "fiber_amount": 4.56,
+                    "fat_amount": 3.5,
+                    "carbohydrate_amount": 19.52,
+                    "weight_amount": 235
+                },
+                "id": 109
+            },
+            {
+                "name": "Канада лайт",
+                "price": "409",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, огурец, слабосолёный лосось, копчёный угорь, кунжут, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/ba9dd5b299ba0cce81ccfc5498610185.JPEG",
+                "productValue": {
+                    "energy_amount": 151.12,
+                    "fiber_amount": 7.25,
+                    "fat_amount": 5.94,
+                    "carbohydrate_amount": 17.16,
+                    "weight_amount": 215
+                },
+                "id": 110
+            },
+            {
+                "name": "Сяке Маки Хот",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, слабосолёный лосось, соус унаги, огурец, фирменный соус для запекания, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/50880299628ee555b649b2e1301b16ff.JPEG",
+                "productValue": {
+                    "energy_amount": 160.27,
+                    "fiber_amount": 4.91,
+                    "fat_amount": 7.83,
+                    "carbohydrate_amount": 17.55,
+                    "weight_amount": 235
+                },
+                "id": 111
+            },
+            {
+                "name": "Туна",
+                "price": "279",
+                "sostav": "Японский рис, водоросли \"нори\", тунец, лук зелёный, кляр, сухари панировочные, соус шрирача.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/bdb059c22b57439b7b2a7e9111394913.JPEG",
+                "productValue": {
+                    "energy_amount": 99.87,
+                    "fiber_amount": 5.05,
+                    "fat_amount": 0.35,
+                    "carbohydrate_amount": 19.13,
+                    "weight_amount": 200
+                },
+                "id": 112
+            },
+            {
+                "name": "Унаги Темпура",
+                "price": "399",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, копчёный угорь, омлет, кляр, сухари панировочные, соус унаги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/ee455d1c5552439abebc40853365f879.JPEG",
+                "productValue": {
+                    "energy_amount": 137.95,
+                    "fiber_amount": 5.82,
+                    "fat_amount": 4.15,
+                    "carbohydrate_amount": 19.33,
+                    "weight_amount": 229
+                },
+                "id": 113
+            },
+            {
+                "name": "Фиеста Хот",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, лосось на пару, соус унаги, фирменный соус для запекания, кунжут, омлет.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/e335a6e06cc3508fd021fc934094ae79.JPEG",
+                "productValue": {
+                    "energy_amount": 183.28,
+                    "fiber_amount": 5.73,
+                    "fat_amount": 10.44,
+                    "carbohydrate_amount": 16.59,
+                    "weight_amount": 260
+                },
+                "id": 114
+            },
+            {
+                "name": "Цыпа",
+                "price": "249",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр,  курица холодного копчения, помидор, кляр, сухари панировочные.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/f027c4bd0de77c6d20010b6c790cc146.JPEG",
+                "productValue": {
+                    "energy_amount": 123.43,
+                    "fiber_amount": 5.46,
+                    "fat_amount": 4.33,
+                    "carbohydrate_amount": 15.66,
+                    "weight_amount": 220
+                },
+                "id": 115
+            },
+            {
+                "name": "Хаматцу Хот",
+                "price": "349",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр,  лосось на пару, соус унаги,фирменный соус для запекания, кунжут, огурец маринованный. ",
+                "imageLink": "https://gedzagroup.ru/media/catalog/1c545f2bfbb3dab82d2bb95ba0271af0.JPEG",
+                "productValue": {
+                    "energy_amount": 180.33,
+                    "fiber_amount": 4.7,
+                    "fat_amount": 10.9,
+                    "carbohydrate_amount": 15.86,
+                    "weight_amount": 230
+                },
+                "id": 116
+            },
+            {
+                "name": "Филадельфия Лайт",
+                "price": "299",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, слабосолёный лосось, огурец.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/cafe95b3eef55dba4e8931105cc9bb39.JPEG",
+                "productValue": {
+                    "energy_amount": 154.32,
+                    "fiber_amount": 5.34,
+                    "fat_amount": 7.92,
+                    "carbohydrate_amount": 15.41,
+                    "weight_amount": 190
+                },
+                "id": 117
+            },
+            {
+                "name": "Филадельфия лайт Хот",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр,  слабосолёный лосось,огурец,фирменный соус для запекания, соус унаги.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/998d67b9e7613dc240b25b82b576e1c5.JPEG",
+                "productValue": {
+                    "energy_amount": 161.78,
+                    "fiber_amount": 5.31,
+                    "fat_amount": 7.72,
+                    "carbohydrate_amount": 17.76,
+                    "weight_amount": 220
+                },
+                "id": 118
+            },
+            {
+                "name": "Сяке Магуро мини",
+                "price": "299",
+                "sostav": "Японский рис, водоросли \"нори\", фирменный соус для запекания,  слабосолёный лосось, соус унаги, тунец, огурец, творожный сыр, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/3f9a1a8b67b9c7e0afadae793b2a2635.JPEG",
+                "productValue": {
+                    "energy_amount": 198.3,
+                    "fiber_amount": 6.17,
+                    "fat_amount": 12.0,
+                    "carbohydrate_amount": 16.4,
+                    "weight_amount": 235
+                },
+                "id": 119
+            },
+            {
+                "name": "Лосось и тунец мини",
+                "price": "309",
+                "sostav": "Японский рис, водоросли \"нори\", творожный сыр, маринованный тунец, слабосоленый лосось ,лук зелёный, кляр, сухари панировочные, соус унаги, кунжут.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/1e0c7396e103508dd2156b88a58ca284.JPEG",
+                "productValue": {
+                    "energy_amount": 129.28,
+                    "fiber_amount": 5.76,
+                    "fat_amount": 3.86,
+                    "carbohydrate_amount": 17.88,
+                    "weight_amount": 214
+                },
+                "id": 120
+            }
+        ],
+        "id": 5
+    },
+    {
+        "category_name": "Сеты Мини",
+        "items_list": [
+            {
+                "name": "Сет Ями",
+                "price": "759",
+                "sostav": "Цыпа, Сливочный лосось, Хикари, Умэ",
+                "imageLink": "https://gedzagroup.ru/media/catalog/c6b38f0c93c0297d2e785eb348342553.JPEG",
+                "productValue": {
+                    "energy_amount": 171.84,
+                    "fiber_amount": 4.31,
+                    "fat_amount": 10.1,
+                    "carbohydrate_amount": 15.93,
+                    "weight_amount": 913
+                },
+                "oldprice": "1046",
+                "id": 121
+            },
+            {
+                "name": "Сет Фиджи",
+                "price": "1029",
+                "sostav": "Уме ,Тамаси, Капи, Тацу",
+                "imageLink": "https://gedzagroup.ru/media/catalog/561f243ef034fd31379b1f4b535251f4.JPEG",
+                "productValue": {
+                    "energy_amount": 202.44,
+                    "fiber_amount": 4.12,
+                    "fat_amount": 13.92,
+                    "carbohydrate_amount": 15.17,
+                    "weight_amount": 858
+                },
+                "id": 122
+            },
+            {
+                "name": "Сет Лайт Кинг",
+                "price": "1829",
+                "sostav": "Филадельфия лайт, Хикари, Окаси, Запеченный ролл с лососем, Фиеста хот, Капи, Сливочный Лосось",
+                "imageLink": "https://gedzagroup.ru/media/catalog/19be08aa4f429a094150918bc54e2101.JPEG",
+                "productValue": {
+                    "energy_amount": 163.46,
+                    "fiber_amount": 5.13,
+                    "fat_amount": 9.46,
+                    "carbohydrate_amount": 14.44,
+                    "weight_amount": 1499
+                },
+                "id": 123
+            },
+            {
+                "name": "Сет Маэстро",
+                "price": "1229",
+                "sostav": "Запеченный ролл с лососем, Такуси, Запеченный с лососем сс, Умэ, Хикари",
+                "imageLink": "https://gedzagroup.ru/media/catalog/0d9cd9c89e4e9b2344fca4bc11541f5c.JPEG",
+                "productValue": {
+                    "energy_amount": 217.78,
+                    "fiber_amount": 4.07,
+                    "fat_amount": 16.96,
+                    "carbohydrate_amount": 12.21,
+                    "weight_amount": 1157
+                },
+                "id": 124
+            },
+            {
+                "name": "Сет Кинг",
+                "price": "1729",
+                "sostav": "Сахано, Асоби, Ицу, Запеченный ролл с лососем, Хикари, Сяцу, Цыпа, Лосось и тунец мини",
+                "imageLink": "https://gedzagroup.ru/media/catalog/7a733e94abaa3d2e273b26a1d3c757fd.JPEG",
+                "productValue": {
+                    "energy_amount": 174.56,
+                    "fiber_amount": 4.43,
+                    "fat_amount": 11.18,
+                    "carbohydrate_amount": 14.06,
+                    "weight_amount": 1751
+                },
+                "id": 125
+            },
+            {
+                "name": "Сет Пикник",
+                "price": "1529",
+                "sostav": "Филадельфия лайт хот, Ицу,Запеченный ролл с лососем, Сяцу, Асахи, Сливочный лосось",
+                "imageLink": "https://gedzagroup.ru/media/catalog/5220a386c9e6c519d05c92291c49b329.JPEG",
+                "productValue": {
+                    "energy_amount": 198.71,
+                    "fiber_amount": 4.42,
+                    "fat_amount": 13.87,
+                    "carbohydrate_amount": 14.05,
+                    "weight_amount": 1387
+                },
+                "id": 126
+            },
+            {
+                "name": "Сет Мания",
+                "price": "1429",
+                "sostav": "Неко, Ханасу, Ицу, Фиеста хот, Ютаки",
+                "imageLink": "https://gedzagroup.ru/media/catalog/96e5220004d6db74a82e840d8e9bffca.JPEG",
+                "productValue": {
+                    "energy_amount": 199.82,
+                    "fiber_amount": 5.57,
+                    "fat_amount": 12.76,
+                    "carbohydrate_amount": 15.67,
+                    "weight_amount": 1148
+                },
+                "id": 127
+            },
+            {
+                "name": "Сет Жара",
+                "price": "759",
+                "sostav": "Сяцу, Хикари, Асахи, Хаматцу хот",
+                "imageLink": "https://gedzagroup.ru/media/catalog/9df3f7a81eaee488014ca88592c95be0.JPEG",
+                "productValue": {
+                    "energy_amount": 202.21,
+                    "fiber_amount": 4.03,
+                    "fat_amount": 14.22,
+                    "carbohydrate_amount": 14.53,
+                    "weight_amount": 952
+                },
+                "oldprice": "1136",
+                "id": 128
+            },
+            {
+                "name": "Сет Посиделки",
+                "price": "1029",
+                "sostav": "Содзиро, Хикари, Запеченный ролл с лососем, Такуси",
+                "imageLink": "https://gedzagroup.ru/media/catalog/804c98c4ac139eaa47fe20307f28943e.JPEG",
+                "productValue": {
+                    "energy_amount": 214.96,
+                    "fiber_amount": 4.43,
+                    "fat_amount": 16.89,
+                    "carbohydrate_amount": 11.32,
+                    "weight_amount": 912
+                },
+                "id": 129
+            },
+            {
+                "name": "Сет Особый",
+                "price": "1029",
+                "sostav": "Филадельфия лайт хот, Ютаки, Иноти, Хикари.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/82c96bd9222f757ab63c3be14f8be40c.JPEG",
+                "productValue": {
+                    "energy_amount": 189.88,
+                    "fiber_amount": 4.49,
+                    "fat_amount": 12.54,
+                    "carbohydrate_amount": 14.77,
+                    "weight_amount": 967
+                },
+                "id": 130
+            },
+            {
+                "name": "Сет 888",
+                "price": "888",
+                "sostav": "Сяке бекон мини, Запеченный с лососем ХК, Запеченный с курицей, Окунек.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/72fd855f5d4bfb17c67198c8c8294bca.JPEG",
+                "productValue": {
+                    "energy_amount": 252.9,
+                    "fiber_amount": 6.89,
+                    "fat_amount": 18.1,
+                    "carbohydrate_amount": 15.61,
+                    "weight_amount": 835
+                },
+                "oldprice": "1390",
+                "id": 131
+            },
+            {
+                "name": "Сет ГЕДЗА",
+                "price": "969",
+                "sostav": "Фиеста Хот, Филадельфия Лайт, Хаматцу, Сяке Маки Хот, Эби Маки Хот.",
+                "imageLink": "https://gedzagroup.ru/media/catalog/5478de563d2dbbff330f20519a861d60.JPEG",
+                "productValue": {
+                    "energy_amount": 173.77,
+                    "fiber_amount": 5.1,
+                    "fat_amount": 9.14,
+                    "carbohydrate_amount": 17.78,
+                    "weight_amount": 1015
+                },
+                "oldprice": "1349",
+                "id": 132
+            },
+            {
+                "name": "Сет Хитори",
+                "price": "759",
+                "sostav": "Ролл Нежный Лосось, Ролл Дзен, Ролл Сливочный цыпленок, Ролл \"Окунек\"",
+                "imageLink": "https://gedzagroup.ru/media/catalog/ec2e38813600beb0759162cde0792873.JPEG",
+                "productValue": {
+                    "energy_amount": 209.97,
+                    "fiber_amount": 5.67,
+                    "fat_amount": 14.24,
+                    "carbohydrate_amount": 14.79,
+                    "weight_amount": 870
+                },
+                "oldprice": "1199",
+                "id": 133
+            }
+        ],
+        "id": 6
+    }
+]
