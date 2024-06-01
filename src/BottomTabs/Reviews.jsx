@@ -5,21 +5,32 @@ import {
   Image,
   Pressable,
   Linking,
+  StyleSheet,
   ScrollView,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { setYaModalVisible } from '../Redux/CartReducer';
+import { useNavigation } from '@react-navigation/native';
+import { setYandexModalVisible } from '../Redux/FocusReducer';
 import ReviewLinkModal from '../components/ReviewLinksModal';
+import GoBackButton from '../Icons/GoBackButton';
 
 function Reviews() {
+  const navigation = useNavigation();
+  console.log(navigation);
   const dispatch = useDispatch();
   return (
     <ScrollView>
       <ReviewLinkModal />
-      <View style={{ width: '100%', paddingRight: 15, paddingLeft: 15, paddingTop: 20 }}>
-        <Text style={{ fontSize: 35, marginBottom: 35, }}>Отзывы</Text>
+      <View style={styles.header_container}>
+        <Text style={styles.header_text}>Отзывы</Text>
       </View>
-      <View style={{ width: '100%', paddingRight: 15, paddingLeft: 15 }}>
+      <Pressable
+        style={styles.back_button}
+        onPress={() => navigation.navigate('Меню')}
+      >
+        <GoBackButton />
+      </Pressable>
+      <View style={styles.container}>
         <Text style={{ fontSize: 16, marginBottom: 5 }}>
           Вы можете оставить свой отзыв о качестве обслуживания и нашей
           продукции.
@@ -57,7 +68,7 @@ function Reviews() {
                     paddingRight: 15,
                     alignItems: 'center',
                   }}
-                  onPress={() => dispatch(setYaModalVisible(true))}
+                  onPress={() => dispatch(setYandexModalVisible(true))}
                 >
                   <Text style={{ color: '#fff', fontSize: 14, lineHeight: 20 }}>
                     Оставить отзыв
@@ -155,5 +166,20 @@ function Reviews() {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  header_container: {
+    width: '100%', paddingRight: 15, paddingLeft: 15, paddingTop: 20,
+  },
+  header_text: {
+    fontSize: 35, marginBottom: 5,
+  },
+  back_button: {
+    width: 60, height: 60, justifyContent: 'center', alignItems: 'center',
+  },
+  container: {
+    width: '100%', paddingRight: 15, paddingLeft: 15,
+  },
+});
 
 export default Reviews;

@@ -39,7 +39,14 @@ function Promocode() {
       </View>
       <View>
         {
-            promocode.activatedPromocode === true && <Text style={{textAlign: 'center'}}>Успешная активация промокода! Скидка составляет 20%</Text>
+            promocode.activatedPromocode === true && (
+            <Text style={{ textAlign: 'center' }}>
+              Успешная активация промокода! Скидка составляет
+              {' '}
+              {promocode.discountSize}
+              %
+            </Text>
+            )
         }
         {
             promocode.activatedPromocode === 'error' && <Text>Введен неверный промокод!</Text>

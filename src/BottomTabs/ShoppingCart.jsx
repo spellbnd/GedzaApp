@@ -13,6 +13,7 @@ import { useIsFocused } from '@react-navigation/native';
 import IncreaseCount from '../Icons/IncreaseCount';
 import DecreaseCount from '../Icons/DecreaseCount';
 import GiftChoose from '../components/GiftChoose';
+import GoBackButton from '../Icons/GoBackButton';
 
 import {
   incrementQuantity,
@@ -23,15 +24,7 @@ import GiftIcon from '../Icons/GiftIcon';
 
 import { setCartFocus } from '../Redux/FocusReducer';
 import Promocode from '../components/Promocode';
-
-const normalize_count_form = (number, wordsArr) => {
-  number = Math.abs(number);
-  if (Number.isInteger(number)) {
-    const options = [2, 0, 1, 1, 1, 2];
-    return wordsArr[(number % 100 > 4 && number % 100 < 20) ? 2 : options[(number % 10 < 5) ? number % 10 : 5]];
-  }
-  return wordsArr[1];
-};
+import normalizeCountForm from '../utils/functions';
 
 function ShoppingCartScreen({ navigation }) {
   const user = useSelector((state) => state?.user.currentUser);
@@ -77,11 +70,13 @@ function ShoppingCartScreen({ navigation }) {
           <ScrollView style={styles.container}>
             <View style={styles.cart_table}>
               <View style={styles.title_row}>
-                <Pressable onPress={() => navigation.jumpTo('Меню')}>
-                  <Image
-                    source={require('../../assets/Button.png')}
-                    style={{ width: 24, height: 24 }}
-                  />
+                <Pressable
+                  style={{
+                    width: 24, height: 24, justifyContent: 'center', alignItems: 'center',
+                  }}
+                  onPress={() => navigation.jumpTo('Меню')}
+                >
+                  <GoBackButton />
                 </Pressable>
                 <Text style={{ fontWeight: 700, fontSize: 24, flex: 0.7 }}>
                   Корзина
@@ -167,7 +162,7 @@ function ShoppingCartScreen({ navigation }) {
                     {' '}
                     {fullcart.count}
                     {' '}
-                    {normalize_count_form(fullcart.count, ['товар', 'товара', 'товаров'])}
+                    {normalizeCountForm(fullcart.count, ['товар', 'товара', 'товаров'])}
                     {' '}
                     на
                     {' '}
@@ -175,7 +170,7 @@ function ShoppingCartScreen({ navigation }) {
                     {' '}
                     {'\u20BD'}
                   </Text>
-                  {fullcart.activatedPromocode === true && (
+                  {fullcart.promocodeStatus === 'activated' && (
                     <Text
                       style={{
                         fontSize: 18,
@@ -183,7 +178,11 @@ function ShoppingCartScreen({ navigation }) {
                         lineHeight: 27,
                       }}
                     >
-                      Скидка: 20%
+                      Скидка: 
+                      {' '}
+                      {fullcart.discountSize}
+                      {' '}
+                      %
                     </Text>
                   )}
                   <Text
@@ -191,9 +190,9 @@ function ShoppingCartScreen({ navigation }) {
                   >
                     Итого:
                     {' '}
-                    {fullcart.activatedPromocode === true
-                      && Math.trunc(fullcart.total * 0.8)}
-                    {fullcart.activatedPromocode !== true && fullcart.total}
+                    {fullcart.promocodeStatus === 'activated'
+                      && Math.trunc(fullcart.total * ((100 - fullcart.discountSize) / 100))}
+                    {fullcart.promocodeStatus !== 'activated' && fullcart.total}
                     {'\u20BD'}
                   </Text>
                 </View>
@@ -295,7 +294,7 @@ function ShoppingCartScreen({ navigation }) {
                                       >
                                         <DecreaseCount />
                                       </Pressable>
-                                      {(cart.find((item) => item.name === additionalItem.name) === undefined) && <Text>{additionalItem.quantity}</Text> }
+                                      {(cart.find((item) => item.name === additionalItem.name) === undefined) && <Text>0</Text> }
                                       {(cart.find((item) => item.name === additionalItem.name) !== undefined) && (
                                       <Text>
                                         {
@@ -324,7 +323,7 @@ function ShoppingCartScreen({ navigation }) {
                         ))
                     }
               </View>
-              {user.logged === 'true'
+              {user.logged === true
               && (
               <Pressable
                 style={styles.proceed_next}
@@ -333,7 +332,7 @@ function ShoppingCartScreen({ navigation }) {
                 <Text style={styles.proceed_next_text}>К доставке и оплате</Text>
               </Pressable>
               )}
-              {user.logged !== 'true'
+              {user.logged !== true
               && (
               <Pressable
                 style={styles.proceed_next}
@@ -489,6 +488,13 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  count_change_button: {
+    height: 25,
+    width: 25,
+    backgroundColor: '#EEEEEE',
+    borderRadius: 12.5,
+    padding: 7,
   },
 });
 

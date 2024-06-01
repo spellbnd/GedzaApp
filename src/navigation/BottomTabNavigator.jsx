@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 import * as React from 'react';
+import MaskInput from 'react-native-mask-input';
 import {
   Text,
   View,
@@ -31,7 +32,8 @@ import { useForm, Controller } from 'react-hook-form';
 import Checkbox from 'expo-checkbox';
 import moment from 'moment';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import AddressInput from '../apiComponents/addressInput';
+import PhoneNumberInput from '../components/PhoneNumberInput';
+import ContactsScreen from '../BottomTabs/Contacts';
 import BonusSlider from '../components/BonusSlider';
 import Catalog from '../BottomTabs/Catalog';
 import MenuIcon from '../Icons/MenuIcon';
@@ -45,19 +47,21 @@ import {
   setCart,
   setGiftVisible,
   spendBonuses,
+  activatePromocode,
 } from '../Redux/CartReducer';
 import GedzaWhite from '../Icons/GedzaWhite';
 import SideNavIcon from '../Icons/SideNavIcon';
 import AccountIcon from '../Icons/AccountIcon';
 import OrderListIcon from '../Icons/OrderListIcon';
 import {
-  exitUser, setUser, setUserOrderHistory, addtoUserList, login,
+  exitUser, setUser, setUserOrderHistory, addtoUserList, login, register,
 } from '../Redux/UserReducer';
 import GiftChoose from '../components/GiftChoose';
 import DecreaseCount from '../Icons/DecreaseCount';
 import IncreaseCount from '../Icons/IncreaseCount';
 import QuitIcon from '../Icons/QuitIcon';
 import ArrowIcon from '../Icons/ArrowIcon';
+import normalizeCountForm from '../utils/functions';
 
 const { StatusBarManager } = NativeModules;
 
@@ -65,16 +69,8 @@ const WIDTH = Dimensions.get('window').width;
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const normalize_count_form = (number, wordsArr) => {
-  number = Math.abs(number);
-  if (Number.isInteger(number)) {
-    const options = [2, 0, 1, 1, 1, 2];
-    return wordsArr[(number % 100 > 4 && number % 100 < 20) ? 2 : options[(number % 10 < 5) ? number % 10 : 5]];
-  }
-  return wordsArr[1];
-};
 
-function MyStack() {
+function CartStack() {
   return (
     <Stack.Navigator
       sceneContainerStyle={{ backgroundColor: 'blue' }}
@@ -86,39 +82,17 @@ function MyStack() {
   );
 }
 
-function SettingsScreen() {
-  return (
-    <View style={{ width: '100%', paddingRight: 15, paddingLeft: 15 }}>
-      <Text style={styles.contacts_text_header}>Контакты</Text>
-      <Text style={styles.contacts_text}>+7(347)200-30-04</Text>
-      <Text style={styles.contacts_text}>Режим работы</Text>
-      <Text style={styles.contacts_text}>Ежидневно с 10:00 до 23:00</Text>
-      <Text style={styles.contacts_text}>
-        Заказы принимаем с 10:00 до 22:30
-      </Text>
-      <Text style={styles.contacts_text}>Точки самовывоза</Text>
-      <Text style={styles.contacts_text}>
-        г.Уфа ул. Набережная реки Уфы, д. 41
-      </Text>
-      <Text style={styles.contacts_text}>
-        г.Уфа ул. Проспект Октября, д. 49
-      </Text>
-      <Text style={styles.contacts_text}>г.Уфа ул. Софьи Перовской, д. 42</Text>
-      <Text style={styles.contacts_text}>г.Уфа ул. Ульяновых, д. 31</Text>
-      <Text style={styles.contacts_text}>г.Уфа ул. Карла Маркса, д. 25</Text>
-    </View>
-  );
-}
-
 const inputs = {
   contact_info: [
     {
       name: 'fullname',
       label: 'Имя',
+      required: true,
     },
     {
       name: 'phone',
       label: 'Телефон',
+      required: true,
     },
     {
       name: 'email',
@@ -128,11 +102,13 @@ const inputs = {
   delivery_by_courier: [
     {
       name: 'street',
-      label: 'Улица',
+      label: 'Улица*',
+      required: true,
     },
     {
       name: 'home',
-      label: 'Дом',
+      label: 'Дом*',
+      required: true,
     },
     {
       name: 'entrance',
@@ -144,7 +120,8 @@ const inputs = {
     },
     {
       name: 'delivery_apartment',
-      label: 'Квартира/Офис',
+      label: 'Квартира/Офис*',
+      required: true,
     },
     {
       name: 'delivery_domofon',
@@ -171,6 +148,7 @@ const inputs = {
     {
       name: 'person_count',
       label: 'Количество персон',
+      defaultValue: '1',
     },
     {
       name: 'confirm_comment',
@@ -184,13 +162,13 @@ function MakingOrder() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.user.currentUser);
-  console.log(`Вызов! ${user}`);
   const fullcart = useSelector((state) => state?.cart);
   const noAddCart = fullcart.cart;
   console.log(noAddCart);
   const [tab, setTab] = React.useState(0);
   const [tab2, setTab2] = React.useState(0);
   const [timeYes, setTimeYes] = React.useState(false);
+  console.log(tab);
   const IncreaseQuantity = (item) => {
     dispatch(incrementQuantity(item));
   };
@@ -218,16 +196,7 @@ function MakingOrder() {
   });
 
   const onSubmit = (values) => {
-    if (user?.id) {
-      dispatch(setUser({ ...user, ...values }));
-    } else {
-      dispatch(
-        setUser({
-          ...user,
-          ...values,
-        }),
-      );
-    }
+    dispatch(setUser({ ...user, ...values }));
   };
 
   const [date, setDate] = React.useState({
@@ -238,7 +207,7 @@ function MakingOrder() {
   const [show, setShow] = React.useState(false);
   const [pickup, setPickup] = React.useState('java');
 
-  const onChange = (event, selectedDate) => {
+  const onChange = (_, selectedDate) => {
     const currentDate = selectedDate;
     setShow(false);
     setDate({ ...date, [mode]: currentDate });
@@ -282,7 +251,6 @@ function MakingOrder() {
             </Text>
             <Controller
               control={control}
-              rules={{ required: true }}
               render={({ field: { onChange, onBlur, value } }) => (
                 <TextInput
                   onBlur={onBlur}
@@ -319,7 +287,9 @@ function MakingOrder() {
             </Text>
           </Pressable>
           <Pressable
-            onPress={() => setTab(1)}
+            onPress={() => {
+              setTab(1);
+            }}
             style={[styles.tab_btn, tab === 1 ? styles.tab_btn_active : {}]}
           >
             <Text
@@ -330,38 +300,41 @@ function MakingOrder() {
           </Pressable>
         </View>
         {tab === 0 ? (
-          inputs.delivery_by_courier.map((input) => (
-            <View key={input.name}>
-              <Text
-                style={[
-                  styles.label,
-                  errors[input.name] ? { color: '#f50' } : {},
-                ]}
-              >
-                {input.label}
-              </Text>
-              <Controller
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    onBlur={onBlur}
-                    onChangeText={onChange}
-                    value={value}
-                    style={[
-                      styles.input,
-                      errors[input.name] ? { borderColor: '#f50' } : {},
-                    ]}
-                    placeholder={input.label}
-                    placeholderTextColor={
+          <>
+            {inputs.delivery_by_courier.map((input) => (
+              <View key={input.name}>
+                <Text
+                  style={[
+                    styles.label,
+                    errors[input.name] ? { color: '#f50' } : {},
+                  ]}
+                >
+                  {input.label}
+                </Text>
+                <Controller
+                  control={control}
+                  rules={{ required: input.required === true }}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                      onBlur={onBlur}
+                      onChangeText={onChange}
+                      value={value}
+                      style={[
+                        styles.input,
+                        errors[input.name] ? { borderColor: '#f50' } : {},
+                      ]}
+                      placeholder={input.label}
+                      placeholderTextColor={
                       errors[input.name] ? '#f50' : 'rgba(0, 66, 105, 0.28)'
                     }
-                  />
-                )}
-                name={input.name}
-              />
-            </View>
-          ))
+                    />
+                  )}
+                  name={input.name}
+                />
+              </View>
+            ))}
+            <Text>* — отмечены поля обязательные для заполнения</Text>
+          </>
         ) : (
           <>
             {inputs.pickup.map((input) => (
@@ -546,6 +519,7 @@ function MakingOrder() {
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
+                  defaultValue={input.defaultValue}
                   style={[
                     styles.input,
                     errors[input.name] ? { borderColor: '#f50' } : {},
@@ -562,7 +536,7 @@ function MakingOrder() {
           </View>
         ))}
 
-        <Pressable
+        {/* <Pressable
           onPress={handleSubmit(onSubmit)}
           style={({ pressed }) => [
             styles.choose_gift_btn,
@@ -577,7 +551,7 @@ function MakingOrder() {
           >
             Сохранить данные
           </Text>
-        </Pressable>
+        </Pressable> */}
         {
           user.bonuses !== 0 && (
           <View>
@@ -700,7 +674,7 @@ function MakingOrder() {
               В корзине:
               {fullcart.count}
               {' '}
-              {normalize_count_form(fullcart.count, ['товар', 'товара', 'товаров'])}
+              {normalizeCountForm(fullcart.count, ['товар', 'товара', 'товаров'])}
             </Text>
             {
               fullcart.spendBonuses || fullcart.spendBonuses !== 0 ? (
@@ -712,24 +686,12 @@ function MakingOrder() {
                     textAlign: 'center',
                   }}
                 >
-                  Скидка: -
-                  {fullcart.activatedPromocode === true ? Math.trunc(fullcart.total * 0.2) + fullcart.spendBonuses : fullcart.spendBonuses}
+                  Скидка:
+                  {fullcart.promocodeStatus === 'activated' ? Math.trunc(fullcart.total * 0.2) + fullcart.spendBonuses : fullcart.spendBonuses}
                   {'\u20BD'}
                 </Text>
               ) : (null)
             }
-
-            {fullcart.activatedPromocode === true && (
-              <Text
-                style={{
-                  fontSize: 18,
-                  fontWeight: 'bold',
-                  lineHeight: 27,
-                }}
-              >
-                Скидка: 20%
-              </Text>
-            )}
             <Text
               style={{
                 fontSize: 18,
@@ -740,18 +702,18 @@ function MakingOrder() {
             >
               Итого:
               {' '}
-              {fullcart.activatedPromocode === true
+              {fullcart.promocodeStatus === 'activated'
                 ? Math.trunc(fullcart.total * 0.8) - fullcart.spendBonuses
                 : fullcart.total - fullcart.spendBonuses}
               {'\u20BD'}
             </Text>
           </View>
           <Pressable
-            disabled={!isValid}
+            disabled={tab === 1 ? false : !isValid}
             style={({ pressed }) => [
               {
                 width: '100%',
-                backgroundColor: isValid ? '#cf1c1d' : '#dedede',
+                backgroundColor: (tab === 1 || isValid) ? '#cf1c1d' : '#dedede',
                 height: 40,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -767,16 +729,17 @@ function MakingOrder() {
                     time: moment().format('DD-MM-YYYY HH:mm:ss'),
                     cart: fullcart.cart,
                     total_amount:
-                      fullcart.activatedPromocode === true
-                        ? Math.trunc(fullcart.total * 0.8) - fullcart.spendBonuses
+                      fullcart.promocodeStatus === 'activated'
+                        ? Math.trunc(fullcart.total * ((100 - fullcart.discountSize) / 100)) - fullcart.spendBonuses
                         : fullcart.total - fullcart.spendBonuses,
-                    promocode: fullcart.activatedPromocode,
-                    bonucesCount: fullcart.activatedPromocode === true ? Math.trunc((Math.trunc(fullcart.total * 0.8) - fullcart.spendBonuses) * 0.03)
+                    promocode: fullcart.promocodeStatus,
+                    bonucesCount: fullcart.promocodeStatus === 'activated' ? Math.trunc((Math.trunc(fullcart.total * 0.8) - fullcart.spendBonuses) * 0.03)
                       : Math.trunc((fullcart.total - fullcart.spendBonuses) * 0.03),
                     spendBonus: fullcart.spendBonuses,
                   },
                 ),
               );
+              dispatch(activatePromocode('clean'));
               dispatch(setUser({}));
               dispatch(spendBonuses(0));
               dispatch(setCart([]));
@@ -837,7 +800,6 @@ function MakingOrder() {
     </ScrollView>
   );
 }
-const { height } = Dimensions.get('window');
 
 function PersonalAccount() {
   console.log('RENDER OF PersonalAccount..');
@@ -845,15 +807,16 @@ function PersonalAccount() {
   const user = useSelector((state) => state?.user.currentUser);
   console.log('Вызов!');
   console.log(user);
+
   const [open, setOpen] = React.useState(true);
-  console.log(open);
+  const [isLoginForm, setIsLoginForm] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
   const [orderOpen, setOrderOpen] = React.useState(false);
   const [orderOpenIndex, setOrderOpenIndex] = React.useState(0);
   const [show, setShow] = React.useState(false);
   const [date, setDate] = React.useState(new Date());
 
-  const onChange = (event, selectedDate) => {
+  const onChange = (_, selectedDate) => {
     const currentDate = selectedDate;
     setShow(false);
     setDate(currentDate);
@@ -861,11 +824,30 @@ function PersonalAccount() {
       setUser({ ...user, birthday: moment(currentDate).format('DD.MM.YYYY') }),
     );
   };
+
   useEffect(() => {
-    if (user.logged === 'true') {
+    if (user.logged === true) {
       setOpen(false);
+    } else if (user.logged === 'success_registration') {
+      setIsLoginForm(true);
     }
   }, [user.logged]);
+
+  const handleRegistration = () => {
+    setLoading(true);
+    setTimeout(() => {
+      dispatch(register(user));
+      setLoading(false);
+    }, 1000);
+  };
+
+  const handleSaveProfile = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setOpen(false);
+    }, 1000);
+  };
 
   return (
     <View
@@ -876,7 +858,7 @@ function PersonalAccount() {
         padding: 20,
       }}
     >
-      {open ? (
+      {open === true ? (
         <KeyboardAvoidingView
           style={{ flex: 1, width: '100%' }}
           behavior={Platform.OS === 'ios' ? 'position' : undefined}
@@ -923,19 +905,94 @@ function PersonalAccount() {
                     marginBottom: 20,
                   }}
                 >
-                  {open === 'edit' ? 'Обновление данных' : 'Авторизация'}
+                  {isLoginForm ? 'Авторизация' : 'Регистрация'}
                 </Text>
-                {open === 'edit' ? (
+                {isLoginForm ? (
                   <>
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        color: '#000',
-                        fontWeight: '400',
+                    <MaskInput
+                      value={user?.phone?.slice(2)}
+                      onChangeText={(_, unmasked) => {
+                        console.log(unmasked);
+                        dispatch(setUser({ phone: `+7${unmasked}` }));
                       }}
-                    >
-                      Email
-                    </Text>
+                      mask={['(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
+                      style={{
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        borderColor: '#dedede',
+                        marginVertical: 10,
+                        paddingHorizontal: 8,
+                        fontSize: 18,
+                        color: '#000',
+                        height: 40,
+                      }}
+                      placeholderFillCharacter="0"
+                    />
+                    <TextInput
+                      style={{
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        borderColor: '#dedede',
+                        marginVertical: 10,
+                        paddingHorizontal: 8,
+                        fontSize: 18,
+                        height: 40,
+                        color: '#000',
+                      }}
+                      placeholder="Пароль"
+                      placeholderTextColor="#dedede"
+                      returnKeyType="go"
+                      onChangeText={(text) => dispatch(setUser({ password: text }))}
+                      value={user?.password}
+                      secureTextEntry
+                    />
+                    {loading ? (
+                      <ActivityIndicator color="red" size="small" />
+                    ) : (
+                      <Button
+                        title="Войти"
+                        disabled={!user?.phone || !user?.password}
+                        onPress={() => {
+                          setLoading(true);
+                          setTimeout(() => {
+                            dispatch(
+                              login({
+                                ...user,
+                              }),
+                            );
+                            if (user.logged === true) {
+                              setOpen(false);
+                            }
+                            setLoading(false);
+                          }, 1000);
+                        }}
+                      />
+                    )}
+                    <Pressable onPress={() => setIsLoginForm(false)}>
+                      <Text>Нет аккаунта? Зарегистрируйтесь!</Text>
+                    </Pressable>
+                  </>
+                ) : (
+                  <>
+                    <MaskInput
+                      value={user?.phone?.slice(2)}
+                      onChangeText={(_, unmasked) => {
+                        console.log(unmasked);
+                        dispatch(setUser({ phone: `+7${unmasked}` }));
+                      }}
+                      mask={['(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
+                      style={{
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        borderColor: '#dedede',
+                        marginVertical: 10,
+                        paddingHorizontal: 8,
+                        fontSize: 18,
+                        color: '#000',
+                        height: 40,
+                      }}
+                      placeholderFillCharacter="0"
+                    />
                     <TextInput
                       style={{
                         borderWidth: 1,
@@ -947,144 +1004,52 @@ function PersonalAccount() {
                         color: '#000',
                         height: 40,
                       }}
-                      placeholder="Email"
+                      placeholder="Имя"
                       returnKeyType="next"
                       placeholderTextColor="#dedede"
-                      onChangeText={(text) => {
-                        dispatch(setUser({ email: text }));
-                      }}
-                      value={user?.email}
+                      onChangeText={(text) => dispatch(setUser({ fullname: text }))}
+                      value={user?.fullname}
                     />
-                    <Text
+                    <TextInput
                       style={{
-                        fontSize: 16,
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        borderColor: '#dedede',
+                        marginVertical: 10,
+                        paddingHorizontal: 8,
+                        fontSize: 18,
+                        height: 40,
                         color: '#000',
-                        fontWeight: '400',
                       }}
-                    >
-                      День рождения
-                    </Text>
-                    {show && (
-                      <DateTimePicker
-                        value={date}
-                        mode="date"
-                        is24Hour
-                        onChange={onChange}
+                      placeholder="Пароль"
+                      placeholderTextColor="#dedede"
+                      returnKeyType="go"
+                      onChangeText={(text) => dispatch(setUser({ password: text }))}
+                      value={user?.password}
+                      secureTextEntry
+                    />
+                    {loading ? (
+                      <ActivityIndicator color="red" size="small" />
+                    ) : (
+                      <Button
+                        title="Регистрация"
+                        disabled={
+                          !user?.phone || !user?.password || !user?.fullname
+                        }
+                        onPress={handleRegistration}
                       />
                     )}
-                    <Pressable onPressIn={() => setShow(true)}>
-                      <TextInput
-                        style={{
-                          borderWidth: 1,
-                          borderRadius: 4,
-                          borderColor: '#dedede',
-                          marginVertical: 10,
-                          paddingHorizontal: 8,
-                          fontSize: 18,
-                          color: '#000',
-                          height: 40,
-                          pointerEvents: 'none',
-                        }}
-                        placeholder="День рождения"
-                        returnKeyType="next"
-                        editable={false}
-                        placeholderTextColor="#dedede"
-                        onChangeText={(text) => dispatch(
-                          setUser({
-                            birthday: moment(date).format('DD.MM.YYYY'),
-                          }),
-                        )}
-                        value={user?.birthday}
-                      />
+                    <Pressable onPress={() => setIsLoginForm(true)}>
+                      <Text>Уже есть аккаунт? Войдите!</Text>
                     </Pressable>
                   </>
-                ) : null}
-                {open !== 'edit' && (
-                <View>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      color: '#000',
-                      fontWeight: '400',
-                    }}
-                  >
-                    Телефон
-                  </Text>
-                  <TextInput
-                    style={{
-                      borderWidth: 1,
-                      borderRadius: 4,
-                      borderColor: '#dedede',
-                      marginVertical: 10,
-                      paddingHorizontal: 8,
-                      fontSize: 18,
-                      color: '#000',
-                      height: 40,
-                    }}
-                    placeholder="Телефон"
-                    returnKeyType="next"
-                    placeholderTextColor="#dedede"
-                    onChangeText={(text) => {
-                      console.log(`Вывод объекта: ${user}`);
-                      console.log(user);
-                      dispatch(setUser({ phone: text }));
-                    }}
-                    value={user?.phone}
-                    keyboardType="phone-pad"
-                  />
-                </View>
                 )}
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: '#000',
-                    fontWeight: '400',
-                  }}
-                >
-                  Пароль
-                </Text>
-                <TextInput
-                  style={{
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    borderColor: '#dedede',
-                    marginVertical: 10,
-                    paddingHorizontal: 8,
-                    fontSize: 18,
-                    height: 40,
-                    color: '#000',
-                  }}
-                  placeholder="Пароль"
-                  placeholderTextColor="#dedede"
-                  returnKeyType="go"
-                  onChangeText={(text) => dispatch(setUser({ password: text }))}
-                  value={user?.password}
-                  secureTextEntry
-                />
-                {loading ? (
-                  <ActivityIndicator color="red" size="small" />
-                ) : (
-                  <Button
-                    title={open === 'edit' ? 'Сохранить' : 'Логин'}
-                    disabled={
-                      !user?.phone || !user?.password
-                    }
-                    onPress={() => {
-                      setLoading(true);
-                      setTimeout(() => {
-                        console.log('Нажатие кнопОчки');
-                        dispatch(
-                          login({ ...user, id: Math.floor(Math.random() * 900) }),
-                        );
-                        if (user.logged === 'true') {
-                          setOpen(false);
-                        }
-                        setLoading(false);
-                      }, 1000);
-                    }}
-                  />
+                {user.logged === 'error' && (
+                  <Text>Введен неверный номер телефона или пароль!</Text>
                 )}
-                {user.logged === 'error' && <Text>Введен неверный номер телефона или пароль!</Text>}
+                {user.logged === 'already_registered' && (
+                <Text>Такой аккаунт уже существует!</Text>
+                )}
               </View>
             </View>
           </ScrollView>
@@ -1131,7 +1096,7 @@ function PersonalAccount() {
                 nestedScrollEnabled
                 scrollEventThrottle={16}
               >
-                {user?.history?.map((item, index) => (
+                {user?.history?.slice().sort((a, b) => new Date(b.time) - new Date(a.time))?.map((item, index) => (
                   <View key={item?.time}>
                     <Pressable
                       onPress={() => setOrderOpenIndex(
@@ -1159,13 +1124,11 @@ function PersonalAccount() {
                         <Text style={styles.accord_header}>
                           {`Начислено бонусов: ${item?.bonucesCount} \u20BD`}
                         </Text>
-                        {
-                          item.spendBonuses !== 0 && (
+                        {item.spendBonuses !== 0 && (
                           <Text style={styles.accord_header}>
                             {`Списано бонусов: ${item?.spendBonus} \u20BD`}
                           </Text>
-                          )
-                        }
+                        )}
                       </View>
                       <View
                         style={{
@@ -1250,6 +1213,153 @@ function PersonalAccount() {
                 {`Всего заказов: ${user.history?.length}`}
               </Text>
             </SafeAreaView>
+          </Modal>
+          <Modal animationType="slide" transparent visible={open === 'edit'}>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'rgba(0,0,0,0.5)',
+              }}
+            >
+              <Pressable
+                style={{
+                  position: 'absolute',
+                  zIndex: 2,
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                }}
+                onPress={() => setOpen(false)}
+              />
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderRadius: 4,
+                  padding: 16,
+                  zIndex: 3,
+                  width: '100%',
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: '#000',
+                    fontWeight: '500',
+                    marginBottom: 20,
+                  }}
+                >
+                  Обновление данных
+                </Text>
+                <>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      color: '#000',
+                      fontWeight: '400',
+                    }}
+                  >
+                    Email
+                  </Text>
+                  <TextInput
+                    style={{
+                      borderWidth: 1,
+                      borderRadius: 4,
+                      borderColor: '#dedede',
+                      marginVertical: 10,
+                      paddingHorizontal: 8,
+                      fontSize: 18,
+                      color: '#000',
+                      height: 40,
+                    }}
+                    placeholder="Email"
+                    returnKeyType="next"
+                    placeholderTextColor="#dedede"
+                    onChangeText={(text) => {
+                      dispatch(setUser({ ...user, email: text }));
+                    }}
+                    value={user?.email}
+                  />
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      color: '#000',
+                      fontWeight: '400',
+                    }}
+                  >
+                    День рождения
+                  </Text>
+                  {show && (
+                    <DateTimePicker
+                      value={date}
+                      mode="date"
+                      is24Hour
+                      onChange={onChange}
+                    />
+                  )}
+                  <Pressable onPressIn={() => setShow(true)}>
+                    <TextInput
+                      style={{
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        borderColor: '#dedede',
+                        marginVertical: 10,
+                        paddingHorizontal: 8,
+                        fontSize: 18,
+                        color: '#000',
+                        height: 40,
+                        pointerEvents: 'none',
+                      }}
+                      placeholder="День рождения"
+                      returnKeyType="next"
+                      editable={false}
+                      placeholderTextColor="#dedede"
+                      onChangeText={() => dispatch(
+                        setUser({
+                          ...user,
+                          birthday: moment(date).format('DD.MM.YYYY'),
+                        }),
+                      )}
+                      value={user?.birthday}
+                    />
+                  </Pressable>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      color: '#000',
+                      fontWeight: '400',
+                    }}
+                  >
+                    Пароль
+                  </Text>
+                  <TextInput
+                    style={{
+                      borderWidth: 1,
+                      borderRadius: 4,
+                      borderColor: '#dedede',
+                      marginVertical: 10,
+                      paddingHorizontal: 8,
+                      fontSize: 18,
+                      height: 40,
+                      color: '#000',
+                    }}
+                    placeholder="Пароль"
+                    placeholderTextColor="#dedede"
+                    returnKeyType="go"
+                    onChangeText={(text) => dispatch(setUser({ password: text }))}
+                    value={user?.password}
+                    secureTextEntry
+                  />
+                </>
+                <Button
+                  title="Сохранить"
+                  onPress={handleSaveProfile}
+                />
+              </View>
+            </View>
           </Modal>
           <>
             <View
@@ -1398,7 +1508,6 @@ export default function BottomTabNavigator(props) {
   const navigation = useNavigation();
   const cart = useSelector((state) => state.cart.cart);
   const isCartFocused = useSelector((state) => state.focus.isCartFocused);
-  const testx = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTotalAmount());
@@ -1451,14 +1560,14 @@ export default function BottomTabNavigator(props) {
       />
       <Tab.Screen
         name="Корзина"
-        component={MyStack}
+        component={CartStack}
         options={{
           tabBarLabel: 'Корзина',
           tabBarIcon: () => <ShoppingCart />,
           tabBarBadge:
-            isCartFocused || testx.cart?.length === 0
+            isCartFocused || cart.length === 0
               ? undefined
-              : testx.cart?.length,
+              : cart.length,
 
           header: () => (
             <View
@@ -1492,7 +1601,7 @@ export default function BottomTabNavigator(props) {
 
       <Tab.Screen
         name="Контакты"
-        component={SettingsScreen}
+        component={ContactsScreen}
         options={{
           tabBarlabel: 'Контакты',
           tabBarIcon: () => <ContactsIcon />,

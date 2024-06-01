@@ -18,14 +18,25 @@ const userSlice = createSlice({
     },
   },
   reducers: {
+    register: (state, action) => {
+      const isAlreadyRegistered = state.usersList.find((item) => item.phone === action.payload.phone);
+      if (isAlreadyRegistered) {
+        state.currentUser.logged = 'already_registered';
+      } else {
+        state.usersList.push(action.payload);
+        state.currentUser.logged = 'success_registration';
+      }
+    },
     login: (state, { payload }) => {
       const inUserList = state.usersList.find((item) => item.phone === payload.phone);
       if (inUserList) {
         if (inUserList.password === payload.password) {
-          state.currentUser = { ...state.currentUser, ...inUserList, logged: 'true' };
+          state.currentUser = { ...state.currentUser, ...inUserList, logged: true };
         } else {
           state.currentUser.logged = 'error';
         }
+      } else {
+        state.currentUser.logged = 'error';
       }
     },
     setUser: (state, action) => {
@@ -41,6 +52,7 @@ const userSlice = createSlice({
       console.log('Выводим ЩИТ');
       console.dir(state.currentUser, { depth: 30 });
       console.log('Вывели');
+      console.log(state);
     },
     exitUser: (state) => {
       state.currentUser = { history: [], bonuses: 0 };
@@ -59,7 +71,7 @@ const userSlice = createSlice({
 });
 
 export const {
-  setUser, setUserOrderHistory, exitUser, addtoUserList, login,
+  setUser, setUserOrderHistory, exitUser, addtoUserList, login, register,
 } = userSlice.actions;
 
 export default userSlice.reducer;

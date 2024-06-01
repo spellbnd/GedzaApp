@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import * as React from 'react';
-import Constants from 'expo-constants';
 import { DrawerItemList, createDrawerNavigator } from '@react-navigation/drawer';
 import {
   View, Text, Dimensions, Pressable, StyleSheet, Image, Linking, NativeModules,

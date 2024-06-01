@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,13 +9,10 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch } from 'react-redux';
-import products from '../data/catalog.json';
 
 import ProductList from '../components/ProductList';
 import CategoryList from '../components/CategoryList';
-import catalog2 from '../data/catalog2.json';
 import catalog from '../data/catalog_done.json';
 import { setScrollTop } from '../Redux/NavigateReducer';
 
@@ -47,10 +44,10 @@ function Catalog() {
               autoplay
               activeDotColor="red"
               nextButton={
-                <Text style={{ color: '#e5e4e2', fontSize: 70 }}>›</Text>
+                <Text style={styles.swiperButtons}>›</Text>
               }
               prevButton={
-                <Text style={{ color: '#e5e4e2', fontSize: 70 }}>‹</Text>
+                <Text style={styles.swiperButtons}>‹</Text>
               }
             >
               {
@@ -125,7 +122,6 @@ const styles = StyleSheet.create({
     color: '#757575',
     textAlign: 'center',
   },
-  container: {},
   wrap: {
     width: WIDTH,
     height: '100%',
@@ -188,6 +184,9 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.08)',
     marginLeft: 5,
     backgroundColor: '#cf1c1d',
+  },
+  swiperButtons: {
+    color: '#e5e4e2', fontSize: 70,
   },
 });
 

@@ -9,6 +9,7 @@ function CategoryList({ scrollViewRef }) {
   const navigateData = useSelector(
     (state) => state.navigateHeaders.navigateHeaders,
   );
+  console.log(navigateData);
 
   return (
     <ScrollView

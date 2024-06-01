@@ -4,18 +4,18 @@ import {
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import CrossGiftIcon from '../Icons/CrossGiftIcon';
-import { setYaModalVisible } from '../Redux/CartReducer';
+import { setYandexModalVisible } from '../Redux/FocusReducer';
 
 const WIDTH = Dimensions.get('window').width;
 
 function ReviewLinkModal() {
   const dispatch = useDispatch();
-  const isVisible = useSelector((state) => state.cart.yandexModalVisible);
+  const isVisible = useSelector((state) => state.focus.isYandexModalVisible);
   return (
     isVisible && (
     <View style={styles.modal_view}>
       <View style={styles.modal_view_inside}>
-        <Pressable style={{ position: 'absolute', top: 10, right: 10 }} onPress={() => dispatch(setYaModalVisible(false))}>
+        <Pressable style={{ position: 'absolute', top: 10, right: 10 }} onPress={() => dispatch(setYandexModalVisible(false))}>
           <CrossGiftIcon />
         </Pressable>
         <Image

@@ -5,15 +5,8 @@ import {
 import Slider from '@react-native-community/slider';
 import { useDispatch } from 'react-redux';
 import { spendBonuses } from '../Redux/CartReducer';
+import normalizeCountForm from '../utils/functions';
 
-const normalize_count_form = (number, wordsArr) => {
-  number = Math.abs(number);
-  if (Number.isInteger(number)) {
-    const options = [2, 0, 1, 1, 1, 2];
-    return wordsArr[(number % 100 > 4 && number % 100 < 20) ? 2 : options[(number % 10 < 5) ? number % 10 : 5]];
-  }
-  return wordsArr[1];
-};
 
 function BonusSlider({ user }) {
   const [selectedBonus, setSelectedBonus] = useState(10);
@@ -29,10 +22,10 @@ function BonusSlider({ user }) {
     <View style={styles.container}>
       <Text style={styles.title}>Бонусные баллы</Text>
       <View style={styles.sliderContainer}>
-        <Text style={styles.sliderLabel}>10 баллов</Text>
+        <Text style={styles.sliderLabel}>1 балл</Text>
         <Slider
           style={styles.slider}
-          minimumValue={10}
+          minimumValue={1}
           maximumValue={sliderMaxValue}
           step={1}
           value={selectedBonus}
@@ -44,13 +37,13 @@ function BonusSlider({ user }) {
         <Text style={styles.sliderLabel}>
           {sliderMaxValue}
           {' '}
-          {normalize_count_form(sliderMaxValue, ['балл', 'балла', 'баллов'])}
+          {normalizeCountForm(sliderMaxValue, ['балл', 'балла', 'баллов'])}
         </Text>
       </View>
       <Text>
         {selectedBonus}
         {' '}
-        {normalize_count_form(selectedBonus, ['балл', 'балла', 'баллов'])}
+        {normalizeCountForm(selectedBonus, ['балл', 'балла', 'баллов'])}
       </Text>
       <TouchableOpacity style={styles.button} onPress={() => dispatch(spendBonuses(selectedBonus))}>
         <Text style={styles.buttonText}>Потратить</Text>

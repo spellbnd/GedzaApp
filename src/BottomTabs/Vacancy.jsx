@@ -1,18 +1,31 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  View, Text, StyleSheet, Pressable,
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import GoBackButton from '../Icons/GoBackButton';
 
 function Vacancy() {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <View style={{ paddingRight: 15, paddingLeft: 15 }}>
         <Text style={{
-          fontSize: 35, fontWeight: 'bold', marginTop: 10, marginBottom: 20,
+          fontSize: 35, fontWeight: 'bold', marginTop: 10, marginBottom: 5,
         }}
         >
           Вакансии
         </Text>
       </View>
+      <Pressable
+        style={{
+          width: 60, height: 60, justifyContent: 'center', alignItems: 'center',
+        }}
+        onPress={() => navigation.navigate('Меню')}
+      >
+        <GoBackButton />
+      </Pressable>
       <View style={{ width: '100%', paddingRight: 15, paddingLeft: 15 }}>
         <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 5 }}>Повар-сушист</Text>
         <Text style={{

@@ -6,19 +6,14 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     cart: [],
-    history: [],
     isModalCartVisible: false,
     isGiftVisible: false,
     additionalList: additional,
-    activatedPromocode: false,
+    promocodeStatus: '',
     discountSize: 0,
-    yandexModalVisible: false,
     spendBonuses: 0,
   },
   reducers: {
-    setYaModalVisible: (state, action) => {
-      state.yandexModalVisible = action.payload;
-    },
     setGiftVisible: (state, action) => {
       state.isGiftVisible = action.payload;
     },
@@ -29,11 +24,6 @@ export const cartSlice = createSlice({
       const cartItems = action.payload;
       state.cart = cartItems;
     },
-    setCartHistory: (state, action) => {
-      const ordersHistory = action.payload;
-      console.log(ordersHistory);
-      state.history = ordersHistory;
-    },
     addToCart: (state, action) => {
       const { id } = action.payload;
       const itemInCart = state.cart.find((item) => item.id === id);
@@ -42,12 +32,10 @@ export const cartSlice = createSlice({
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
-      AsyncStorage.setItem('cartItems', JSON.stringify(state.cart));
     },
     removeFromCart: (state, action) => {
       const { id } = action.payload;
       state.cart = state.cart.filter((item) => item.id !== id);
-      AsyncStorage.setItem('cartItems', JSON.stringify(state.cart));
     },
     incrementQuantity: (state, action) => {
       const { id } = action.payload;
@@ -61,6 +49,9 @@ export const cartSlice = createSlice({
     },
     decrementQuantity: (state, action) => {
       const itemInCart = state.cart.find((item) => item.id === action.payload.id);
+      if (!itemInCart) {
+        return;
+      }
       if (itemInCart.quantity === 1) {
         const removeFromCart = state.cart.filter((item) => item.id !== action.payload.id);
         state.cart = removeFromCart;
@@ -92,11 +83,14 @@ export const cartSlice = createSlice({
       state.count = count;
     },
     activatePromocode: (state, action) => {
+      console.log(state);
       if (action.payload === 'GEDZA2024') {
-        state.activatedPromocode = true;
+        state.promocodeStatus = 'activated';
         state.discountSize = 20;
+      } else if (action.payload === 'clean') {
+        state.promocodeStatus = '';
       } else {
-        state.activatedPromocode = 'error';
+        state.promocodeStatus = 'error';
       }
     },
     spendBonuses: (state, action) => {
@@ -115,8 +109,6 @@ export const {
   getTotalAmount,
   setGiftVisible,
   activatePromocode,
-  setYaModalVisible,
-  setCartHistory,
   spendBonuses,
 } = cartSlice.actions;
 

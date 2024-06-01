@@ -8,19 +8,15 @@ import {
   Image,
   Pressable,
   Dimensions,
-  Alert,
 } from 'react-native';
 import Constants from 'expo-constants';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import SVGComponent from '../Icons/TestComponent';
 import { addToCart, setModalCartVisible } from '../Redux/CartReducer';
 import AddItemModal from './AddItemModal';
 
 const WIDTH = Dimensions.get('window').width;
 function ProductPreview({ visible, changeState, productInfo }) {
-  const navigation = useNavigation();
-  const user = useSelector((s) => s.user);
   const dispatch = useDispatch();
   const addItemToCart = (item) => {
     dispatch(addToCart(item));

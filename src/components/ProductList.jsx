@@ -9,8 +9,8 @@ import { navigateListAdd } from '../Redux/NavigateReducer';
 function ProductList({ products, title }) {
   const dispatch = useDispatch();
   const addToNavigateList = (title, coord) => {
-    const TestObj = { title, coord };
-    dispatch(navigateListAdd(TestObj));
+    const HeadersData = { title, coord };
+    dispatch(navigateListAdd(HeadersData));
   };
 
   return (

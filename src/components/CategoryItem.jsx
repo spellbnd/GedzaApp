@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setPressedCategory, setActiveItem } from '../Redux/NavigateReducer';
+import { setActiveItem } from '../Redux/NavigateReducer';
 
 function CategoryItem({ itemCategory, scrollViewRef }) {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function CategoryItem({ itemCategory, scrollViewRef }) {
     ) {
       dispatch(setActiveItem(itemCategory));
     }
-  }, [scrollTop, itemCategory]);
+  }, [scrollTop, itemCategory, dispatch]);
 
   return (
     <Pressable

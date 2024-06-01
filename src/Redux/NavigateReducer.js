@@ -4,7 +4,6 @@ const navigateSlice = createSlice({
   name: 'navigateHeaders',
   initialState: {
     navigateHeaders: [],
-    pressed: {},
     scrollTop: 0,
     activeItem: {},
   },
@@ -14,9 +13,6 @@ const navigateSlice = createSlice({
       if (!headerTitleIn) {
         state.navigateHeaders.push(action.payload);
       }
-    },
-    setPressedCategory: (state, action) => {
-      state.pressed = action.payload;
     },
     setScrollTop: (state, action) => {
       state.scrollTop = action.payload;
@@ -28,7 +24,7 @@ const navigateSlice = createSlice({
 });
 
 export const {
-  navigateListAdd, setPressedCategory, setScrollTop, setActiveItem,
+  navigateListAdd, setScrollTop, setActiveItem,
 } = navigateSlice.actions;
 
 export default navigateSlice.reducer;
