@@ -4,12 +4,12 @@
     "slug": "GedzaApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/GedzaIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash2.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/GedzaIcoForeground.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.chintai.GedzaApp"
@@ -31,6 +31,15 @@
       "eas": {
         "projectId": "e94f78ad-ca9f-4225-a750-aef3696586bd"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties", {
+          "android": {
+            "minSdkVersion": 24
+          }
+        }
+      ]
+    ]
   }
 }

@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createSlice } from '@reduxjs/toolkit';
 import additional from '../data/additional.json';
 
@@ -45,7 +44,6 @@ export const cartSlice = createSlice({
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
-      AsyncStorage.setItem('cartItems', JSON.stringify(state.cart));
     },
     decrementQuantity: (state, action) => {
       const itemInCart = state.cart.find((item) => item.id === action.payload.id);
@@ -63,10 +61,9 @@ export const cartSlice = createSlice({
         total += item.quantity * item.price;
       });
       if (total < 2000) {
-        const noGiftItems = state.cart.filter((item) => !item.hasOwnProperty('gift'));
+        const noGiftItems = state.cart.filter((item) => !Object.hasOwn(item, 'gift'));
         state.cart = noGiftItems;
       }
-      AsyncStorage.setItem('cartItems', JSON.stringify(state.cart));
     },
     getTotalAmount: (state) => {
       let total = 0;
@@ -84,7 +81,7 @@ export const cartSlice = createSlice({
     },
     activatePromocode: (state, action) => {
       console.log(state);
-      if (action.payload === 'GEDZA2024') {
+      if (action.payload === 'TESTPROMOCODE') {
         state.promocodeStatus = 'activated';
         state.discountSize = 20;
       } else if (action.payload === 'clean') {

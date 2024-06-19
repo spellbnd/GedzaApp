@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import _ from 'lodash';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { saveCurrentUser, exitUserStorage, saveUsersList } from '../utils/asyncStorage';
 
 const userSlice = createSlice({
   name: 'user',
@@ -18,6 +18,9 @@ const userSlice = createSlice({
     },
   },
   reducers: {
+    setUsersList: (state, action) => {
+      state.usersList = action.payload;
+    },
     register: (state, action) => {
       const isAlreadyRegistered = state.usersList.find((item) => item.phone === action.payload.phone);
       if (isAlreadyRegistered) {
@@ -25,6 +28,7 @@ const userSlice = createSlice({
       } else {
         state.usersList.push(action.payload);
         state.currentUser.logged = 'success_registration';
+        saveUsersList(current(state.usersList));
       }
     },
     login: (state, { payload }) => {
@@ -32,6 +36,7 @@ const userSlice = createSlice({
       if (inUserList) {
         if (inUserList.password === payload.password) {
           state.currentUser = { ...state.currentUser, ...inUserList, logged: true };
+          saveCurrentUser(state.currentUser);
         } else {
           state.currentUser.logged = 'error';
         }
@@ -49,13 +54,11 @@ const userSlice = createSlice({
 
       state.currentUser.bonuses += historyData.bonucesCount - historyData.spendBonus;
       state.currentUser.history.push(historyData);
-      console.log('Выводим ЩИТ');
-      console.dir(state.currentUser, { depth: 30 });
-      console.log('Вывели');
-      console.log(state);
+      saveCurrentUser(current(state.currentUser));
     },
     exitUser: (state) => {
       state.currentUser = { history: [], bonuses: 0 };
+      exitUserStorage();
     },
     addtoUserList: (state, action) => {
       const userData = _.cloneDeep(action.payload);
@@ -66,12 +69,13 @@ const userSlice = createSlice({
         const currentData = state.usersList[findUser];
         state.usersList[findUser] = { ...currentData, ...userData };
       }
+      saveUsersList(current(state.usersList));
     },
   },
 });
 
 export const {
-  setUser, setUserOrderHistory, exitUser, addtoUserList, login, register,
+  setUser, setUserOrderHistory, exitUser, addtoUserList, login, register, setUsersList,
 } = userSlice.actions;
 
 export default userSlice.reducer;

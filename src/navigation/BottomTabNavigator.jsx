@@ -358,7 +358,7 @@ function MakingOrder() {
                   <Picker
                     mode="dropdown"
                     selectedValue={pickup}
-                    onValueChange={(itemValue, itemIndex) => setPickup(itemValue)}
+                    onValueChange={(itemValue) => setPickup(itemValue)}
                     style={{ borderWidth: 1, borderColor: '#000' }}
                   >
                     <Picker.Item
@@ -554,7 +554,7 @@ function MakingOrder() {
         </Pressable> */}
         {
           user.bonuses !== 0 && (
-          <View>
+          <View style={{ marginTop: 5 }}>
             <Text style={{ padding: 20, borderWidth: 2 }}>
               Доступно бонусов для списания:
               {' '}
@@ -572,7 +572,7 @@ function MakingOrder() {
           )
         }
       </View>
-      <GiftChoose />
+      {/* <GiftChoose /> */}
       <View
         style={{
           flex: 1,
@@ -757,7 +757,7 @@ function MakingOrder() {
             </Text>
           </Pressable>
         </View>
-        {fullcart.total >= 2000 && (
+        {/* {fullcart.total >= 2000 && (
           <View style={styles.cart_total}>
             <View>
               {fullcart.cart.find((item) => Object.prototype.hasOwnProperty.call(item, 'gift')) === undefined && (
@@ -795,7 +795,7 @@ function MakingOrder() {
               </Pressable>
             </View>
           </View>
-        )}
+        )} */}
       </View>
     </ScrollView>
   );
@@ -949,9 +949,17 @@ function PersonalAccount() {
                     {loading ? (
                       <ActivityIndicator color="red" size="small" />
                     ) : (
-                      <Button
-                        title="Войти"
-                        disabled={!user?.phone || !user?.password}
+                      <Pressable
+                        style={{
+                          marginTop: 20,
+                          backgroundColor: '#cf1c1d',
+                          borderRadius: 50,
+                          marginBottom: 20,
+                          flexDirection: 'row',
+                          justifyContent: 'center',
+                          height: 40,
+                          alignItems: 'center',
+                        }}
                         onPress={() => {
                           setLoading(true);
                           setTimeout(() => {
@@ -966,10 +974,59 @@ function PersonalAccount() {
                             setLoading(false);
                           }, 1000);
                         }}
-                      />
+                      >
+                        <Text style={{
+                          color: '#fff',
+                          fontSize: 16,
+                          fontWeight: 'bold',
+                        }}
+                        >
+                          Войти
+                        </Text>
+                      </Pressable>
+                      // <Button
+                      //   title="Войти"
+                      //   disabled={!user?.phone || !user?.password}
+                    // onPress={() => {
+                    //   setLoading(true);
+                    //   setTimeout(() => {
+                    //     dispatch(
+                    //       login({
+                    //         ...user,
+                    //       }),
+                    //     );
+                    //     if (user.logged === true) {
+                    //       setOpen(false);
+                    //     }
+                    //     setLoading(false);
+                    //   }, 1000);
+                    // }}
+                      // />
                     )}
-                    <Pressable onPress={() => setIsLoginForm(false)}>
+                    {/* <Pressable onPress={() => setIsLoginForm(false)}>
                       <Text>Нет аккаунта? Зарегистрируйтесь!</Text>
+                    </Pressable> */}
+                    <Pressable
+                      style={{
+                        marginTop: 5,
+                        backgroundColor: '#cf1c1d',
+                        borderRadius: 50,
+                        marginBottom: 20,
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        height: 40,
+                        alignItems: 'center',
+                      }}
+                      onPress={() => setIsLoginForm(false)}
+                    >
+                      <Text style={{
+                        color: '#fff',
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                      }}
+                      >
+                        Регистрация
+                      </Text>
                     </Pressable>
                   </>
                 ) : (
@@ -1033,15 +1090,24 @@ function PersonalAccount() {
                     ) : (
                       <Button
                         title="Регистрация"
+                        color="#cf1c1d"
                         disabled={
-                          !user?.phone || !user?.password || !user?.fullname
+                          !user?.phone
+    || !user?.password
+    || !user?.fullname
+    || user?.phone?.length < 12
+    || user?.password?.length < 5
+    || user?.fullname?.length < 3
                         }
                         onPress={handleRegistration}
                       />
                     )}
-                    <Pressable onPress={() => setIsLoginForm(true)}>
-                      <Text>Уже есть аккаунт? Войдите!</Text>
-                    </Pressable>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text style={{ fontSize: 15 }}>Если у вас уже есть аккаунт, </Text>
+                      <Pressable onPress={() => setIsLoginForm(true)}>
+                        <Text style={{ fontSize: 15, fontWeight: '700', color: '#cf1c1d' }}>войдите </Text>
+                      </Pressable>
+                    </View>
                   </>
                 )}
                 {user.logged === 'error' && (
@@ -1354,10 +1420,32 @@ function PersonalAccount() {
                     secureTextEntry
                   />
                 </>
-                <Button
+                {/* <Button
                   title="Сохранить"
                   onPress={handleSaveProfile}
-                />
+                /> */}
+                <Pressable
+                  style={{
+                    marginTop: 20,
+                    backgroundColor: '#cf1c1d',
+                    borderRadius: 50,
+                    marginBottom: 20,
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    height: 40,
+                    alignItems: 'center',
+                  }}
+                  onPress={handleSaveProfile}
+                >
+                  <Text style={{
+                    color: '#fff',
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                  }}
+                  >
+                    Сохранить данные
+                  </Text>
+                </Pressable>
               </View>
             </View>
           </Modal>
@@ -1506,12 +1594,12 @@ function PersonalAccount() {
 
 export default function BottomTabNavigator(props) {
   const navigation = useNavigation();
-  const cart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state) => state.cart);
   const isCartFocused = useSelector((state) => state.focus.isCartFocused);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTotalAmount());
-  }, [cart, dispatch]);
+  }, [cart.cart, dispatch]);
 
   return (
     <Tab.Navigator
@@ -1565,9 +1653,9 @@ export default function BottomTabNavigator(props) {
           tabBarLabel: 'Корзина',
           tabBarIcon: () => <ShoppingCart />,
           tabBarBadge:
-            isCartFocused || cart.length === 0
+            isCartFocused || cart.count === 0
               ? undefined
-              : cart.length,
+              : cart.count,
 
           header: () => (
             <View

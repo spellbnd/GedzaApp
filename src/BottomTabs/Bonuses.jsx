@@ -10,9 +10,9 @@ function Bonuses() {
   const navigation = useNavigation();
   return (
     <ScrollView>
-      <View style={{ paddingRight: 15, paddingLeft: 15 }}>
+      <View style={{ width: '100%', paddingRight: 15, paddingLeft: 15, paddingTop: 20, }}>
         <Text style={{
-          fontSize: 35, fontWeight: 'bold', marginTop: 10, marginBottom: 5,
+          fontSize: 35, marginBottom: 5,
         }}
         >
           Бонусы

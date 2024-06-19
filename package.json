@@ -39,7 +39,8 @@
     "react-native-swiper": "^1.6.0",
     "react-native-text-input-mask": "^3.2.0",
     "react-native-web": "~0.19.6",
-    "react-redux": "^9.1.0"
+    "react-redux": "^9.1.0",
+    "expo-build-properties": "~0.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

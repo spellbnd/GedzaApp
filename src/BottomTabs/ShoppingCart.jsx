@@ -283,7 +283,7 @@ function ShoppingCartScreen({ navigation }) {
                                 <Text style={{ fontSize: 18, fontWeight: 700 }}>{additionalItem.name}</Text>
                               </View>
                               {
-                                !additionalItem.hasOwnProperty('gift') && (
+                                !Object.hasOwn(additionalItem, 'gift') && (
                                   <View style={styles.cartProduct}>
                                     <View style={styles.icon_items}>
                                       <Pressable

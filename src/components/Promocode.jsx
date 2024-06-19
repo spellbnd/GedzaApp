@@ -39,7 +39,7 @@ function Promocode() {
       </View>
       <View>
         {
-            promocode.activatedPromocode === true && (
+            promocode.promocodeStatus === 'activated' && (
             <Text style={{ textAlign: 'center' }}>
               Успешная активация промокода! Скидка составляет
               {' '}
@@ -49,7 +49,7 @@ function Promocode() {
             )
         }
         {
-            promocode.activatedPromocode === 'error' && <Text>Введен неверный промокод!</Text>
+            promocode.promocodeStatus === 'error' && <Text>Введен неверный промокод!</Text>
         }
       </View>
     </View>

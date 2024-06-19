@@ -4,7 +4,7 @@ import FocusReducer from './FocusReducer';
 import NavigateReducer from './NavigateReducer';
 import UserReducer from './UserReducer';
 
-export default configureStore({
+const store = configureStore({
   reducer: {
     cart: CartReducer,
     focus: FocusReducer,
@@ -12,3 +12,5 @@ export default configureStore({
     user: UserReducer,
   },
 });
+
+export default store;
